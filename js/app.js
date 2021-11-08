@@ -3,7 +3,7 @@
   // US map options
   var options = {
     zoomSnap: .2,
-    center: [51.52, -0.15],
+    center: [51.512, -0.155],
     zoom: 13.4,
     minZoom: 2,
     zoomControl: false,
