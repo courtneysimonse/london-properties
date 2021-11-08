@@ -1,2 +1,2 @@
-# leaflet-template
- template for a Leaflet map
+# london-properties
+ plot london properties
