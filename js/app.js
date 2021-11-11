@@ -25,21 +25,15 @@
     position: 'bottomleft'
   }).addTo(map);
 
-  L.geoJSON(londonProperties, {
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.display_address + "<p><a href='#'>More information...</a></p>" );
-    }
-  }).addTo(map);
-
   // GET DATA
-  processData();
+  processData(londonProperties, londonNeighborhoods);
 
   // PROCESS DATA FUNCTION
-  function processData() {
+  function processData(properties, neighborhoods) {
 
 
 
-    drawMap();
+    drawMap(properties, neighborhoods);
 
     // example breaks for legend
     // var breaks = [1, 4, 7, 10];
@@ -50,9 +44,22 @@
   }   //end processData()
 
   // DRAW MAP FUNCTION
-  function drawMap() {
+  function drawMap(properties, neighborhoods) {
 
+    L.geoJSON(properties, {
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.display_address + "<p><a href='#'>More information...</a></p>" );
+      }
+    }).addTo(map);
 
+    L.geoJSON(neighborhoods, {
+      pointToLayer: function (geoJsonPoint, latlng) {
+        label = L.divIcon({
+          className: "neighborhoods",
+          html: geoJsonPoint.properties.name
+        })
+        return new L.marker(latlng, {icon: label})}
+    }).addTo(map);
 
   }   //end drawMap()
 
