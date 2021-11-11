@@ -3,7 +3,7 @@ body {
   padding: 0;
   background: whitesmoke;
   font-family: Poppins, sans-serif;
-  color: #0D0000;
+  color: #827369;
 }
 
 #mapid {
@@ -11,6 +11,7 @@ body {
   width: 100%;
   top: 0;
   bottom: 0;
+  height: 100vh
   }
 
 .tooltip {
@@ -36,6 +37,16 @@ body {
   cursor: pointer;
   font-weight: bold;
   visibility: hidden;
+  color: rgba(25, 25, 25, 0.8);
+}
+
+.information {
+  position: absolute;
+  top: 100vh;
+}
+
+.property {
+  height: 100vh;
 }
 
 h1 {
@@ -45,9 +56,9 @@ h1 {
   left: 15px;
   padding: 8px 15px;
   margin: 0;
-  color: whitesmoke;
+  color: #827369;
   font-size: 1.5em;
-  background: rgba(25, 25, 25, 0.8);
+  background: #e4e4e4;
   border-radius: 5px;
 }
 
