@@ -18,6 +18,26 @@ body {
   white-space: normal;
 }
 
+#mly {
+  z-index: 500;
+  width: 350px;
+  height: 300px;
+  position: absolute;
+  right: 3px;
+  bottom: 18px;
+  visibility: hidden;
+}
+
+#x {
+  z-index: 550;
+  position: absolute;
+  right: 8px;
+  bottom: 295px;
+  cursor: pointer;
+  font-weight: bold;
+  visibility: hidden;
+}
+
 h1 {
   position: absolute;
   z-index: 650;

@@ -16,6 +16,9 @@
        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
        crossorigin=""/>
 
+    <!-- Mapillary CSS for street view -->
+    <link  href="https://unpkg.com/mapillary-js@4.0.0/dist/mapillary.css"  rel="stylesheet"/>
+
     <link href='css/styles.css' rel='stylesheet' />
 
     <title>London Properties Map</title>
@@ -24,6 +27,8 @@
     <h1>London Properties</h1>
 
     <div id="mapid"></div>
+    <div id="mly"></div>
+    <div id="x">X</div>
     <!-- <div id="ui-controls">
       <label><span class="min">2001</span><span class="max">2015</span>
           <input type="range" min = "2001", max= "2015", value = "2001", step= "1", class="year-slider">
@@ -38,6 +43,9 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""></script>
+
+    <!-- Mapillary JS -->
+    <script src="https://unpkg.com/mapillary-js@4.0.0/dist/mapillary.js"></script>
 
     <!-- Chroma for Legend -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.2/chroma.min.js"
