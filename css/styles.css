@@ -23,7 +23,7 @@ img.mainImage {
   align-content: center;
 }
 
-#mly {
+/* #mly {
   z-index: 500;
   width: 350px;
   height: 300px;
@@ -42,7 +42,7 @@ img.mainImage {
   font-weight: bold;
   visibility: hidden;
   color: rgba(25, 25, 25, 0.8);
-}
+} */
 
 .information {
   position: absolute;
