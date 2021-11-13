@@ -14,9 +14,13 @@ body {
   height: 100vh
   }
 
-.tooltip {
-  width: 300px;
-  white-space: normal;
+.leaflet-popup {
+  max-width: 250px;
+}
+
+img.mainImage {
+  max-width: 200px;
+  align-content: center;
 }
 
 #mly {
@@ -46,7 +50,7 @@ body {
 }
 
 .property {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 h1 {
@@ -60,6 +64,10 @@ h1 {
   font-size: 1.5em;
   background: #e4e4e4;
   border-radius: 5px;
+}
+
+h3 {
+  padding-top: 1em;
 }
 
 footer {

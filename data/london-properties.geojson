@@ -15,7 +15,8 @@ var londonProperties = {
         "address": "17 Cornwall Terrace, London, NW1 4QP",
         "latlong": "51.523576,-0.1561365",
         "display_address": "17 Cornwall Terrace Mews",
-        "imageId": "608164680105276"
+        "imageId": "608164680105276",
+        "mainImage": "#"
       },
       "geometry": {
         "type": "Point",
@@ -32,7 +33,8 @@ var londonProperties = {
         "address": "St Saviours House, Walton Street, Knightsbridge, London, SW3 1SA",
         "latlong": "51.4976087,-0.1626989",
         "display_address": "St Saviours House",
-        "imageId": "196055545711750"
+        "imageId": "196055545711750",
+        "mainImage": "#"
       },
       "geometry": {
         "type": "Point",
@@ -49,7 +51,8 @@ var londonProperties = {
         "address": "34 Woronzow Road, London, NW8 6AT",
         "latlong": "51.5375163,-0.1698342",
         "display_address": "34 Woronzow Road",
-        "imageId": "322354922638577"
+        "imageId": "322354922638577",
+        "mainImage": "#"
       },
       "geometry": {
         "type": "Point",
@@ -66,7 +69,8 @@ var londonProperties = {
         "address": "Chelsea Barracks 2 Whistler Square, London, SW1W 8BT",
         "latlong": "51.48939850000001,-0.1547372",
         "display_address": "Chelsea Barracks 2 Whistler Square",
-        "imageId": "293690149132905"
+        "imageId": "293690149132905",
+        "mainImage": "images/whistler-sq.jpg"
       },
       "geometry": {
         "type": "Point",
@@ -83,7 +87,8 @@ var londonProperties = {
         "address": "14 Charles Street, Mayfair, London, W1J",
         "latlong": "51.5080262,-0.1470761",
         "display_address": "14 Charles Street",
-        "imageId": "130724765708509"
+        "imageId": "130724765708509",
+        "mainImage": "#"
       },
       "geometry": {
         "type": "Point",

@@ -62,7 +62,9 @@
 
     L.geoJSON(properties, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.display_address + "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>" );
+        layer.bindPopup("<p>" + feature.properties.display_address + "</p>" +
+          "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
+          "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>" );
       }
     }).addTo(map).on('click', function(e) {
       // on click, show mapillary viewer
