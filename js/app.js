@@ -1,11 +1,11 @@
 (function () {
 
-  // US map options
+  // London map options
   var options = {
     zoomSnap: .2,
     center: [51.512, -0.155],
     zoom: 13.4,
-    minZoom: 2,
+    minZoom: 13,
     zoomControl: false,
     // attributionControl: false
   }
