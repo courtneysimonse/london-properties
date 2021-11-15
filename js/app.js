@@ -25,6 +25,32 @@
     position: 'bottomleft'
   }).addTo(map);
 
+  //Get the button
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
   // Mapillary Viewer
   // var viewer = new mapillary.Viewer({
   //   accessToken: 'MLY|7147044735321690|421cff42a53ffc1154343a5e5657a25d',
@@ -99,9 +125,13 @@
                   });
       },
       onEachFeature: function (feature, layer) {
-        layer.bindPopup("<p>" + feature.properties.display_address + "</p>" +
-          "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
-          "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>" );
+        if (feature.properties.category == 'Available') {
+          layer.bindPopup("<p>" + feature.properties.display_address + "</p>" +
+            "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
+            "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>" );
+        } else {
+          layer.bindPopup("<p>" + feature.properties.display_address + "</p>");
+        }
       }
     }).addTo(map);
     // .on('click', function(e) {
