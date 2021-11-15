@@ -86,11 +86,11 @@ p {
   color: rgba(25, 25, 25, 0.8);
   }
 
-/* .legend {
+ .legend {
     padding: 6px 8px;
     font-size: 1em;
-    background: rgba(75, 75, 75, 0.8);
-    color: whitesmoke;
+    background: #e4e4e4;
+    color: #827369;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     width: 160px;
@@ -100,14 +100,14 @@ p {
     font-size: 1.1em;
     font-weight: bold;
     line-height: 1em;
-    color: whitesmoke;
+    color: #827369;
     margin: 0;
 }
 
-.legend h3 span {
+/* .legend h3 span {
     font-size: 1.3em;
     margin: 0 20px 0 0;
-}
+} */
 
 .legend ul {
     list-style-type: none;
@@ -132,7 +132,7 @@ p {
   color: whitesmoke;
 }
 
-#ui-controls {
+/* #ui-controls {
     width: 176px;
     padding: 8px 25px 8px 15px;
     background: rgba(75, 75, 75, 0.8);
@@ -152,9 +152,9 @@ p {
 
 .year-slider {
     width: 100%;
-}
+} */
 
-label {
+/* label {
     font-size: 1.1em;
     font-weight: bold;
-} */
+}  */

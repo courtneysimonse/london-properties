@@ -208,9 +208,6 @@ var londonProperties = {
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "id": 13,
         "address": "1 Grosvenor Square, London W1K 4AB, UK",
         "display_address": "Penthouse, 1 Grosvenor Square",

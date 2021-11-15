@@ -60,7 +60,44 @@
   // DRAW MAP FUNCTION
   function drawMap(properties, neighborhoods) {
 
+    const breaks = ["Available","Comparables","Recent Sales"];
+    const colors = ["#1b9e77", "#267ec9", "#7570b3"];
+
+    blueIcon = L.icon({
+      iconUrl: 'images/marker.svg',
+      iconSize: [20, 45]
+    });
+
+    greenIcon = L.icon({
+      iconUrl: 'images/marker-green.svg',
+      iconSize: [20, 45]
+    });
+
+    redIcon = L.icon({
+      iconUrl: 'images/marker-red.svg',
+      iconSize: [20, 45]
+    });
+
+    purpleIcon = L.icon({
+      iconUrl: 'images/marker-purple.svg',
+      iconSize: [20, 45]
+    });
+
+    myIcons = {
+      'Available': greenIcon,
+      'Comparables': blueIcon,
+      'Recent Sales': purpleIcon
+    }
+
+    drawLegend(breaks, colors);
+
     L.geoJSON(properties, {
+      pointToLayer: function (geoJsonPoint, latlng) {
+        return L.marker(latlng, {
+                    icon: myIcons[geoJsonPoint.properties.category]
+                    // icon: myIcon
+                  });
+      },
       onEachFeature: function (feature, layer) {
         layer.bindPopup("<p>" + feature.properties.display_address + "</p>" +
           "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
@@ -86,36 +123,29 @@
   }   //end drawMap()
 
   // function drawLegend(breaks, colorize) {
+  function drawLegend(breaks, colors) {
   //
-  //   var legendControl = L.control({
-  //     position: 'topright'
-  //   });
+    var legendControl = L.control({
+      position: 'topright'
+    });
   //
-  //   legendControl.onAdd = function(map) {
-  //
-  //     var legend = L.DomUtil.create('div', 'legend');
-  //     return legend;
-  //
-  //   };
+    legendControl.onAdd = function(map) {
 
-  //   legendControl.addTo(map);
+      var legend = L.DomUtil.create('div', 'legend');
+      return legend;
+
+    };
+
+    legendControl.addTo(map);
+
+    var legend = document.querySelector('.legend');
+    legend.innerHTML = '<h3>Legend</h3><ul>' +
+    '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
+    '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
+    '<li><span style="background:' + colors[2] + '"></span> ' + breaks[2] + '</li>' +
+    '</ul>';
+    // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
   //
-  //   var legend = document.querySelector('.legend');
-  //   legend.innerHTML = "<h3><span>YYYY</span> Legend</h3><ul>";
-  //
-  //   for (var i = 0; i < breaks.length - 1; i++) {
-  //
-  //     var color = colorize(breaks[i], breaks);
-  //
-  //     var classRange = '<li><span style="background:' + color + '"></span> ' +
-  //         breaks[i].toLocaleString() + ' &mdash; ' +
-  //         breaks[i + 1].toLocaleString() + '</li>'
-  //     legend.innerHTML += classRange;
-  //
-  //   }
-  //
-  //   legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
-  //
-  // } // end drawLegend()
+  } // end drawLegend()
 
 })();
