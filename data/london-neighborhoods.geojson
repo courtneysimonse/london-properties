@@ -1,54 +1,214 @@
 var londonNeighborhoods = {
-"type": "FeatureCollection",
-"name": "london-neighborhoods",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "full_id": "n21042294", "osm_id": "21042294", "osm_type": "node", "is_in": "Westminster, London, UK", "name": "Pimlico", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1398817, 51.4889993 ] } },
-{ "type": "Feature", "properties": { "full_id": "n26545978", "osm_id": "26545978", "osm_type": "node", "is_in": "Southwark, London, UK", "name": "Walworth", "place": "suburb", "postal_code": "SE17" }, "geometry": { "type": "Point", "coordinates": [ -0.0906603, 51.4901142 ] } },
-{ "type": "Feature", "properties": { "full_id": "n26546003", "osm_id": "26546003", "osm_type": "node", "is_in": "Southwark, London", "name": "Elephant and Castle", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1005208, 51.4954461 ] } },
-{ "type": "Feature", "properties": { "full_id": "n26745366", "osm_id": "26745366", "osm_type": "node", "is_in": "Westminster, London", "name": "Mayfair", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.147058, 51.5110872 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365025", "osm_id": "27365025", "osm_type": "node", "is_in": "", "name": "Dalston", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0760128, 51.543212 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365026", "osm_id": "27365026", "osm_type": "node", "is_in": "", "name": "Haggerston", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0740127, 51.5366603 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365029", "osm_id": "27365029", "osm_type": "node", "is_in": "Hackney, London", "name": "Shoreditch", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0798926, 51.5266694 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365031", "osm_id": "27365031", "osm_type": "node", "is_in": "Islington, London", "name": "Clerkenwell", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1055555, 51.5237268 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365033", "osm_id": "27365033", "osm_type": "node", "is_in": "Camden, London", "name": "Bloomsbury", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1289635, 51.5210963 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365299", "osm_id": "27365299", "osm_type": "node", "is_in": "Islington, London", "name": "Highbury", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1027127, 51.5457996 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27365300", "osm_id": "27365300", "osm_type": "node", "is_in": "Islington, London", "name": "Barnsbury", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.114735, 51.5389351 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27396436", "osm_id": "27396436", "osm_type": "node", "is_in": "Kensington and Chelsea, London", "name": "South Kensington", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1831368, 51.4955817 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27396490", "osm_id": "27396490", "osm_type": "node", "is_in": "Westminster, London, UK", "name": "Knightsbridge", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.166965, 51.5008444 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27467065", "osm_id": "27467065", "osm_type": "node", "is_in": "London", "name": "Fitzrovia", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1410017, 51.5187642 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27467066", "osm_id": "27467066", "osm_type": "node", "is_in": "Westminster, London", "name": "Marylebone", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1504553, 51.5220589 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27467067", "osm_id": "27467067", "osm_type": "node", "is_in": "Kensington and Chelsea, London, UK", "name": "Chelsea", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1687007, 51.4875167 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27467184", "osm_id": "27467184", "osm_type": "node", "is_in": "Westminster, London", "name": "Paddington", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1792423, 51.5163047 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27467185", "osm_id": "27467185", "osm_type": "node", "is_in": "Westminster, London", "name": "Maida Vale", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1905916, 51.527592 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27553702", "osm_id": "27553702", "osm_type": "node", "is_in": "Lambeth, London, UK", "name": "Kennington", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1092504, 51.4884523 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27553707", "osm_id": "27553707", "osm_type": "node", "is_in": "Lambeth, London, UK", "name": "Vauxhall", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1229297, 51.4874834 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27553712", "osm_id": "27553712", "osm_type": "node", "is_in": "Southwark, London", "name": "Southwark", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.103458, 51.5029222 ] } },
-{ "type": "Feature", "properties": { "full_id": "n27553719", "osm_id": "27553719", "osm_type": "node", "is_in": "Lambeth, London", "name": "Lambeth", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.117287, 51.5013012 ] } },
-{ "type": "Feature", "properties": { "full_id": "n243814259", "osm_id": "243814259", "osm_type": "node", "is_in": "Hackney, London", "name": "Hoxton", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.086078, 51.5323935 ] } },
-{ "type": "Feature", "properties": { "full_id": "n281041529", "osm_id": "281041529", "osm_type": "node", "is_in": "Camden, London, UK", "name": "Somers Town", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1374411, 51.5313031 ] } },
-{ "type": "Feature", "properties": { "full_id": "n565457860", "osm_id": "565457860", "osm_type": "node", "is_in": "", "name": "Borough", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.093802, 51.5022704 ] } },
-{ "type": "Feature", "properties": { "full_id": "n1716927288", "osm_id": "1716927288", "osm_type": "node", "is_in": "", "name": "Finsbury", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0914245, 51.521798 ] } },
-{ "type": "Feature", "properties": { "full_id": "n1769839658", "osm_id": "1769839658", "osm_type": "node", "is_in": "", "name": "Chalk Farm", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1508239, 51.5436066 ] } },
-{ "type": "Feature", "properties": { "full_id": "n1769839663", "osm_id": "1769839663", "osm_type": "node", "is_in": "", "name": "Belsize Park", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1683005, 51.5473926 ] } },
-{ "type": "Feature", "properties": { "full_id": "n1846244241", "osm_id": "1846244241", "osm_type": "node", "is_in": "", "name": "South Hampstead", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1852026, 51.5435046 ] } },
-{ "type": "Feature", "properties": { "full_id": "n1868669482", "osm_id": "1868669482", "osm_type": "node", "is_in": "", "name": "Holborn", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1137266, 51.5195982 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2268352172", "osm_id": "2268352172", "osm_type": "node", "is_in": "", "name": "Notting Hill", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.2055267, 51.5109995 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2272513642", "osm_id": "2272513642", "osm_type": "node", "is_in": "", "name": "Bayswater", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1876323, 51.5124135 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2288027626", "osm_id": "2288027626", "osm_type": "node", "is_in": "", "name": "Belgravia", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1534998, 51.4982128 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2288030394", "osm_id": "2288030394", "osm_type": "node", "is_in": "", "name": "Victoria", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1413172, 51.4959786 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2288030397", "osm_id": "2288030397", "osm_type": "node", "is_in": "", "name": "Millbank", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1290435, 51.4926121 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2290086954", "osm_id": "2290086954", "osm_type": "node", "is_in": "", "name": "Covent Garden", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1226769, 51.5117363 ] } },
-{ "type": "Feature", "properties": { "full_id": "n2392802550", "osm_id": "2392802550", "osm_type": "node", "is_in": "", "name": "Canonbury", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0906318, 51.5438298 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3925845657", "osm_id": "3925845657", "osm_type": "node", "is_in": "", "name": "Brompton", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.178326, 51.4918222 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3933850644", "osm_id": "3933850644", "osm_type": "node", "is_in": "", "name": "West Kensington", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.207486, 51.4909928 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3933858663", "osm_id": "3933858663", "osm_type": "node", "is_in": "", "name": "Earl's Court", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1954, 51.4919685 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3936965089", "osm_id": "3936965089", "osm_type": "node", "is_in": "", "name": "King's Cross", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1224129, 51.5291076 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3936968792", "osm_id": "3936968792", "osm_type": "node", "is_in": "", "name": "St. John's Wood", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1741901, 51.531726 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3936973085", "osm_id": "3936973085", "osm_type": "node", "is_in": "", "name": "Maida Hill", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.194717, 51.5240989 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3936983379", "osm_id": "3936983379", "osm_type": "node", "is_in": "", "name": "West Kilburn", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.2019082, 51.5279347 ] } },
-{ "type": "Feature", "properties": { "full_id": "n3937580110", "osm_id": "3937580110", "osm_type": "node", "is_in": "", "name": "Soho", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1311754, 51.5131628 ] } },
-{ "type": "Feature", "properties": { "full_id": "n8148540060", "osm_id": "8148540060", "osm_type": "node", "is_in": "", "name": "St Pancras", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.1290973, 51.5259149 ] } },
-{ "type": "Feature", "properties": { "full_id": "n8821142047", "osm_id": "8821142047", "osm_type": "node", "is_in": "", "name": "Old Kent Road", "place": "suburb", "postal_code": "" }, "geometry": { "type": "Point", "coordinates": [ -0.0766699, 51.4882658 ] } }
-]
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n26745366",
+        "osm_id": "26745366",
+        "osm_type": "node",
+        "is_in": "Westminster, London",
+        "name": "Mayfair",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.147058,
+          51.5110872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n27396436",
+        "osm_id": "27396436",
+        "osm_type": "node",
+        "is_in": "Kensington and Chelsea, London",
+        "name": "South Kensington",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1831368,
+          51.4955817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n27396490",
+        "osm_id": "27396490",
+        "osm_type": "node",
+        "is_in": "Westminster, London, UK",
+        "name": "Knightsbridge",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.166965,
+          51.5008444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n27467065",
+        "osm_id": "27467065",
+        "osm_type": "node",
+        "is_in": "London",
+        "name": "Fitzrovia",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1410017,
+          51.5187642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n27467066",
+        "osm_id": "27467066",
+        "osm_type": "node",
+        "is_in": "Westminster, London",
+        "name": "Marylebone",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1504553,
+          51.5220589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n27467067",
+        "osm_id": "27467067",
+        "osm_type": "node",
+        "is_in": "Kensington and Chelsea, London, UK",
+        "name": "Chelsea",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1687007,
+          51.4875167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n1846244241",
+        "osm_id": "1846244241",
+        "osm_type": "node",
+        "is_in": "",
+        "name": "South Hampstead",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1852026,
+          51.5435046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n2268352172",
+        "osm_id": "2268352172",
+        "osm_type": "node",
+        "is_in": "",
+        "name": "Notting Hill",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.2055267,
+          51.5109995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n2288027626",
+        "osm_id": "2288027626",
+        "osm_type": "node",
+        "is_in": "",
+        "name": "Belgravia",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1534998,
+          51.4982128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n3936968792",
+        "osm_id": "3936968792",
+        "osm_type": "node",
+        "is_in": "",
+        "name": "St. John's Wood",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1741901,
+          51.531726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "full_id": "n3937580110",
+        "osm_id": "3937580110",
+        "osm_type": "node",
+        "is_in": "",
+        "name": "Soho",
+        "place": "suburb",
+        "postal_code": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1311754,
+          51.5131628
+        ]
+      }
+    }
+  ]
 };
