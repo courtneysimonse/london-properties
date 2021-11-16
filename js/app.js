@@ -127,7 +127,7 @@
           // icon: myIcons[geoJsonPoint.properties.category]
         },
       onEachFeature: function (feature, layer) {
-        popupText = "<p>" + feature.properties.display_address + "</p>";
+        popupText = "<h6>" + feature.properties.display_address + "</h6>";
         if (feature.properties.category == 'Available') {
           popupText += "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
             "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
@@ -150,11 +150,13 @@
 
     L.geoJSON(neighborhoods, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        label = L.divIcon({
+        let label = L.divIcon({
           className: "neighborhoods",
-          html: geoJsonPoint.properties.name
+          html: geoJsonPoint.properties.name,
+          iconSize: [90,20]
         })
-        return new L.marker(latlng, {icon: label})}
+        return new L.marker(latlng, {icon: label});
+      }
     }).addTo(map);
 
   }   //end drawMap()

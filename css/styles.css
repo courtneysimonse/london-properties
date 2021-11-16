@@ -107,28 +107,30 @@ p {
     color: #001323;
 }
 
-.neighborhoods {
+.leaflet-marker-icon.neighborhoods {
   font-family: Poppins, sans-serif;
   font-size: 1.5em;
+  text-align: center;
   color: rgba(25, 25, 25, 0.8);
+  pointer-events: none;
   }
 
- .legend {
-    padding: 6px 8px;
-    font-size: 1em;
-    background: #e4e4e4;
-    color: #827369;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    width: 160px;
+.legend {
+  padding: 6px 8px;
+  font-size: 1em;
+  background: #e4e4e4;
+  color: #827369;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 160px;
 }
 
 .legend h3 {
-    font-size: 1.1em;
-    font-weight: bold;
-    line-height: 1em;
-    color: #827369;
-    margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1em;
+  color: #827369;
+  margin: 0;
 }
 
 /* .legend h3 span {
