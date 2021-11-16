@@ -4,7 +4,7 @@
   var options = {
     zoomSnap: .2,
     center: [51.512, -0.155],
-    zoom: 13.4,
+    zoom: 13.2,
     minZoom: 13,
     zoomControl: false,
     // attributionControl: false
