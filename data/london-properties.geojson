@@ -93,7 +93,8 @@ var londonProperties = {
         "id": 6,
         "display_address": "Hanover Lodge",
         "category": "Comparables",
-        "price": "£130M (£5,200 psf)"
+        "price": "£130M (£5,200 psf)",
+        "description": "One of the large detached villas on the north side of Regent’s Park, totaling around 25,000 sqft."
       },
       "geometry": {
         "type": "Point",
@@ -110,7 +111,9 @@ var londonProperties = {
         "display_address": "Falcon House",
         "category": "Comparables",
         "price": "£250M (£7,142 psf)",
-        "address": "36-38 Queen Anne's Gate, London, UK"
+        "address": "36-38 Queen Anne's Gate, London, UK",
+        "price": "£250M (£7,142 psf)",
+        "description": "Just off Birdcage Walk on Queen Anne’s Gate, this is a detached and freehold mansion sitting in over 0.5 hectares. ~ 35,000sqft."
       },
       "geometry": {
         "type": "Point",
@@ -127,7 +130,9 @@ var londonProperties = {
         "display_address": "47 Belgrave Square",
         "category": "Comparables",
         "price": "£125M (£4,800 psf)",
-        "address": "47 Belgrave Square, London SW1X 8QR, UK"
+        "address": "47 Belgrave Square, London SW1X 8QR, UK",
+        "price": "£125M (£4,800 psf)",
+        "description": "Totaling 23,000sq ft and comprising 10+ beds this is one of the largest in the square and has never been lived in since a total refurbishment recently. The home benefits from a mews house, which provides secure parking and staff accommodations."
       },
       "geometry": {
         "type": "Point",
@@ -144,7 +149,9 @@ var londonProperties = {
         "display_address": "Sloane House",
         "category": "Comparables",
         "price": "£150M (£5,000 psf)",
-        "address": "97 Sloane St, London SW1X 9PE, UK"
+        "address": "97 Sloane St, London SW1X 9PE, UK",
+        "price": "£150M (£5,000 psf)",
+        "description": "This has quite the history, currently owned by Petra Ecclestone. It’s one of the best houses in Chelsea, fully gated, and with a large garden. One of the best leisure complexes I’ve ever seen. The property spans 30,000 sqft and is in good condition, but not brand new (pricing is the sellers, in reality, it’s lower)."
       },
       "geometry": {
         "type": "Point",
@@ -161,7 +168,8 @@ var londonProperties = {
         "display_address": "3 Palace Green",
         "category": "Recent Sales",
         "price": "£100m (5,036 psf)",
-        "address": "3 Palace Green, London W8 4TR, UK"
+        "address": "3 Palace Green, London W8 4TR, UK",
+        "description": "A new build located in Kensington. Leasehold. 7 bedrooms. Sold July 2021."
       },
       "geometry": {
         "type": "Point",
@@ -178,7 +186,8 @@ var londonProperties = {
         "address": "2-8a Rutland Gate, London, UK",
         "display_address": "2-8a Rutland Gate",
         "category": "Recent Sales",
-        "price": "£200m (3,279 psf)"
+        "price": "£200m (3,279 psf)",
+        "description": "Located in Knightsbridge. Freehold. <a href='https://en.wikipedia.org/wiki/2%E2%80%938a_Rutland_Gate'>Rutland Gate</a>.  37 bedrooms. Sold March 2020."
       },
       "geometry": {
         "type": "Point",
@@ -195,13 +204,14 @@ var londonProperties = {
         "address": "",
         "display_address": "Confidential",
         "category": "Recent Sales",
-        "price": "£100m (7,115 psf)"
+        "price": "£100m (7,115 psf)",
+        "description": "Located in Knightsbridge. Leasehold. Sold March 2021."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -0.15524625778198242,
-          51.518236982729185
+          -0.16692994477600426,
+          51.50043934907688
         ]
       }
     },
@@ -213,7 +223,8 @@ var londonProperties = {
         "display_address": "Penthouse, 1 Grosvenor Square",
         "mainImage": "",
         "category": "Recent Sales",
-        "price": "£138m (8,846 psf)"
+        "price": "£138m (8,846 psf)",
+        "description": "Located in Mayfair. Leasehold. Sold in Oct 2020."
       },
       "geometry": {
         "type": "Point",

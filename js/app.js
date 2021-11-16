@@ -125,13 +125,18 @@
                   });
       },
       onEachFeature: function (feature, layer) {
+        popupText = "<p>" + feature.properties.display_address + "</p>";
         if (feature.properties.category == 'Available') {
-          layer.bindPopup("<p>" + feature.properties.display_address + "</p>" +
-            "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
-            "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>" );
+          popupText += "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
+            "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
+        } else if (feature.properties.category == 'Recent Sales' || feature.properties.category == 'Comparables') {
+          popupText += "<p>" + feature.properties.description + "</p>"
+          popupText += "<p>Price: " + feature.properties.price + "</p>";
         } else {
-          layer.bindPopup("<p>" + feature.properties.display_address + "</p>");
+
         }
+
+        layer.bindPopup(popupText);
       }
     }).addTo(map);
     // .on('click', function(e) {
