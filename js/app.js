@@ -119,11 +119,13 @@
 
     L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, {
-                    icon: myIcons[geoJsonPoint.properties.category]
-                    // icon: myIcon
-                  });
-      },
+        if (geoJsonPoint.properties.category == 'Available' || geoJsonPoint.properties.category == 'Comparables') {
+            return L.marker(latlng, {icon: myIcons['Available']});
+          } else {
+            return L.marker(latlng, {icon: myIcons['Recent Sales']});
+          }
+          // icon: myIcons[geoJsonPoint.properties.category]
+        },
       onEachFeature: function (feature, layer) {
         popupText = "<p>" + feature.properties.display_address + "</p>";
         if (feature.properties.category == 'Available') {
@@ -176,7 +178,7 @@
     var legend = document.querySelector('.legend');
     legend.innerHTML = '<h3>Legend</h3><ul>' +
     '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
-    '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
+    // '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
     '<li><span style="background:' + colors[2] + '"></span> ' + breaks[2] + '</li>' +
     '</ul>';
     // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
