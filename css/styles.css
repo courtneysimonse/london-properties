@@ -14,12 +14,12 @@ body {
   height: 100vh
   }
 
-.leaflet-popup {
-  max-width: 250px;
+.leaflet-popup-content {
+  max-width: 35vw;
 }
 
 img.mainImage {
-  max-width: 200px;
+  max-width: 100%;
   align-content: center;
 }
 
