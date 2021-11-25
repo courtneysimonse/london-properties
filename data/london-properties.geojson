@@ -59,6 +59,7 @@ var londonProperties = {
         "address": "Chelsea Barracks 2 Whistler Square, London, SW1W 8BT",
         "display_address": "Chelsea Barracks 2 Whistler Square",
         "mainImage": "images/whistler-sq.jpg",
+        "numImages": 7,
         "category": "Available"
       },
       "geometry": {
