@@ -233,9 +233,8 @@
       carouselItem.appendChild(img);
 
       if (i==0) {
-        carouselBtn.classList.add('active');
         carouselBtn.setAttribute('aria-current','true');
-
+        carouselBtn.classList.add('active');
         carouselItem.classList.add('active');
       }
       carouselIndicators.appendChild(carouselBtn);
@@ -249,7 +248,7 @@
     const carouselCntrlPrev = document.createElement('button');
     carouselCntrlPrev.classList.add('carousel-control-prev');
     carouselCntrlPrev.setAttribute('type','button');
-    carouselCntrlPrev.setAttribute('data-bs-target',carouselDiv.id);
+    carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
     carouselCntrlPrev.setAttribute('data-bs-slide','prev');
     carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
       '<span class="visually-hidden">Previous</span>';
@@ -258,7 +257,7 @@
     const carouselCntrlNext = document.createElement('button');
     carouselCntrlNext.classList.add('carousel-control-next');
     carouselCntrlNext.setAttribute('type','button');
-    carouselCntrlNext.setAttribute('data-bs-target',carouselDiv.id);
+    carouselCntrlNext.setAttribute('data-bs-target','#'+carouselDiv.id);
     carouselCntrlNext.setAttribute('data-bs-slide','next');
     carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
       '<span class="visually-hidden">Next</span>';
