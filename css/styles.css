@@ -14,8 +14,12 @@ body {
   height: 100vh
   }
 
+.leaflet-popup-content-wrapper {
+  max-width: 45vw;
+}
+
 .leaflet-popup-content {
-  max-width: 35vw;
+  width: 90%;
 }
 
 img.mainImage {
@@ -34,6 +38,7 @@ img.mainImage {
 
 .carousel-item {
   width: 100vw;
+  max-width: 100%;
 }
 
 #btn-back-to-top {

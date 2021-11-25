@@ -109,8 +109,11 @@
       onEachFeature: function (feature, layer) {
         popupText = "<h6>" + feature.properties.display_address + "</h6>";
         if (feature.properties.category == 'Available') {
-          popupText += "<img class='mainImage' src='" + feature.properties.mainImage + "'>" +
-            "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
+          const popupDiv = document.createElement('div');
+          addCarousel(feature,popupDiv);
+          console.log(popupDiv.innerHTML);
+          popupText += popupDiv.innerHTML;
+          popupText += "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
         } else if (feature.properties.category == 'Recent Sales' || feature.properties.category == 'Comparables') {
           popupText += "<p>" + feature.properties.description + "</p>"
           popupText += "<p>Price: " + feature.properties.price + "</p>";
@@ -118,7 +121,7 @@
 
         }
 
-        layer.bindPopup(popupText);
+        layer.bindPopup(popupText, {maxWidth: 700});
       }
     }).addTo(map);
 
@@ -172,68 +175,7 @@
         div.appendChild(propDiv);
 
         if (prop.properties.numImages) {
-          const carouselDiv = document.createElement('div');
-          carouselDiv.classList.add('carousel', 'carousel-dark', 'slide', 'carousel-fade');
-          carouselDiv.id = 'carouselProp-'+prop.properties.id;
-          carouselDiv.setAttribute('data-bs-ride','carousel');
-          propDiv.appendChild(carouselDiv);
-
-          const carouselIndicators = document.createElement('div')
-          carouselIndicators.classList.add('carousel-indicators');
-
-          const carouselInner = document.createElement('div');
-          carouselInner.classList.add('carousel-inner');
-
-          numImages = prop.properties.numImages;
-          images = prop.properties.images;
-          for (var i = 0; i < numImages; i++) {
-            const carouselBtn = document.createElement('button');
-            carouselBtn.setAttribute('data-bs-target',carouselDiv.id);
-            carouselBtn.setAttribute('data-bs-slide-to',i);
-            carouselBtn.setAttribute('aria-label','Slide'+(i+1));
-
-            const carouselItem = document.createElement('div');
-            carouselItem.classList.add('carousel-item');
-
-            const img = document.createElement('img');
-            img.classList.add('d-block','w-100');
-            img.setAttribute('src','images/'+images[i])
-
-            carouselItem.appendChild(img);
-
-            if (i==0) {
-              carouselBtn.classList.add('active');
-              carouselBtn.setAttribute('aria-current','true');
-
-              carouselItem.classList.add('active');
-            }
-            carouselIndicators.appendChild(carouselBtn);
-            carouselInner.appendChild(carouselItem);
-
-          }
-
-          carouselDiv.appendChild(carouselIndicators);
-          carouselDiv.appendChild(carouselInner);
-
-          const carouselCntrlPrev = document.createElement('button');
-          carouselCntrlPrev.classList.add('carousel-control-prev');
-          carouselCntrlPrev.setAttribute('type','button');
-          carouselCntrlPrev.setAttribute('data-bs-target',carouselDiv.id);
-          carouselCntrlPrev.setAttribute('data-bs-slide','prev');
-          carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Previous</span>';
-          carouselDiv.appendChild(carouselCntrlPrev);
-
-          const carouselCntrlNext = document.createElement('button');
-          carouselCntrlNext.classList.add('carousel-control-next');
-          carouselCntrlNext.setAttribute('type','button');
-          carouselCntrlNext.setAttribute('data-bs-target',carouselDiv.id);
-          carouselCntrlNext.setAttribute('data-bs-slide','next');
-          carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Next</span>';
-          carouselDiv.appendChild(carouselCntrlNext);
-
-
+          addCarousel(prop,propDiv);
         }
 
         const header = document.createElement('h3');
@@ -257,6 +199,70 @@
 
       }
     });
+
+  }   // end createInfoSections()
+
+  function addCarousel(prop, propDiv) {
+    const carouselDiv = document.createElement('div');
+    carouselDiv.classList.add('carousel', 'carousel-dark', 'slide', 'carousel-fade');
+    carouselDiv.id = 'carouselProp-'+prop.properties.id;
+    carouselDiv.setAttribute('data-bs-ride','carousel');
+    propDiv.appendChild(carouselDiv);
+
+    const carouselIndicators = document.createElement('div')
+    carouselIndicators.classList.add('carousel-indicators');
+
+    const carouselInner = document.createElement('div');
+    carouselInner.classList.add('carousel-inner');
+
+    numImages = prop.properties.numImages;
+    images = prop.properties.images;
+    for (var i = 0; i < numImages; i++) {
+      const carouselBtn = document.createElement('button');
+      carouselBtn.setAttribute('data-bs-target',carouselDiv.id);
+      carouselBtn.setAttribute('data-bs-slide-to',i);
+      carouselBtn.setAttribute('aria-label','Slide'+(i+1));
+
+      const carouselItem = document.createElement('div');
+      carouselItem.classList.add('carousel-item');
+
+      const img = document.createElement('img');
+      img.classList.add('d-block','w-100');
+      img.setAttribute('src','images/'+images[i])
+
+      carouselItem.appendChild(img);
+
+      if (i==0) {
+        carouselBtn.classList.add('active');
+        carouselBtn.setAttribute('aria-current','true');
+
+        carouselItem.classList.add('active');
+      }
+      carouselIndicators.appendChild(carouselBtn);
+      carouselInner.appendChild(carouselItem);
+
+    }
+
+    carouselDiv.appendChild(carouselIndicators);
+    carouselDiv.appendChild(carouselInner);
+
+    const carouselCntrlPrev = document.createElement('button');
+    carouselCntrlPrev.classList.add('carousel-control-prev');
+    carouselCntrlPrev.setAttribute('type','button');
+    carouselCntrlPrev.setAttribute('data-bs-target',carouselDiv.id);
+    carouselCntrlPrev.setAttribute('data-bs-slide','prev');
+    carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+      '<span class="visually-hidden">Previous</span>';
+    carouselDiv.appendChild(carouselCntrlPrev);
+
+    const carouselCntrlNext = document.createElement('button');
+    carouselCntrlNext.classList.add('carousel-control-next');
+    carouselCntrlNext.setAttribute('type','button');
+    carouselCntrlNext.setAttribute('data-bs-target',carouselDiv.id);
+    carouselCntrlNext.setAttribute('data-bs-slide','next');
+    carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+      '<span class="visually-hidden">Next</span>';
+    carouselDiv.appendChild(carouselCntrlNext);
 
   }
 
