@@ -4,7 +4,7 @@ var londonProperties = {
     {
       "type": "Feature",
       "properties": {
-        "id": "1",
+        "id": 1,
         "address": "17 Cornwall Terrace, London, NW1 4QP",
         "display_address": "17 Cornwall Terrace Mews",
         "mainImage": "#",
@@ -38,7 +38,7 @@ var londonProperties = {
     {
       "type": "Feature",
       "properties": {
-        "id": "3",
+        "id": 3,
         "address": "34 Woronzow Road, London, NW8 6AT",
         "display_address": "34 Woronzow Road",
         "mainImage": "#",
@@ -55,11 +55,28 @@ var londonProperties = {
     {
       "type": "Feature",
       "properties": {
-        "id": "4",
+        "id": 4,
         "address": "Chelsea Barracks 2 Whistler Square, London, SW1W 8BT",
         "display_address": "Chelsea Barracks 2 Whistler Square",
         "mainImage": "images/whistler-sq.jpg",
-        "numImages": 7,
+        "numImages": 6,
+        "images": ["whistler-sq-outside.jpg",
+          "whistler-sq-1.jpg",
+          "whistler-sq-2.jpg",
+          "whistler-sq-3.jpg",
+          "whistler-sq-4.jpg",
+          "whistler-sq-5.jpg"
+        ],
+        "features":["Seven Bedrooms",
+          "Up To 3.4M High Ceilings",
+          "Passenger & Service Lifts",
+          "Spa With 12M Pool",
+          "Cinema",
+          "Garden",
+          "Double-Height Mews",
+          "Roof Terrace",
+          "Private Garage",
+          "1,389.5 m<sup>2</sup> / 14,956 ft<sup>2</sup>"],
         "category": "Available"
       },
       "geometry": {
@@ -73,7 +90,7 @@ var londonProperties = {
     {
       "type": "Feature",
       "properties": {
-        "id": "5",
+        "id": 5,
         "address": "14 Charles Street, Mayfair, London, W1J",
         "display_address": "14 Charles Street",
         "mainImage": "#",
