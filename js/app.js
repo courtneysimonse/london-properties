@@ -7,7 +7,6 @@
     zoom: 13.2,
     minZoom: 13,
     zoomControl: false,
-    // attributionControl: false
   }
 
   // create map
@@ -51,35 +50,13 @@
     document.documentElement.scrollTop = 0;
   }
 
-  // Mapillary Viewer
-  // var viewer = new mapillary.Viewer({
-  //   accessToken: 'MLY|7147044735321690|421cff42a53ffc1154343a5e5657a25d',
-  //   container: 'mly', // the ID of our container defined in the HTML body
-  //   component: {cover: false},
-  //   imageId: '608164680105276' // starting imageId
-  // });
-
-  // document.getElementById("x").onclick =
-  //   function() {
-  //     document.querySelector("#mly").style.visibility = 'hidden';
-  //     document.querySelector("#x").style.visibility = 'hidden';
-  //   };
-
   // GET DATA
   processData(londonProperties, londonNeighborhoods);
 
   // PROCESS DATA FUNCTION
   function processData(properties, neighborhoods) {
 
-
-
     drawMap(properties, neighborhoods);
-
-    // example breaks for legend
-    // var breaks = [1, 4, 7, 10];
-    // var colorize = chroma.scale(chroma.brewer.BuGn).classes(breaks).mode('lab');
-    //
-    // drawLegend(breaks, colorize);
 
   }   //end processData()
 
@@ -141,12 +118,6 @@
         layer.bindPopup(popupText);
       }
     }).addTo(map);
-    // .on('click', function(e) {
-      // on click, show mapillary viewer
-      // document.querySelector("#mly").style.visibility = 'visible';
-      // document.querySelector("#x").style.visibility = 'visible';
-      // viewer.moveTo(e.layer.feature.properties.imageId);
-    // });
 
     L.geoJSON(neighborhoods, {
       pointToLayer: function (geoJsonPoint, latlng) {
