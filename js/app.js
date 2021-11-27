@@ -25,7 +25,7 @@
   }).addTo(map);
 
   //Get the button
-  let mybutton = document.getElementById("btn-back-to-top");
+  let scrollToTopBtn = document.getElementById("btn-back-to-top");
 
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function () {
@@ -37,13 +37,13 @@
       document.body.scrollTop > 20 ||
       document.documentElement.scrollTop > 20
     ) {
-      mybutton.style.display = "block";
+      scrollToTopBtn.style.display = "block";
     } else {
-      mybutton.style.display = "none";
+      scrollToTopBtn.style.display = "none";
     }
   }
   // When the user clicks on the button, scroll to the top of the document
-  mybutton.addEventListener("click", backToTop);
+  scrollToTopBtn.addEventListener("click", backToTop);
 
   function backToTop() {
     document.body.scrollTop = 0;
@@ -111,7 +111,7 @@
         if (feature.properties.category == 'Available') {
           const popupDiv = document.createElement('div');
           addCarousel(feature,popupDiv);
-          console.log(popupDiv.innerHTML);
+          // console.log(popupDiv.innerHTML);
           popupText += popupDiv.innerHTML;
           popupText += "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
         } else if (feature.properties.category == 'Recent Sales' || feature.properties.category == 'Comparables') {
@@ -250,7 +250,7 @@
     carouselCntrlPrev.setAttribute('type','button');
     carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
     carouselCntrlPrev.setAttribute('data-bs-slide','prev');
-    carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
+    carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-left"></i></span>' +
       '<span class="visually-hidden">Previous</span>';
     carouselDiv.appendChild(carouselCntrlPrev);
 
@@ -259,7 +259,7 @@
     carouselCntrlNext.setAttribute('type','button');
     carouselCntrlNext.setAttribute('data-bs-target','#'+carouselDiv.id);
     carouselCntrlNext.setAttribute('data-bs-slide','next');
-    carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
+    carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-right"></i></span>' +
       '<span class="visually-hidden">Next</span>';
     carouselDiv.appendChild(carouselCntrlNext);
 
