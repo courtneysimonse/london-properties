@@ -110,7 +110,7 @@
         popupText = "<h6>" + feature.properties.display_address + "</h6>";
         if (feature.properties.category == 'Available') {
           const popupDiv = document.createElement('div');
-          addCarousel(feature,popupDiv);
+          addCarousel(feature,popupDiv,'popup');
           // console.log(popupDiv.innerHTML);
           popupText += popupDiv.innerHTML;
           popupText += "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
@@ -175,11 +175,15 @@
         div.appendChild(propDiv);
 
         if (prop.properties.numImages) {
-          addCarousel(prop,propDiv);
+          addCarousel(prop,propDiv,'info');
+          const moreInfo = document.createElement('h6');
+          moreInfo.innerHTML = '<a href="#header-'+prop.properties.id+'">More Information Below</a>'
+          propDiv.appendChild(moreInfo);
         }
 
         const header = document.createElement('h3');
         header.innerHTML = prop.properties.display_address;
+        header.id = 'header-'+prop.properties.id;
         propDiv.appendChild(header);
 
         if (prop.properties.features) {
@@ -202,10 +206,10 @@
 
   }   // end createInfoSections()
 
-  function addCarousel(prop, propDiv) {
+  function addCarousel(prop, propDiv, loc) {
     const carouselDiv = document.createElement('div');
     carouselDiv.classList.add('carousel', 'carousel-dark', 'slide', 'carousel-fade');
-    carouselDiv.id = 'carouselProp-'+prop.properties.id;
+    carouselDiv.id = 'carouselProp-'+prop.properties.id+'-'+loc;
     carouselDiv.setAttribute('data-bs-ride','carousel');
     propDiv.appendChild(carouselDiv);
 
