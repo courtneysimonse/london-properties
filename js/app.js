@@ -255,7 +255,7 @@
     carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
     carouselCntrlPrev.setAttribute('data-bs-slide','prev');
     carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-left"></i></span>' +
-      '<span class="visually-hidden">Previous</span>';
+      '<span class="visually-hidden">Previous</span>';  //change default arrow icon
     carouselDiv.appendChild(carouselCntrlPrev);
 
     const carouselCntrlNext = document.createElement('button');
