@@ -208,7 +208,7 @@
 
   function addCarousel(prop, propDiv, loc) {
     const carouselDiv = document.createElement('div');
-    carouselDiv.classList.add('carousel', 'carousel-dark', 'slide', 'carousel-fade');
+    carouselDiv.classList.add('carousel', 'slide', 'carousel-fade');
     carouselDiv.id = 'carouselProp-'+prop.properties.id+'-'+loc;
     carouselDiv.setAttribute('data-bs-ride','carousel');
     propDiv.appendChild(carouselDiv);
