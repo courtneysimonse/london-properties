@@ -100,11 +100,11 @@ p {
   }
 
 .leaflet-right .leaflet-control {
-  margin-right: 75px;
+  margin-right: 50px;
 }
 
 .leaflet-top .leaflet-control {
-  margin-top: 50px;
+  margin-top: 35px;
 }
 
 .legend {
