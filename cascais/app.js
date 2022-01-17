@@ -110,16 +110,17 @@
       'General': blueIcon
     }
 
-    drawLegend(breaks, colors);
+    // drawLegend(breaks, colors);
 
     L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        if (geoJsonPoint.properties.location == 'precise') {
-            return L.marker(latlng, {icon: myIcons['Precise']});
-          } else {
-            return L.marker(latlng, {icon: myIcons['General']});
-          }
+        // if (geoJsonPoint.properties.location == 'precise') {
+        //     return L.marker(latlng, {icon: myIcons['Precise']});
+        //   } else {
+        //     return L.marker(latlng, {icon: myIcons['General']});
+        //   }
           // icon: myIcons[geoJsonPoint.properties.category]
+          return L.marker(latlng, {icon: myIcons['General']});
         },
       onEachFeature: function (feature, layer) {
         let popupText = "";
