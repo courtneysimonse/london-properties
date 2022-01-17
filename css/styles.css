@@ -99,6 +99,14 @@ p {
   pointer-events: none;
   }
 
+.leaflet-right .leaflet-control {
+  margin-right: 75px;
+}
+
+.leaflet-top .leaflet-control {
+  margin-top: 50px;
+}
+
 .legend {
   padding: 6px 8px;
   font-size: 1em;
@@ -106,7 +114,7 @@ p {
   color: #827369;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  width: 160px;
+  width: 120px;
 }
 
 .legend h3 {

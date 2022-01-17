@@ -73,7 +73,7 @@
   // DRAW MAP FUNCTION
   function drawMap(properties) {
 
-    const breaks = ["Precise","General"];
+    const breaks = ["Precise","Area"];
     const colors = ["#1a9e06", "#267ec9"];
     const anchor = [12,41];
     const popupAnchor = [-3, -23]
@@ -153,7 +153,7 @@
     legendControl.addTo(map);
 
     var legend = document.querySelector('.legend');
-    legend.innerHTML = '<h3>Legend</h3><ul>' +
+    legend.innerHTML = '<h3>Location</h3><ul>' +
     '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
     '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
     // '<li><span style="background:' + colors[2] + '"></span> ' + breaks[2] + '</li>' +
