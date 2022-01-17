@@ -13,7 +13,14 @@
   var map = L.map('mapid', options);
 
   // request tiles and add to map
-  var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+  // var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+  // 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  // 	subdomains: 'abcd',
+  // 	maxZoom: 20
+  // }).addTo(map);
+
+  // with labels
+  var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   	subdomains: 'abcd',
   	maxZoom: 20
@@ -117,10 +124,11 @@
       onEachFeature: function (feature, layer) {
         let popupText = "";
         popupText += "<a target='_blank' href='"+feature.properties.link+"'><img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'></a>"
-        popupText += "<p>Price: " + feature.properties.price + "</p>";
-        popupText += "<p>Price/SqFt: " + feature.properties["price/sqft"] + "</p>";
-        popupText += "<p>Acres: " + feature.properties.acres + "</p>";
-        popupText += "<p><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></p>"
+        popupText += "<div class='row'>";
+        popupText += "<div class='col-4 col-xs-6 py-1'>Price: " + feature.properties.price + "</div>";
+        popupText += "<div class='col-4 col-xs-6 py-1'>Price/SqFt: " + feature.properties["price/sqft"] + "</div>";
+        popupText += "<div class='col-4 col-xs-6 py-1'>Acres: " + feature.properties.acres + "</div>";
+        popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div><div>"
 
         layer.bindPopup(popupText, {maxWidth: 400});
       }

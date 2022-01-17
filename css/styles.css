@@ -20,7 +20,7 @@ body {
 }
 
 .leaflet-popup-content {
-  /* width: 90%; */
+
 }
 
 img.mainImage {
@@ -89,7 +89,6 @@ footer {
 p {
     font-size: 1em;
     color: #001323;
-    line-height: .3em;
 }
 
 .leaflet-marker-icon.neighborhoods {
