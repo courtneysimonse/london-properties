@@ -171,6 +171,44 @@ var propertiesJSON = {
           38.692306
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "mainImage": "marinha.jpg",
+        "location": "precise",
+        "price": "€5,950,000",
+        "price/sqft": "N/A",
+        "acres": "N/A",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-2111220959373632/quinta-da-marinha-quinta-da-marinha-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.456250,
+          38.699306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "mainImage": "malviera.jpg",
+        "location": "precise",
+        "price": "POA",
+        "price/sqft": "N/A",
+        "acres": "N/A",
+        "link": "https://www.sothebysrealty.com/eng/sales/detail/180-l-481-jt5bgb/house-8-bedrooms-for-sale-malveira-da-serra-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.446445,
+          38.753432
+        ]
+      }
     }
   ]
 };

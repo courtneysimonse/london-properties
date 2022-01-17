@@ -127,8 +127,12 @@
         popupText += "<a target='_blank' href='"+feature.properties.link+"'><img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'></a>"
         popupText += "<div class='row'>";
         popupText += "<div class='col-md-4 col-xs-6'>Price: " + feature.properties.price + "</div>";
-        popupText += "<div class='col-md-4 col-xs-6'>Price/SqFt: " + feature.properties["price/sqft"] + "</div>";
-        popupText += "<div class='col-md-4 col-xs-6'>Acres: " + feature.properties.acres + "</div>";
+        if (feature.properties["price/sqft"] != "N/A") {
+          popupText += "<div class='col-md-4 col-xs-6'>Price/SqFt: " + feature.properties["price/sqft"] + "</div>";
+        }
+        if (feature.properties.acres != "N/A") {
+          popupText += "<div class='col-md-4 col-xs-6'>Acres: " + feature.properties.acres + "</div>";
+        }
         popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div><div>"
 
         layer.bindPopup(popupText, {maxWidth: 400});
