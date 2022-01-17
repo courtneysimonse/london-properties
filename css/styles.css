@@ -15,16 +15,16 @@ body {
   }
 
 .leaflet-popup-content-wrapper {
-  max-width: 45vw;
+  max-width: 440px;
+  width: 45vw;
 }
 
 .leaflet-popup-content {
-  width: 90%;
+  /* width: 90%; */
 }
 
 img.mainImage {
   max-width: 100%;
-  align-content: center;
 }
 
 .information {
@@ -89,6 +89,7 @@ footer {
 p {
     font-size: 1em;
     color: #001323;
+    line-height: .3em;
 }
 
 .leaflet-marker-icon.neighborhoods {

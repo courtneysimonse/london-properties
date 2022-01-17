@@ -1,4 +1,4 @@
-var londonProperties = {
+var propertiesJSON = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -9,7 +9,8 @@ var londonProperties = {
         "location": "precise",
         "price": "€25,000,000",
         "price/sqft": "€929",
-        "acres": "0.74"
+        "acres": "0.74",
+        "link": "https://propertylistings.ft.com/homes/2796191/cascais-property-for-sale/one-of-a-kind-manor-house-cascais"
       },
       "geometry": {
         "type": "Point",
@@ -27,7 +28,8 @@ var londonProperties = {
         "location": "general",
         "price": "€42,000,000",
         "price/sqft": "€780",
-        "acres": "64"
+        "acres": "64",
+        "link": "https://www.primelocation.com/overseas/details/59161385/?search_identifier=0851a4a307292da91759f31768e3f94a"
       },
       "geometry": {
         "type": "Point",
@@ -45,7 +47,8 @@ var londonProperties = {
         "location": "general",
         "price": "€23,000,000",
         "price/sqft": "€639",
-        "acres": "7.66"
+        "acres": "7.66",
+        "link": "https://www.francisyork.com/blog/the-patino-palace-on-the-portuguese-riviera"
       },
       "geometry": {
         "type": "Point",
@@ -63,7 +66,8 @@ var londonProperties = {
         "location": "precise",
         "price": "€20,400,000",
         "price/sqft": "€877",
-        "acres": "7.67"
+        "acres": "7.67",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1709071439700015/unique-quinta-in-the-centre-of-cascais-which-has-a-land-area-of-31-060-sqm-and-a-residence-on-it-which-is-spread-over-cascais-li"
       },
       "geometry": {
         "type": "Point",
@@ -81,7 +85,8 @@ var londonProperties = {
         "location": "precise",
         "price": "€17,340,000",
         "price/sqft": "€1,581",
-        "acres": "1.45"
+        "acres": "1.45",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1608111117700073/magnificent-and-unique-property-in-the-centre-of-cascais-with-approximately-5-900-sqm-of-land-and-1-019-sqm-of-gross-li-cascais-li"
       },
       "geometry": {
         "type": "Point",
@@ -96,16 +101,17 @@ var londonProperties = {
       "properties": {
         "id": 6,
         "mainImage": "patino.jpg",
-        "location": "precise",
+        "location": "general",
         "price": "€12,750,000",
         "price/sqft": "€896",
-        "acres": "1.22"
+        "acres": "1.22",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-2110140842520701/quinta-patino-alcabideche-cascais-li-av-republic"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -9.397517,
-          38.729557
+          -9.3975,
+          38.7296
         ]
       }
     },
@@ -114,16 +120,17 @@ var londonProperties = {
       "properties": {
         "id": 7,
         "mainImage": "patino-2.jpg",
-        "location": "precise",
+        "location": "general",
         "price": "€12,200,000",
         "price/sqft": "€2,056",
-        "acres": "1.14"
+        "acres": "1.14",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1144865763/8-bedroom-house-cascais-cascais-li"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -9.397517,
-          38.729557
+          -9.39765,
+          38.72945
         ]
       }
     },
@@ -135,7 +142,8 @@ var londonProperties = {
         "location": "precise",
         "price": "€9,000,000",
         "price/sqft": "€836",
-        "acres": "2.96"
+        "acres": "2.96",
+        "link": "https://www.irglux.com/listing/for-sale-detached-villa-guincho-cascais-portugal-mor3346nd/"
       },
       "geometry": {
         "type": "Point",
@@ -153,7 +161,8 @@ var londonProperties = {
         "location": "precise",
         "price": "€5,500,000",
         "price/sqft": "€671",
-        "acres": "1.63"
+        "acres": "1.63",
+        "link": "https://search.savills.com/property-detail/gblisblbn210382"
       },
       "geometry": {
         "type": "Point",

@@ -2,10 +2,10 @@
 
   // Cascais map options
   var options = {
-    zoomSnap: .2,
-    center: [38.75537, -9.45599],
-    zoom: 12,
-    minZoom: 8,
+    zoomSnap: .1,
+    center: [38.75, -9.41],
+    zoom: 12.3,
+    minZoom: 10,
     zoomControl: false,
   }
 
@@ -53,13 +53,13 @@
   const div = document.getElementById('information');
 
   // GET DATA
-  processData(londonProperties);
+  processData(propertiesJSON);
 
   // PROCESS DATA FUNCTION
   function processData(properties) {
 
     drawMap(properties);
-    createInfoSections(properties, div);
+    // createInfoSections(properties, div);
 
   }   //end processData()
 
@@ -68,25 +68,34 @@
 
     const breaks = ["Precise","General"];
     const colors = ["#1a9e06", "#267ec9"];
+    const anchor = [12,41];
+    const popupAnchor = [-3, -23]
+    // console.log(L.Icon.Default.prototype.options);
 
     blueIcon = L.icon({
       iconUrl: '../images/marker.svg',
-      iconSize: [20, 45]
+      iconSize: [20, 45],
+      iconAnchor: anchor,
+      popupAnchor: popupAnchor
     });
 
     greenIcon = L.icon({
       iconUrl: '../images/marker-green.svg',
-      iconSize: [20, 45]
+      iconSize: [20, 45],
+      iconAnchor: anchor,
+      popupAnchor: popupAnchor
     });
 
     redIcon = L.icon({
       iconUrl: '../images/marker-red.svg',
-      iconSize: [20, 45]
+      iconSize: [20, 45],
+      iconAnchor: anchor
     });
 
     purpleIcon = L.icon({
       iconUrl: '../images/marker-purple.svg',
-      iconSize: [20, 45]
+      iconSize: [20, 45],
+      iconAnchor: anchor
     });
 
     myIcons = {
@@ -107,12 +116,13 @@
         },
       onEachFeature: function (feature, layer) {
         let popupText = "";
-        popupText += "<img class='mainImage' src='./images/" + feature.properties.mainImage + "'>"
+        popupText += "<a target='_blank' href='"+feature.properties.link+"'><img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'></a>"
         popupText += "<p>Price: " + feature.properties.price + "</p>";
         popupText += "<p>Price/SqFt: " + feature.properties["price/sqft"] + "</p>";
         popupText += "<p>Acres: " + feature.properties.acres + "</p>";
+        popupText += "<p><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></p>"
 
-        layer.bindPopup(popupText, {maxWidth: 900});
+        layer.bindPopup(popupText, {maxWidth: 400});
       }
     }).addTo(map);
 
