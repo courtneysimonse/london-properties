@@ -1,0 +1,167 @@
+var londonProperties = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "mainImage": "pamela-palace.jpg",
+        "location": "precise",
+        "price": "€25,000,000",
+        "price/sqft": "€929",
+        "acres": "0.74"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.413453,
+          38.701076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "mainImage": "sintra-cascais.jpg",
+        "location": "general",
+        "price": "€42,000,000",
+        "price/sqft": "€780",
+        "acres": "64"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.4601986,
+          38.7936463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "mainImage": "estoril.jpg",
+        "location": "general",
+        "price": "€23,000,000",
+        "price/sqft": "€639",
+        "acres": "7.66"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.39367,
+          38.71331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "mainImage": "quinta.jpg",
+        "location": "precise",
+        "price": "€20,400,000",
+        "price/sqft": "€877",
+        "acres": "7.67"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.4136331,
+          38.7271128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "mainImage": "cascais.jpg",
+        "location": "precise",
+        "price": "€17,340,000",
+        "price/sqft": "€1,581",
+        "acres": "1.45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.428306,
+          38.697583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "mainImage": "patino.jpg",
+        "location": "precise",
+        "price": "€12,750,000",
+        "price/sqft": "€896",
+        "acres": "1.22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.397517,
+          38.729557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "mainImage": "patino-2.jpg",
+        "location": "precise",
+        "price": "€12,200,000",
+        "price/sqft": "€2,056",
+        "acres": "1.14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.397517,
+          38.729557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "mainImage": "guincho.jpg",
+        "location": "precise",
+        "price": "€9,000,000",
+        "price/sqft": "€836",
+        "acres": "2.96"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.467750,
+          38.733194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "mainImage": "parede.jpg",
+        "location": "precise",
+        "price": "€5,500,000",
+        "price/sqft": "€671",
+        "acres": "1.63"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.364222,
+          38.692306
+        ]
+      }
+    }
+  ]
+};
