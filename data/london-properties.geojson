@@ -60,7 +60,9 @@ var londonProperties = {
         "display_address": "Chelsea Barracks 2 Whistler Square",
         "mainImage": "images/whistler-sq.jpg",
         "numImages": 6,
-        "images": ["whistler-sq-outside.jpg",
+        "images": [
+          "whistler-sq-landscape.jpg",
+          "whistler-sq-outside.jpg",
           "whistler-sq-1.jpg",
           "whistler-sq-2.jpg",
           "whistler-sq-3.jpg",

@@ -217,7 +217,7 @@
     carouselIndicators.classList.add('carousel-indicators');
 
     const carouselInner = document.createElement('div');
-    carouselInner.classList.add('carousel-inner');
+    carouselInner.classList.add('carousel-inner','w-100');
 
     numImages = prop.properties.numImages;
     images = prop.properties.images;
@@ -232,7 +232,7 @@
 
       const img = document.createElement('img');
       img.classList.add('d-block','w-100');
-      img.setAttribute('src','images/'+images[i])
+      img.setAttribute('src','./images/'+images[i])
 
       carouselItem.appendChild(img);
 
