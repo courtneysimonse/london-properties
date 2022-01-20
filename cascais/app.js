@@ -64,7 +64,7 @@
 
   // PROCESS DATA FUNCTION
   function processData(properties) {
-
+    console.table(properties.features);
     drawMap(properties);
     // createInfoSections(properties, div);
 
