@@ -3,8 +3,8 @@
   // Cascais map options
   var options = {
     zoomSnap: .1,
-    center: [38.75, -9.41],
-    zoom: 12.3,
+    center: [38.75, -9.39],
+    zoom: 12,
     minZoom: 10,
     zoomControl: false,
   }
@@ -64,7 +64,7 @@
 
   // PROCESS DATA FUNCTION
   function processData(properties) {
-    console.table(properties.features);
+    console.log(properties.features);
     drawMap(properties);
     // createInfoSections(properties, div);
 
@@ -120,7 +120,7 @@
         //     return L.marker(latlng, {icon: myIcons['General']});
         //   }
           // icon: myIcons[geoJsonPoint.properties.category]
-          return L.marker(latlng, {icon: myIcons['General']});
+          return L.marker(latlng, {icon: blueIcon});
         },
       onEachFeature: function (feature, layer) {
         let popupText = "";
@@ -138,6 +138,8 @@
         layer.bindPopup(popupText, {maxWidth: 400});
       }
     }).addTo(map);
+
+    L.marker([38.80905, -9.289156], {icon: redIcon}).addTo(map);
 
   }   //end drawMap()
 
