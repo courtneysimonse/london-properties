@@ -143,8 +143,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -9.3975,
-          38.7296
+          -9.3983,
+          38.7300
         ]
       }
     },
@@ -164,8 +164,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -9.39765,
-          38.72945
+          -9.3955,
+          38.7292
         ]
       }
     },

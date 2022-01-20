@@ -112,10 +112,10 @@
 
     // drawLegend(breaks, colors);
 
-    var markers = L.markerClusterGroup({
-      showCoverageOnHover: false,
-      maxClusterRadius: 25
-    });
+    // var markers = L.markerClusterGroup({
+    //   showCoverageOnHover: false,
+    //   maxClusterRadius: 25
+    // });
 
     L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
@@ -125,8 +125,8 @@
         //     return L.marker(latlng, {icon: myIcons['General']});
         //   }
           // icon: myIcons[geoJsonPoint.properties.category]
-          // return L.marker(latlng, {icon: blueIcon});
-          markers.addLayer(L.marker(latlng, {icon: blueIcon}));
+          return L.marker(latlng, {icon: blueIcon});
+          // markers.addLayer(L.marker(latlng, {icon: blueIcon}));
         },
       onEachFeature: function (feature, layer) {
         let popupText = "";
@@ -145,7 +145,7 @@
       }
     }).addTo(map);
 
-    map.addLayer(markers);
+    // map.addLayer(markers);
 
     L.marker([38.80905, -9.289156], {icon: redIcon}).addTo(map);
 
