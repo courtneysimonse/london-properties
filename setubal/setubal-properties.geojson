@@ -277,7 +277,7 @@ var propertiesJSON = {
       "properties": {
         "id": 14,
         "mainImage": "Av_5_de_Outubro_83.jpg",
-        "marker": "normal",
+        "marker": "normal-interesting",
         "price": "€1,450,000",
         "locationName": "Av. 5 de Outubro 83, 2900-213 Setúbal",
         "agency": "Habita",
@@ -319,7 +319,7 @@ var propertiesJSON = {
       "properties": {
         "id": 16,
         "mainImage": "Av_Luísa_Todi_20.jpg",
-        "marker": "normal",
+        "marker": "normal-interesting",
         "price": "€1,100,000",
         "locationName": "Nº, Av. Luísa Todi 20, Setúbal",
         "agency": "Hall",
@@ -382,7 +382,7 @@ var propertiesJSON = {
       "properties": {
         "id": 19,
         "mainImage": "98_Av_Luísa_Todi.jpg",
-        "marker": "normal",
+        "marker": "normal-interesting",
         "price": "€980,000",
         "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
         "agency": "Properstar",
@@ -463,7 +463,7 @@ var propertiesJSON = {
       "properties": {
         "id": 23,
         "mainImage": "R_da_Marquesa_do_Faial_1.jpg",
-        "marker": "green",
+        "marker": "green-interesting",
         "price": "N/A",
         "locationName": "R. da Marquesa do Faial 1",
         "agency": "Unknown",

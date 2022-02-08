@@ -4,7 +4,7 @@
   var options = {
     zoomSnap: .1,
     center: [38.525, -8.893],
-    zoom: 16.1,
+    zoom: 16,
     minZoom: 10,
     maxZoom: 20,
     zoomControl: false,
@@ -122,10 +122,31 @@
       iconAnchor: anchor
     });
 
-    // myIcons = {
-    //   'Precise': greenIcon,
-    //   'General': blueIcon
-    // }
+    purpleIcon = L.icon({
+      iconUrl: '../images/marker-purple.svg',
+      iconSize: [20, 45],
+      iconAnchor: anchor
+    });
+
+    blueStar = L.icon({
+      iconUrl: '../images/star-blue.svg',
+      iconSize: [35, 35],
+      iconAnchor: anchor
+    });
+
+    greenStar = L.icon({
+      iconUrl: '../images/star-green.svg',
+      iconSize: [35, 35],
+      iconAnchor: anchor
+    });
+
+    myIcons = {
+      'normal': blueIcon,
+      'red': redIcon,
+      'green': greenIcon,
+      'normal-interesting': blueStar,
+      'green-interesting': greenStar
+    }
 
     // drawLegend(breaks, colors);
 
@@ -136,24 +157,27 @@
 
     var propertiesLayer = L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        if (geoJsonPoint.properties.marker == 'normal') {
-            return L.marker(latlng, {
-              icon: blueIcon,
-              riseOnHover: true
-            });
-          } else if (geoJsonPoint.properties.marker == 'green') {
-            return L.marker(latlng, {
-              icon: greenIcon,
-              riseOnHover: true
-            });
-          } else {
-            return L.marker(latlng, {
-              icon: redIcon,
-              riseOnHover: true
-            });
-          }
-          // icon: myIcons[geoJsonPoint.properties.category]
-          // return L.marker(latlng, {icon: blueIcon});
+        // if (geoJsonPoint.properties.marker == 'normal') {
+        //     return L.marker(latlng, {
+        //       icon: blueIcon,
+        //       riseOnHover: true
+        //     });
+        //   } else if (geoJsonPoint.properties.marker == 'green') {
+        //     return L.marker(latlng, {
+        //       icon: greenIcon,
+        //       riseOnHover: true
+        //     });
+        //   } else {
+        //     return L.marker(latlng, {
+        //       icon: redIcon,
+        //       riseOnHover: true
+        //     });
+        //   }
+          var icon = myIcons[geoJsonPoint.properties.marker];
+          return L.marker(latlng, {
+            icon: icon,
+            riseOnHover: true
+          });
           // markers.addLayer(L.marker(latlng, {icon: blueIcon}));
         },
       onEachFeature: function (feature, layer) {
@@ -178,7 +202,7 @@
       }
     }).addTo(map);
 
-    map.fitBounds(propertiesLayer.getBounds());
+    map.fitBounds(propertiesLayer.getBounds()).zoomOut(.1);
 
     // map.addLayer(markers);
 
