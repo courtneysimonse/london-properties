@@ -124,6 +124,11 @@
               icon: blueIcon,
               riseOnHover: true
             });
+          } else if (geoJsonPoint.properties.marker == 'green') {
+            return L.marker(latlng, {
+              icon: greenIcon,
+              riseOnHover: true
+            });
           } else {
             return L.marker(latlng, {
               icon: redIcon,
