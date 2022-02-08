@@ -190,7 +190,7 @@
         },
       onEachFeature: function (feature, layer) {
         let popupText = "";
-        popupText += "<a target='_blank' href='"+feature.properties.link+"'><img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'></a>"
+        popupText += "<img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'>"
         popupText += "<div class='row'>";
         if (feature.properties.price != "N/A") {
             popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price + "</div>";
@@ -218,6 +218,19 @@
     }).addTo(map);
 
     map.fitBounds(propertiesLayer.getBounds()).zoomOut(.1);
+
+    map.on('popupopen', function (event) {
+      console.log(document.getElementsByClassName('mainImage'));
+      // console.log(event.popup);
+      var images = document.getElementsByClassName('mainImage');
+      images[images.length-1].addEventListener('click', function () {
+        console.log('click');
+        console.log(images[images.length-1].attributes[1]);
+        var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        document.getElementById('image').innerHTML = "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
+        imageModal.show();
+      });
+    });
 
     // map.addLayer(markers);
 

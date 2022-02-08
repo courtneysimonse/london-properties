@@ -156,3 +156,7 @@ p {
   line-height: 1em;
   color: whitesmoke;
 }
+
+.modalImg {
+  max-width: 100%;
+}
