@@ -217,7 +217,7 @@
       }
     }).addTo(map);
 
-    map.fitBounds(propertiesLayer.getBounds()).zoomOut(.1);
+    map.fitBounds(propertiesLayer.getBounds()).zoomOut(.2);
 
     map.on('popupopen', function (event) {
       console.log(document.getElementsByClassName('mainImage'));
