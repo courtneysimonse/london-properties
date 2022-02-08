@@ -120,9 +120,15 @@
     var propertiesLayer = L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
         if (geoJsonPoint.properties.marker == 'normal') {
-            return L.marker(latlng, {icon: blueIcon});
+            return L.marker(latlng, {
+              icon: blueIcon,
+              riseOnHover: true
+            });
           } else {
-            return L.marker(latlng, {icon: redIcon});
+            return L.marker(latlng, {
+              icon: redIcon,
+              riseOnHover: true
+            });
           }
           // icon: myIcons[geoJsonPoint.properties.category]
           // return L.marker(latlng, {icon: blueIcon});
