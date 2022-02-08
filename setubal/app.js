@@ -90,8 +90,8 @@
   // DRAW MAP FUNCTION
   function drawMap(properties) {
 
-    const breaks = ["Precise","Area"];
-    const colors = ["#1a9e06", "#267ec9"];
+    const breaks = ["Listed","Unlisted","Interesting","Joao's Building"];
+    const colors = ["#267ec9","#1a9e06","","#d95f02"];
     const anchor = [12,41];
     const popupAnchor = [-3, -23]
     // console.log(L.Icon.Default.prototype.options);
@@ -148,7 +148,7 @@
       'green-interesting': greenStar
     }
 
-    // drawLegend(breaks, colors);
+    drawLegend(breaks, colors);
 
     // var markers = L.markerClusterGroup({
     //   showCoverageOnHover: false,
@@ -208,31 +208,32 @@
 
   }   //end drawMap()
 
-  // // function drawLegend(breaks, colorize) {
-  // function drawLegend(breaks, colors) {
-  // //
-  //   var legendControl = L.control({
-  //     position: 'topright'
-  //   });
-  // //
-  //   legendControl.onAdd = function(map) {
+
+  function drawLegend(breaks, colors) {
   //
-  //     var legend = L.DomUtil.create('div', 'legend');
-  //     return legend;
+    var legendControl = L.control({
+      position: 'topright'
+    });
   //
-  //   };
+    legendControl.onAdd = function(map) {
+
+      var legend = L.DomUtil.create('div', 'legend');
+      return legend;
+
+    };
+
+    legendControl.addTo(map);
+
+    var legend = document.querySelector('.legend');
+    legend.innerHTML = '<h3>Location</h3><ul>' +
+    '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
+    '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
+    '<li><span><img src="../images/star-blue.svg"></span> ' + 'Interesting' + '</li>' +
+    '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>' +
+    '</ul>';
+    // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
   //
-  //   legendControl.addTo(map);
-  //
-  //   var legend = document.querySelector('.legend');
-  //   legend.innerHTML = '<h3>Location</h3><ul>' +
-  //   '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
-  //   '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
-  //   // '<li><span style="background:' + colors[2] + '"></span> ' + breaks[2] + '</li>' +
-  //   '</ul>';
-  //   // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
-  // //
-  // } // end drawLegend()
+  } // end drawLegend()
 
   // function createInfoSections(properties, div) {
   //
