@@ -105,10 +105,10 @@
       iconAnchor: anchor
     });
 
-    myIcons = {
-      'Precise': greenIcon,
-      'General': blueIcon
-    }
+    // myIcons = {
+    //   'Precise': greenIcon,
+    //   'General': blueIcon
+    // }
 
     // drawLegend(breaks, colors);
 
@@ -119,13 +119,13 @@
 
     var propertiesLayer = L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        // if (geoJsonPoint.properties.location == 'precise') {
-        //     return L.marker(latlng, {icon: myIcons['Precise']});
-        //   } else {
-        //     return L.marker(latlng, {icon: myIcons['General']});
-        //   }
+        if (geoJsonPoint.properties.marker == 'normal') {
+            return L.marker(latlng, {icon: blueIcon});
+          } else {
+            return L.marker(latlng, {icon: redIcon});
+          }
           // icon: myIcons[geoJsonPoint.properties.category]
-          return L.marker(latlng, {icon: blueIcon});
+          // return L.marker(latlng, {icon: blueIcon});
           // markers.addLayer(L.marker(latlng, {icon: blueIcon}));
         },
       onEachFeature: function (feature, layer) {

@@ -6,7 +6,7 @@ var propertiesJSON = {
       "properties": {
         "id": 1,
         "mainImage": "R_Serpa_Pinto_8.jpg",
-        "location": "precise",
+        "marker": "red",
         "locationName": "R. Serpa Pinto 8, 2900-349 Setúbal",
         "price": "€75,000",
         "price/sqm": "€288",
@@ -25,7 +25,7 @@ var propertiesJSON = {
       "properties": {
         "id": 2,
         "mainImage": "R_do_Maj_Afonso_Pala.jpg",
-        "location": "precise",
+        "marker": "normal",
         "locationName": "R. do Maj. Afonso Pala, 2900-199 Setúbal",
         "agency": "ReMax",
         "price": "€283,000",
@@ -46,7 +46,7 @@ var propertiesJSON = {
       "properties": {
         "id": 3,
         "mainImage": "R_dos_Correeiros_6.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€650,000",
         "locationName": "R. dos Correeiros 6, 2900-349 Setúbal",
         "agency": "ReMax",
@@ -67,7 +67,7 @@ var propertiesJSON = {
       "properties": {
         "id": 4,
         "mainImage": "Largo_do_Dr_Francisco_Soveral_7.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€650,000",
         "locationName": "Largo do Dr. Francisco Soveral 7, 2900-349 Setúbal",
         "agency": "Sotheby's",
@@ -88,7 +88,7 @@ var propertiesJSON = {
       "properties": {
         "id": 5,
         "mainImage": "Praça_de_Bocage.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€229,900",
         "locationName": "Praça de Bocage, 2900-213 Setúbal",
         "agency": "ReMax",
@@ -109,7 +109,7 @@ var propertiesJSON = {
       "properties": {
         "id": 6,
         "mainImage": "R_do_Concelho_15.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€385,000",
         "locationName": "Setúbal",
         "agency": "ReMax",
@@ -121,7 +121,7 @@ var propertiesJSON = {
         "type": "Point",
         "coordinates": [
           -8.892192,
-          38.525052
+          38.525070
         ]
       }
     },
@@ -130,7 +130,7 @@ var propertiesJSON = {
       "properties": {
         "id": 7,
         "mainImage": "Av_5_de_Outubro_105.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€330,600",
         "locationName": "Av. 5 de Outubro 105, 2900-277 Setúbal",
         "agency": "ReMax",
@@ -151,7 +151,7 @@ var propertiesJSON = {
       "properties": {
         "id": 8,
         "mainImage": "Tv_de_Nenhures_8.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€329,000",
         "locationName": "Tv. de Nenhures 8, 2900-213 Setúbal",
         "agency": "ReMax",
@@ -163,7 +163,7 @@ var propertiesJSON = {
         "type": "Point",
         "coordinates": [
           -8.892178,
-          38.524988
+          38.524850
         ]
       }
     },
@@ -172,7 +172,7 @@ var propertiesJSON = {
       "properties": {
         "id": 9,
         "mainImage": "R_João_Eloy_do_Amaral_61.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€685,000",
         "locationName": "R. João Eloy do Amaral 61, 2900-277 Setúbal",
         "agency": "ReMax",
@@ -193,7 +193,7 @@ var propertiesJSON = {
       "properties": {
         "id": 10,
         "mainImage": "R_dos_Mareantes.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€150,000",
         "locationName": "R. dos Mareantes, Setúbal",
         "agency": "ReMax",
@@ -214,7 +214,7 @@ var propertiesJSON = {
       "properties": {
         "id": 11,
         "mainImage": "Rua_dos_Almocreves_11_13.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€295,000",
         "locationName": "Rua dos Almocreves 11&13, 2900-446 Setúbal",
         "agency": "Util Imobiliaria",
@@ -235,7 +235,7 @@ var propertiesJSON = {
       "properties": {
         "id": 12,
         "mainImage": "R_Álvaro_Castelões_57.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€160,000",
         "locationName": "R. Álvaro Castelões 57, 2900-611 Setúbal",
         "agency": "Century21",
@@ -256,7 +256,7 @@ var propertiesJSON = {
       "properties": {
         "id": 13,
         "mainImage": "Rua_Dr_Paula_Borba_52.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€400,000",
         "locationName": "Rua Dr. Paula Borba 52, 2900-452 Setúbal",
         "agency": "Century21",
@@ -277,7 +277,7 @@ var propertiesJSON = {
       "properties": {
         "id": 14,
         "mainImage": "Av_5_de_Outubro_83.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€1,450,000",
         "locationName": "Av. 5 de Outubro 83, 2900-213 Setúbal",
         "agency": "Habita",
@@ -298,7 +298,7 @@ var propertiesJSON = {
       "properties": {
         "id": 15,
         "mainImage": "Largo_do_Carmo_6.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€3,000,000",
         "locationName": "Largo do Carmo 6, Setúbal",
         "agency": "Habita",
@@ -319,7 +319,7 @@ var propertiesJSON = {
       "properties": {
         "id": 16,
         "mainImage": "Av_Luísa_Todi_20.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€1,100,000",
         "locationName": "Nº, Av. Luísa Todi 20, Setúbal",
         "agency": "Hall",
@@ -340,7 +340,7 @@ var propertiesJSON = {
       "properties": {
         "id": 17,
         "mainImage": "R_João_Soveral_39.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€460,000",
         "locationName": "R. João Soveral 39, 2900-179 Setúbal",
         "agency": "ReMax",
@@ -361,7 +361,7 @@ var propertiesJSON = {
       "properties": {
         "id": 18,
         "mainImage": "Travessa_Postigo_do_Cais.jpg",
-        "location": "precise",
+        "marker": "normal",
         "price": "€296,000",
         "locationName": "Travessa Postigo do Cais 2910 Setúbal",
         "agency": "Properstar",
