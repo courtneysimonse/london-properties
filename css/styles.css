@@ -107,12 +107,12 @@ p {
   margin-top: 90px;
 }
 
-/* .leaflet-bottom .leaflet-control {
+.leaflet-bottom .leaflet-control {
   margin-bottom: 15px;
-} */
+}
 
 .zoomControl {
-  margin-bottom: 30px !important;
+  margin-bottom: 50px !important;
 }
 
 .legend {
