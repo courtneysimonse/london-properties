@@ -205,9 +205,11 @@
           popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div>";
         }
         if (feature.properties.documents) {
+          popupText += "<div class='col-12 py-0'>Documents:";
           feature.properties.documents.forEach((item, i) => {
-            popupText += "<div class='col-12 py-0'><a target='_blank' href='./documents/"+item[1]+"'>"+item[0]+"</a></div>";
+            popupText += "<a target='_blank' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
           });
+          popupText += "</div>";
         }
 
 
