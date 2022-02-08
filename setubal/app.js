@@ -40,13 +40,15 @@
 
   L.control.layers(baseMaps, null, {
     collapsed: false,
-    position: 'topleft'
+    position: 'bottomright'
   }).addTo(map);
 
   // change zoom control position
-  L.control.zoom({
-    position: 'topleft'
+  var zoomControl = L.control.zoom({
+    position: 'bottomleft'
   }).addTo(map);
+
+  L.DomUtil.addClass(zoomControl.getContainer(), 'zoomControl');
 
   //Get the button
   let scrollToTopBtn = document.getElementById("btn-back-to-top");
@@ -140,12 +142,18 @@
       iconAnchor: anchor
     });
 
+    yellowStar = L.icon({
+      iconUrl: '../images/star-yellow.svg',
+      iconSize: [35, 35],
+      iconAnchor: anchor
+    });
+
     myIcons = {
       'normal': blueIcon,
       'red': redIcon,
       'green': greenIcon,
-      'normal-interesting': blueStar,
-      'green-interesting': greenStar
+      'normal-interesting': yellowStar,
+      'green-interesting': yellowStar
     }
 
     drawLegend(breaks, colors);
@@ -210,11 +218,11 @@
 
 
   function drawLegend(breaks, colors) {
-  //
+
     var legendControl = L.control({
       position: 'topright'
     });
-  //
+
     legendControl.onAdd = function(map) {
 
       var legend = L.DomUtil.create('div', 'legend');

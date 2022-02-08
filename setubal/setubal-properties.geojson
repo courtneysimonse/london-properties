@@ -403,7 +403,7 @@ var propertiesJSON = {
       "properties": {
         "id": 20,
         "mainImage": "98_Av_Luísa_Todi_2.jpg",
-        "marker": "normal",
+        "marker": "normal-interesting",
         "price": "N/A",
         "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
         "agency": "Unknown",

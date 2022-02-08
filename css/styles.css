@@ -23,11 +23,6 @@ body {
 
 }
 
-.leaflet-top .leaflet-control {
-  margin-top: 70px !important;
-  margin-left: 35px;
-}
-
 img.mainImage {
   max-width: 100%;
 }
@@ -74,7 +69,7 @@ h1 {
   z-index: 650;
   top: 10px;
   left: 15px;
-  padding: 8px 15px;
+  padding: 8px 10px;
   margin: 0;
   color: #827369;
   font-size: 1.5em;
@@ -105,11 +100,19 @@ p {
   }
 
 .leaflet-right .leaflet-control {
-  margin-right: 50px;
+  margin-right: 15px;
 }
 
 .leaflet-top .leaflet-control {
-  margin-top: 35px;
+  margin-top: 90px;
+}
+
+/* .leaflet-bottom .leaflet-control {
+  margin-bottom: 15px;
+} */
+
+.zoomControl {
+  margin-bottom: 30px !important;
 }
 
 .legend {
