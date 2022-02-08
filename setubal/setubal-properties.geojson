@@ -174,7 +174,7 @@ var propertiesJSON = {
         "mainImage": "R_João_Eloy_do_Amaral_61.jpg",
         "marker": "normal",
         "price": "€685,000",
-        "locationName": "R. João Eloy do Amaral 61, 2900-277 Setúbal",
+        "locationName": "Rua Acacio Barradas, 19A-25E, 2900-413 Setúbal,",
         "agency": "ReMax",
         "price/sqm": "€1,703",
         "area-sqm": "402",
@@ -183,8 +183,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.895670,
-          38.524319
+          -8.896438,
+          38.525554
         ]
       }
     },
