@@ -5,7 +5,7 @@ var propertiesJSON = {
       "type": "Feature",
       "properties": {
         "id": 1,
-        "mainImage": "R_Serpa_Pinto_8.jpg",
+        "mainImage": "joaosbuilding.jpg",
         "marker": "red",
         "locationName": "R. Serpa Pinto 8, 2900-349 Setúbal",
         "price": "€75,000",
@@ -403,7 +403,7 @@ var propertiesJSON = {
       "properties": {
         "id": 20,
         "mainImage": "98_Av_Luísa_Todi_2.jpg",
-        "marker": "red",
+        "marker": "normal",
         "price": "N/A",
         "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
         "agency": "Unknown",
@@ -423,7 +423,7 @@ var propertiesJSON = {
       "properties": {
         "id": 21,
         "mainImage": "R_Dr_Estevam_de_Vasconcelos_48.jpg",
-        "marker": "red",
+        "marker": "green",
         "price": "N/A",
         "locationName": "R. Dr. Estevam de Vasconcelos 48",
         "agency": "Unknown",
@@ -443,7 +443,7 @@ var propertiesJSON = {
       "properties": {
         "id": 22,
         "mainImage": "R_dos_Correeiros_58.jpg",
-        "marker": "red",
+        "marker": "green",
         "price": "N/A",
         "locationName": "R. dos Correeiros 58",
         "agency": "Unknown",
@@ -463,7 +463,7 @@ var propertiesJSON = {
       "properties": {
         "id": 23,
         "mainImage": "R_da_Marquesa_do_Faial_1.jpg",
-        "marker": "red",
+        "marker": "green",
         "price": "N/A",
         "locationName": "R. da Marquesa do Faial 1",
         "agency": "Unknown",
