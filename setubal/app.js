@@ -204,6 +204,9 @@
         if (feature.properties.link) {
           popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div><div>"
         }
+        if (feature.properties.documents) {
+          popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.documents[0]+"'>Learn more...</a></div><div>"
+        }
 
 
         layer.bindPopup(popupText, {maxWidth: 400});

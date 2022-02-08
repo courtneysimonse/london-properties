@@ -408,7 +408,8 @@ var propertiesJSON = {
         "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
         "agency": "Unknown",
         "price/sqm": "N/A",
-        "area-sqm": "N/A"
+        "area-sqm": "N/A",
+        "documents": ["./documents/AlçadosExistPropostaSetubal.pdf","./documents/Arq Trav Sol-proposto.pdf"]
       },
       "geometry": {
         "type": "Point",
