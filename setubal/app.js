@@ -132,7 +132,9 @@
         let popupText = "";
         popupText += "<a target='_blank' href='"+feature.properties.link+"'><img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'></a>"
         popupText += "<div class='row'>";
-        popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price + "</div>";
+        if (feature.properties.price != "N/A") {
+            popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price + "</div>";
+        }
         if (feature.properties["price/sqm"] != "N/A") {
           popupText += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + feature.properties["price/sqm"] + "</div>";
         }

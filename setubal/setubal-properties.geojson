@@ -367,13 +367,74 @@ var propertiesJSON = {
         "agency": "Properstar",
         "price/sqm": "€1,741",
         "area-sqm": "170",
-        "link": "https://www.properstar.pt/listing/75504182"
+        "link": "http://www.cjproperties.pt/imovel/predio-residencial-com-3-pisos-para-venda-na-travessa-postigo-do-cais/18999083"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.888168,
-          38.523177
+          -8.8881651,
+          38.5231726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "mainImage": "98_Av_Luísa_Todi.jpg",
+        "marker": "normal",
+        "price": "€980,000",
+        "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
+        "agency": "Properstar",
+        "price/sqm": "€621",
+        "area-sqm": "1,576",
+        "link": "https://www.iadportugal.pt/en/ad/building-sale-28-bedrooms-setubal-sao-sebastiao-1576sq-m/r33237"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8873388,
+          38.5231513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "mainImage": "98_Av_Luísa_Todi_2.jpg",
+        "marker": "red",
+        "price": "N/A",
+        "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.887200,
+          38.523320
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "mainImage": "Tv_do_Padre_Manuel_dos_Santos_7.jpg",
+        "marker": "red",
+        "price": "N/A",
+        "locationName": "Tv. do Padre Manuel dos Santos 7",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8920741,
+          38.5238735
         ]
       }
     }
