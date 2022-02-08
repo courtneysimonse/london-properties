@@ -422,10 +422,10 @@ var propertiesJSON = {
       "type": "Feature",
       "properties": {
         "id": 21,
-        "mainImage": "Tv_do_Padre_Manuel_dos_Santos_7.jpg",
+        "mainImage": "R_Dr_Estevam_de_Vasconcelos_48.jpg",
         "marker": "red",
         "price": "N/A",
-        "locationName": "Tv. do Padre Manuel dos Santos 7",
+        "locationName": "R. Dr. Estevam de Vasconcelos 48",
         "agency": "Unknown",
         "price/sqm": "N/A",
         "area-sqm": "N/A"
@@ -433,8 +433,48 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.8920741,
-          38.5238735
+          -8.8912054,
+          38.5248756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "mainImage": "R_dos_Correeiros_58.jpg",
+        "marker": "red",
+        "price": "N/A",
+        "locationName": "R. dos Correeiros 58",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8916173,
+          38.5248888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "mainImage": "R_da_Marquesa_do_Faial_1.jpg",
+        "marker": "red",
+        "price": "N/A",
+        "locationName": "R. da Marquesa do Faial 1",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8920585,
+          38.5248660
         ]
       }
     }
