@@ -145,7 +145,7 @@
     yellowStar = L.icon({
       iconUrl: '../images/star-yellow.svg',
       iconSize: [35, 35],
-      iconAnchor: anchor
+      iconAnchor: [18,15]
     });
 
     myIcons = {
@@ -206,7 +206,7 @@
         }
         if (feature.properties.documents) {
           feature.properties.documents.forEach((item, i) => {
-            popupText += "<div class='col-12 py-0'><a target='_blank' href='./documents/"+item+"'>"+item+"</a></div>";
+            popupText += "<div class='col-12 py-0'><a target='_blank' href='./documents/"+item[1]+"'>"+item[0]+"</a></div>";
           });
         }
 

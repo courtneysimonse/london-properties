@@ -410,15 +410,15 @@ var propertiesJSON = {
         "price/sqm": "€1,187",
         "area-sqm": "842",
         "documents": [
-          "AlçadosExistPropostaSetubal.pdf",
-          "Arq Trav Sol-proposto.pdf",
-          "PortadoSol_Areas_Lic_Quadro Sinoptico.pdf",
-          "Portas_do_Sol_Lic Plantas_Propo_Piso0.pdf",
-          "Portas_do_Sol_Lic Plantas_Propo_Piso-1.pdf",
-          "Portas_do_Sol_Lic Plantas_Propo_Piso1.pdf",
-          "Portas_do_Sol_Lic Plantas_Propo_Piso2.pdf",
-          "Setubal-Mapa Areas-fracções.pdf",
-          "Setubal-Mapa Areas-resumo.pdf"
+          ["Exterior Plans","AlçadosExistPropostaSetubal.pdf"],
+          ["Site Plans","Arq Trav Sol-proposto.pdf"],
+          ["Sq Meters","PortadoSol_Areas_Lic_Quadro Sinoptico.pdf"],
+          ["Floor -1","Portas_do_Sol_Lic Plantas_Propo_Piso-1.pdf"],
+          ["Floor 0","Portas_do_Sol_Lic Plantas_Propo_Piso0.pdf"],
+          ["Floor 1","Portas_do_Sol_Lic Plantas_Propo_Piso1.pdf"],
+          ["Floor 2","Portas_do_Sol_Lic Plantas_Propo_Piso2.pdf"],
+          ["Summary Areas","Setubal-Mapa Areas-fracções.pdf"],
+          ["Summary Map Description","Setubal-Mapa Areas-resumo.pdf"]
         ]
       },
       "geometry": {
