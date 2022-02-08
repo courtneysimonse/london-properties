@@ -409,7 +409,17 @@ var propertiesJSON = {
         "agency": "Unknown",
         "price/sqm": "N/A",
         "area-sqm": "N/A",
-        "documents": ["./documents/AlçadosExistPropostaSetubal.pdf","./documents/Arq Trav Sol-proposto.pdf"]
+        "documents": [
+          "AlçadosExistPropostaSetubal.pdf",
+          "Arq Trav Sol-proposto.pdf",
+          "PortadoSol_Areas_Lic_Quadro Sinoptico.pdf",
+          "Portas_do_Sol_Lic Plantas_Propo_Piso0.pdf",
+          "Portas_do_Sol_Lic Plantas_Propo_Piso-1.pdf",
+          "Portas_do_Sol_Lic Plantas_Propo_Piso1.pdf",
+          "Portas_do_Sol_Lic Plantas_Propo_Piso2.pdf",
+          "Setubal-Mapa Areas-fracções.pdf",
+          "Setubal-Mapa Areas-resumo.pdf"
+        ]
       },
       "geometry": {
         "type": "Point",

@@ -202,10 +202,12 @@
         //   popupText += "<div class='col-md-4 col-xs-6'>Acres: " + feature.properties.area + "</div>";
         // }
         if (feature.properties.link) {
-          popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div><div>"
+          popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div>";
         }
         if (feature.properties.documents) {
-          popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.documents[0]+"'>Learn more...</a></div><div>"
+          feature.properties.documents.forEach((item, i) => {
+            popupText += "<div class='col-12 py-0'><a target='_blank' href='./documents/"+item+"'>"+item+"</a></div>";
+          });
         }
 
 
