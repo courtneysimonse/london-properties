@@ -1,11 +1,12 @@
 (function () {
 
-  // Cascais map options
+  // Setubal map options
   var options = {
     zoomSnap: .1,
     center: [38.525, -8.893],
     zoom: 16.1,
     minZoom: 10,
+    maxZoom: 20,
     zoomControl: false,
   }
 
@@ -28,10 +29,19 @@
 
   // ESRI World Imagery layer
   var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-  	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+  	attribution: 'Tiles Powered by ESRI &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
   });
 
+  // group basemaps
+  var baseMaps = {
+    "Streets": CartoDB_Positron,
+    "Satellite": Esri_WorldImagery
+  };
 
+  L.control.layers(baseMaps, null, {
+    collapsed: false,
+    position: 'topleft'
+  }).addTo(map);
 
   // change zoom control position
   L.control.zoom({
