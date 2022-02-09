@@ -12,7 +12,7 @@ body {
   top: 0;
   bottom: 0;
   height: 100vh
-  }
+}
 
 .leaflet-popup-content-wrapper {
   max-width: 440px;
@@ -122,7 +122,7 @@ p {
   color: #827369;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  width: 150px;
+  width: 112px;
 }
 
 .legend h3 {
@@ -140,11 +140,11 @@ p {
 }
 
 .legend li {
-    height: 22px;
+    min-height: 22px;
 }
 
 .legend span {
-    width: 30px;
+    width: 20px;
     height: 20px;
     float: left;
     margin-right: 10px;

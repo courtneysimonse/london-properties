@@ -50,33 +50,33 @@
 
   L.DomUtil.addClass(zoomControl.getContainer(), 'zoomControl');
 
-  //Get the button
-  let scrollToTopBtn = document.getElementById("btn-back-to-top");
-
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function () {
-    scrollFunction();
-  };
-
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      scrollToTopBtn.style.display = "block";
-    } else {
-      scrollToTopBtn.style.display = "none";
-    }
-  }
-  // When the user clicks on the button, scroll to the top of the document
-  scrollToTopBtn.addEventListener("click", backToTop);
-
-  function backToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
-  const div = document.getElementById('information');
+  // //Get the button
+  // let scrollToTopBtn = document.getElementById("btn-back-to-top");
+  //
+  // // When the user scrolls down 20px from the top of the document, show the button
+  // window.onscroll = function () {
+  //   scrollFunction();
+  // };
+  //
+  // function scrollFunction() {
+  //   if (
+  //     document.body.scrollTop > 20 ||
+  //     document.documentElement.scrollTop > 20
+  //   ) {
+  //     scrollToTopBtn.style.display = "block";
+  //   } else {
+  //     scrollToTopBtn.style.display = "none";
+  //   }
+  // }
+  // // When the user clicks on the button, scroll to the top of the document
+  // scrollToTopBtn.addEventListener("click", backToTop);
+  //
+  // function backToTop() {
+  //   document.body.scrollTop = 0;
+  //   document.documentElement.scrollTop = 0;
+  // }
+  //
+  // const div = document.getElementById('information');
 
   // GET DATA
   processData(propertiesJSON);
@@ -220,12 +220,12 @@
     map.fitBounds(propertiesLayer.getBounds()).zoomOut(.2);
 
     map.on('popupopen', function (event) {
-      console.log(document.getElementsByClassName('mainImage'));
+      // console.log(document.getElementsByClassName('mainImage'));
       // console.log(event.popup);
       var images = document.getElementsByClassName('mainImage');
       images[images.length-1].addEventListener('click', function () {
-        console.log('click');
-        console.log(images[images.length-1].attributes[1]);
+        // console.log('click');
+        // console.log(images[images.length-1].attributes[1]);
         var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
         document.getElementById('image').innerHTML = "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
         imageModal.show();
