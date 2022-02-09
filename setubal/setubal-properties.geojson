@@ -351,8 +351,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.899783,
-          38.522838
+          -8.899995,
+          38.523047
         ]
       }
     },
@@ -486,6 +486,111 @@ var propertiesJSON = {
         "coordinates": [
           -8.8920585,
           38.5248660
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24,
+        "mainImage": "Rua_dos_Mareantes_3.jpg",
+        "marker": "normal",
+        "price": "€270,000",
+        "locationName": "Rua dos Mareantes, 3, 2910-610, São Sebastião, Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,500",
+        "area-sqm": "180",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t0-setubal-setubal/124071008-91/p2Nols3l1yZTln0IZRVNRDrS0JfardIt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8894789,
+          38.5234975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 25,
+        "mainImage": "Rua_Gil_Vicente_19.jpg",
+        "marker": "normal",
+        "price": "€360,000",
+        "locationName": "Rua Gil Vicente, 19, 1º Andar, 1º, 2910-088, São Sebastião, Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,714",
+        "area-sqm": "210",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t2-setubal-setubal/124071008-95/p2Nols3l1yZTln0IZRVNREKWba4jAUpG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8859204,
+          38.5235393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26,
+        "mainImage": "Rua_Vasco_Soveral_21.jpg",
+        "marker": "normal",
+        "price": "€190,000",
+        "locationName": "Rua Vasco Soveral, 21, 2900-658, Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,348",
+        "area-sqm": "141",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t2-setubal-setubal/124071008-96/p2Nols3l1yZTln0IZRVNRKfnTA9ANoxX"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8885831,
+          38.5234581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 27,
+        "mainImage": "Rua_Ladeira_das_Fontainhas_34_36.jpg",
+        "marker": "normal",
+        "price": "€127,500",
+        "locationName": "Rua Ladeira das Fontainhas, 34 /36, 2910-010 - Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,821",
+        "area-sqm": "70",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t-setubal-setubal/124071008-148/p2Nols3l1yZTln0IZRVNRJfp5tm1pcHT"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8853349,
+          38.5230775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 28,
+        "mainImage": "Travessa_da_Mirante_31.jpg",
+        "marker": "normal",
+        "price": "€185,000",
+        "locationName": "Travessa da Mirante, 31, 2910-610 - Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,542",
+        "area-sqm": "120",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t1-setubal-setubal/124071008-160/p2Nols3l1yZTln0IZRVNRCJj0anmtlPf"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8861523,
+          38.5268230
         ]
       }
     }
