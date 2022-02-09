@@ -247,7 +247,7 @@
   function drawLegend(breaks, colors) {
 
     var legendControl = L.control({
-      position: 'topright'
+      position: 'topleft'
     });
 
     legendControl.onAdd = function(map) {
