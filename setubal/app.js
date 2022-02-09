@@ -4,7 +4,7 @@
   var options = {
     zoomSnap: .1,
     center: [38.525, -8.893],
-    zoom: 16,
+    zoom: 15.1,
     minZoom: 10,
     maxZoom: 20,
     zoomControl: false,
@@ -217,7 +217,14 @@
       }
     }).addTo(map);
 
-    map.fitBounds(propertiesLayer.getBounds()).zoomOut(.2);
+    // console.log(propertiesLayer.getBounds());
+    // map.fitBounds(propertiesLayer.getBounds()).zoomOut(.2);
+    // console.log(map.getBounds());
+    console.log(map.getBoundsZoom(propertiesLayer.getBounds()));
+    // console.log(map.getZoom());
+    map.setZoom(map.getBoundsZoom(propertiesLayer.getBounds()));
+    map.zoomOut(.1);
+    // console.log(map.getZoom());
 
     map.on('popupopen', function (event) {
       // console.log(document.getElementsByClassName('mainImage'));
