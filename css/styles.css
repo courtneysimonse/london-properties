@@ -131,24 +131,25 @@ p {
   line-height: 1em;
   color: #827369;
   margin: 0;
+  padding: 0;
 }
 
 .legend ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 12px 4px 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 12px 4px 0;
 }
 
 .legend li {
-    min-height: 22px;
+  min-height: 22px;
 }
 
 .legend span {
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin-right: 10px;
-    text-align: center;
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
 }
 
 .legend p {
