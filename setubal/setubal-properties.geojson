@@ -593,6 +593,27 @@ var propertiesJSON = {
           38.5268230
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 28,
+        "mainImage": "Rua_Vasco_da_Gama_26_a_30.jpg",
+        "marker": "normal",
+        "price": "€195,000",
+        "locationName": "Rua Vasco da Gama, 26 a 30, 2900-001 - Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€823",
+        "area-sqm": "237",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t-setubal-setubal/124071008-161/p2Nols3l1yZTln0IZRVNRJJsc348paSh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8996152,
+          38.5232928
+        ]
+      }
     }
   ]
 };
