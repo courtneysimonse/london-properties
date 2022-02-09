@@ -222,8 +222,8 @@
     // console.log(map.getBounds());
     console.log(map.getBoundsZoom(propertiesLayer.getBounds()));
     // console.log(map.getZoom());
-    map.setZoom(map.getBoundsZoom(propertiesLayer.getBounds()));
-    map.zoomOut(.1);
+    map.setZoom(map.getBoundsZoom(propertiesLayer.getBounds()),{animate:false});
+    map.zoomOut(.1,{animate:false});
     // console.log(map.getZoom());
 
     map.on('popupopen', function (event) {
