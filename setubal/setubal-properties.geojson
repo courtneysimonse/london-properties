@@ -107,21 +107,21 @@ var propertiesJSON = {
     {
       "type": "Feature",
       "properties": {
-        "id": 6,
-        "mainImage": "R_do_Concelho_15.jpg",
+        "id": 31,
+        "mainImage": "Rus_dos_Correeiros_44.jpg",
         "marker": "normal",
         "price": "€385,000",
-        "locationName": "R. do Concelho 15, 2900-213 Setúbal, Portugal",
+        "locationName": "R. dos Correeiros 44, 2900-213 Setúbal",
         "agency": "ReMax",
-        "price/sqm": "€1,878",
+        "price/sqm": "€1,146",
         "area-sqm": "205",
-        "link": "https://www.remax.pt/125851004-144"
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851004-145"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.892192,
-          38.525070
+          -8.891671,
+          38.524727
         ]
       }
     },
@@ -365,8 +365,8 @@ var propertiesJSON = {
         "price": "€296,000",
         "locationName": "Travessa Postigo do Cais 2910 Setúbal",
         "agency": "Properstar",
-        "price/sqm": "€1,741",
-        "area-sqm": "170",
+        "price/sqm": "€1,458",
+        "area-sqm": "203",
         "link": "http://www.cjproperties.pt/imovel/predio-residencial-com-3-pisos-para-venda-na-travessa-postigo-do-cais/18999083"
       },
       "geometry": {
