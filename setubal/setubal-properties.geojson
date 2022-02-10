@@ -9,8 +9,8 @@ var propertiesJSON = {
         "marker": "red",
         "locationName": "R. Serpa Pinto 8, 2900-349 Setúbal",
         "price": "€75,000",
-        "price/sqm": "€288",
-        "area-sqm": "260"
+        "price/sqm": "€375",
+        "area-sqm": "200"
         },
       "geometry": {
         "type": "Point",
@@ -111,7 +111,7 @@ var propertiesJSON = {
         "mainImage": "R_do_Concelho_15.jpg",
         "marker": "normal",
         "price": "€385,000",
-        "locationName": "Setúbal",
+        "locationName": "R. do Concelho 15, 2900-213 Setúbal, Portugal",
         "agency": "ReMax",
         "price/sqm": "€1,878",
         "area-sqm": "205",
@@ -385,7 +385,7 @@ var propertiesJSON = {
         "marker": "normal-interesting",
         "price": "€980,000",
         "locationName": "98 Av. Luísa Todi, Setúbal Municipality, Setubal",
-        "agency": "Properstar",
+        "agency": "IAD",
         "price/sqm": "€621",
         "area-sqm": "1,576",
         "link": "https://www.iadportugal.pt/en/ad/building-sale-28-bedrooms-setubal-sao-sebastiao-1576sq-m/r33237"
@@ -559,7 +559,7 @@ var propertiesJSON = {
         "mainImage": "Rua_Ladeira_das_Fontainhas_34_36.jpg",
         "marker": "normal",
         "price": "€127,500",
-        "locationName": "Rua Ladeira das Fontainhas, 34 /36, 2910-010 - Setúbal",
+        "locationName": "Rua Ladeira das Fontainhas, 34 /36, 2910-010 Setúbal",
         "agency": "ReMax",
         "price/sqm": "€1,821",
         "area-sqm": "70",
@@ -580,7 +580,7 @@ var propertiesJSON = {
         "mainImage": "Travessa_da_Mirante_31.jpg",
         "marker": "normal",
         "price": "€185,000",
-        "locationName": "Travessa da Mirante, 31, 2910-610 - Setúbal",
+        "locationName": "Travessa da Mirante, 31, 2910-610 Setúbal",
         "agency": "ReMax",
         "price/sqm": "€1,542",
         "area-sqm": "120",
@@ -601,7 +601,7 @@ var propertiesJSON = {
         "mainImage": "Rua_Vasco_da_Gama_26_a_30.jpg",
         "marker": "normal",
         "price": "€195,000",
-        "locationName": "Rua Vasco da Gama, 26 a 30, 2900-001 - Setúbal",
+        "locationName": "Rua Vasco da Gama, 26 a 30, 2900-001 Setúbal",
         "agency": "ReMax",
         "price/sqm": "€823",
         "area-sqm": "237",
@@ -612,6 +612,26 @@ var propertiesJSON = {
         "coordinates": [
           -8.8996152,
           38.5232928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 29,
+        "mainImage": "Tv_do_Padre_Manuel_dos_Santos_7.jpg",
+        "marker": "normal",
+        "price": "N/A",
+        "locationName": "Tv. do Padre Manuel dos Santos 7, 2900-217 Setúbal",
+        "agency": "N/A",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8900888,
+          38.5245136
         ]
       }
     }
