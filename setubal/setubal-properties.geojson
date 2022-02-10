@@ -90,7 +90,7 @@ var propertiesJSON = {
         "mainImage": "Praça_de_Bocage.jpg",
         "marker": "normal",
         "price": "€229,900",
-        "locationName": "Praça de Bocage, 2900-213 Setúbal",
+        "locationName": "Rua Luís de Camões, 43 a 47, 2900-446 Setúbal",
         "agency": "ReMax",
         "price/sqm": "€1,754",
         "area-sqm": "131",
@@ -99,8 +99,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.892500,
-          38.524411
+          -8.891995,
+          38.524515
         ]
       }
     },
@@ -152,8 +152,8 @@ var propertiesJSON = {
         "id": 8,
         "mainImage": "Tv_de_Nenhures_8.jpg",
         "marker": "normal",
-        "price": "€329,000",
-        "locationName": "Tv. de Nenhures 8, 2900-213 Setúbal",
+        "price": "€329,900",
+        "locationName": "Rua do Romeu, 20 e 22, 3º Andar, 2900-595 - Setúbal",
         "agency": "ReMax",
         "price/sqm": "€1,768",
         "area-sqm": "186",
@@ -162,8 +162,8 @@ var propertiesJSON = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -8.892178,
-          38.524850
+          -8.892022,
+          38.524293
         ]
       }
     },
