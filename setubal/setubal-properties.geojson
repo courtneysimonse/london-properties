@@ -614,26 +614,6 @@ var propertiesJSON = {
           38.5232928
         ]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 29,
-        "mainImage": "Tv_do_Padre_Manuel_dos_Santos_7.jpg",
-        "marker": "normal",
-        "price": "N/A",
-        "locationName": "Tv. do Padre Manuel dos Santos 7, 2900-217 Setúbal",
-        "agency": "N/A",
-        "price/sqm": "N/A",
-        "area-sqm": "N/A"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -8.8900888,
-          38.5245136
-        ]
-      }
     }
   ]
 };
