@@ -597,7 +597,7 @@ var propertiesJSON = {
     {
       "type": "Feature",
       "properties": {
-        "id": 28,
+        "id": 29,
         "mainImage": "Rua_Vasco_da_Gama_26_a_30.jpg",
         "marker": "normal",
         "price": "€195,000",
@@ -612,6 +612,48 @@ var propertiesJSON = {
         "coordinates": [
           -8.8996152,
           38.5232928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30,
+        "mainImage": "Rua_António_Maria_Eusébio_58.jpg",
+        "marker": "normal",
+        "price": "€285,000",
+        "locationName": "Rua António Maria Eusébio, ns.58 a 62, 60, Andar Serviço, 2900-235 Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€1,524",
+        "area-sqm": "187",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t5-setubal-setubal/123991059-49/p2Nols3l1ybciAcQ3dXvN3U7mRru7tKa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8955507,
+          38.5241404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "mainImage": "Rua_do_Castelo_13_e_15.jpg",
+        "marker": "normal",
+        "price": "€145,000",
+        "locationName": "Rua do Castelo, 13 e 15, 2900-001 Setúbal",
+        "agency": "ReMax",
+        "price/sqm": "€2,417",
+        "area-sqm": "60",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t5-setubal-setubal/123991019-278/p2Nols3l1ybciAcQ3dXvNyPU7jj5qk9v"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9028846,
+          38.5218634
         ]
       }
     }
