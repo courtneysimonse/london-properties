@@ -474,7 +474,7 @@ var propertiesJSON = {
       "properties": {
         "id": 23,
         "mainImage": "R_da_Marquesa_do_Faial_1.jpg",
-        "marker": "green-interesting",
+        "marker": "green",
         "price": "N/A",
         "locationName": "R. da Marquesa do Faial 1",
         "agency": "Unknown",
@@ -570,27 +570,6 @@ var propertiesJSON = {
         "coordinates": [
           -8.8853349,
           38.5230775
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 28,
-        "mainImage": "Travessa_da_Mirante_31.jpg",
-        "marker": "normal",
-        "price": "€185,000",
-        "locationName": "Travessa da Mirante, 31, 2910-610 Setúbal",
-        "agency": "ReMax",
-        "price/sqm": "€1,542",
-        "area-sqm": "120",
-        "link": "https://www.remax.pt/imoveis/venda-predio-t1-setubal-setubal/124071008-160/p2Nols3l1yZTln0IZRVNRCJj0anmtlPf"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -8.8861523,
-          38.5268230
         ]
       }
     },

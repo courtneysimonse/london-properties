@@ -92,7 +92,7 @@
   // DRAW MAP FUNCTION
   function drawMap(properties) {
 
-    const breaks = ["Listed","Unlisted","Interesting","Joao's Building"];
+    const breaks = ["Listed","Vacant","Interesting","Joao's Building"];
     const colors = ["#267ec9","#1a9e06","","#d95f02"];
     const anchor = [12,41];
     const popupAnchor = [-3, -23]
