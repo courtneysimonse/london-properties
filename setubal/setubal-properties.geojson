@@ -690,7 +690,7 @@ var propertiesJSON = {
     {
       "type": "Feature",
       "properties": {
-        "id": 32,
+        "id": 33,
         "mainImage": "Av_Luísa_Todi_534.jpg",
         "marker": "normal",
         "price": "€305,000",
@@ -706,6 +706,28 @@ var propertiesJSON = {
         "coordinates": [
           -8.8996214,
           38.5225500
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34,
+        "mainImage": "Av_Luísa_Todi_440.jpg",
+        "marker": "normal",
+        "price": "€345,000",
+        "locationName": "Av. Luísa Todi 440",
+        "locationLink": "https://goo.gl/maps/nkBkR3ArPyJWmahP6",
+        "agency": "Century21",
+        "price/sqm": "€4,107",
+        "area-sqm": "84",
+        "link": "https://www.mysitec21.com/c21pt/ptrovao/pt-PT/propriedades-para-venda/propriedade/Vamos-reabilitar-Setubal---predio-na-Av-Luisa-Todi--Setubal-SJuliao-NSao-da-Anunciada-e-SMaria-da-Graca-Luisa-Todi/2229377"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8978348,
+          38.5235952
         ]
       }
     }
