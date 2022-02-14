@@ -686,6 +686,28 @@ var propertiesJSON = {
           38.5235712
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 32,
+        "mainImage": "Av_Luísa_Todi_534.jpg",
+        "marker": "normal",
+        "price": "€305,000",
+        "locationName": "Av. Luísa Todi 534",
+        "locationLink": "https://goo.gl/maps/evjdQcXNy26aZe2z5",
+        "agency": "Lux Properties",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A",
+        "link": "https://www.luxproperties.pt/en-gb/property/building-edificio-de-dois-pisos-e-viabilidade-para-dois-outros-adicionais-em-localizacao-privilegiada-no-ce/19071552"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8957099,
+          38.5235712
+        ]
+      }
     }
   ]
 };
