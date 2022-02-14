@@ -238,7 +238,8 @@
         // console.log('click');
         // console.log(images[images.length-1].attributes[1]);
         var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-        document.getElementById('image').innerHTML = "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
+        document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
+                "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
         imageModal.show();
       });
     });
