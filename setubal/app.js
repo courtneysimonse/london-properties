@@ -194,7 +194,9 @@
         popupText += "<div class='row'>";
         if (feature.properties.price != "N/A") {
             popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price;
-            popupText += "<br>" + feature.properties["locationName"] + "</div>";
+            popupText += "<br><a href='" + feature.properties["locationLink"] + "' target='_blank'>" + feature.properties["locationName"] + "</a></div>";
+        } else {
+          popupText += "<div class='col-md-6 col-xs-6'><a href='" + feature.properties["locationLink"] + "' target='_blank'>" + feature.properties["locationName"] + "</a></div>";
         }
         if (feature.properties["price/sqm"] != "N/A") {
           popupText += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + feature.properties["price/sqm"];
