@@ -773,6 +773,28 @@ var propertiesJSON = {
           38.5247386
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "mainImage": "Tv_Álvaro_Anes_22.jpg",
+        "marker": "normal",
+        "price": "€195,000",
+        "locationName": "Approximate Location",
+        "locationLink": "https://goo.gl/maps/SYUKdP1Ciexxe95X6",
+        "agency": "ReMax",
+        "price/sqm": "€840",
+        "area-sqm": "232",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851004-154"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9002548,
+          38.5233047
+        ]
+      }
     }
   ]
 };
