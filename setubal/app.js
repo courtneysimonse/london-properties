@@ -193,10 +193,12 @@
         popupText += "<img class='mainImage mx-auto' src='./images/" + feature.properties.mainImage + "'>"
         popupText += "<div class='row'>";
         if (feature.properties.price != "N/A") {
-            popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price + "</div>";
+            popupText += "<div class='col-md-6 col-xs-6'>Price: " + feature.properties.price;
+            popupText += "<br>" + feature.properties["locationName"] + "</div>";
         }
         if (feature.properties["price/sqm"] != "N/A") {
-          popupText += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + feature.properties["price/sqm"] + "</div>";
+          popupText += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + feature.properties["price/sqm"];
+          popupText += "<br>" + feature.properties["area-sqm"] + " sq m</div>";
         }
         // if (feature.properties.area != "N/A") {
         //   popupText += "<div class='col-md-4 col-xs-6'>Acres: " + feature.properties.area + "</div>";
