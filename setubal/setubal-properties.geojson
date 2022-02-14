@@ -730,6 +730,49 @@ var propertiesJSON = {
           38.5235952
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 35,
+        "mainImage": "Av_Luísa_Todi_460.jpg",
+        "marker": "normal",
+        "price": "€399,000",
+        "locationName": "Av. Luísa Todi 460",
+        "locationLink": "https://goo.gl/maps/Gndb3p9YLamMqRt88",
+        "agency": "ReMax",
+        "price/sqm": "€4,156",
+        "area-sqm": "96",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851028-2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8981361,
+          38.5233903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "mainImage": "Praça_do_Quebedo_41.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "Praça do Quebedo 41",
+        "locationLink": "https://goo.gl/maps/a6KeeKMQmdyHFvkJ6",
+        "agency": "N/A",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8871708,
+          38.5247386
+        ]
+      }
     }
   ]
 };
