@@ -10,8 +10,8 @@ var propertiesJSON = {
         "locationName": "R. Serpa Pinto 8",
         "locationLink": "https://goo.gl/maps/qbynj4vk9y4kjxTd8",
         "price": "€75,000",
-        "price/sqm": "€375",
-        "area-sqm": "200"
+        "price/sqm": "€620",
+        "area-sqm": "121"
         },
       "geometry": {
         "type": "Point",
