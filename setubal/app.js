@@ -124,12 +124,6 @@
       iconAnchor: anchor
     });
 
-    purpleIcon = L.icon({
-      iconUrl: '../images/marker-purple.svg',
-      iconSize: [20, 45],
-      iconAnchor: anchor
-    });
-
     blueStar = L.icon({
       iconUrl: '../images/star-blue.svg',
       iconSize: [35, 35],
