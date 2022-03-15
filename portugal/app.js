@@ -59,7 +59,9 @@
       name: "cascais",
       data: cascaisJSON
     }
-  ]
+  ];
+
+  var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
   // GET DATA
   processData(propertiesData);
@@ -187,13 +189,14 @@
           popupText += feature.properties["locationName"];
         }
         popupText += "</div>";
-        if (feature.properties["price/sqm"] != "N/A") {
+        if (feature.properties["price/sqm"] && feature.properties["price/sqm"] != "N/A") {
           popupText += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + feature.properties["price/sqm"];
           popupText += "<br>" + feature.properties["area-sqm"] + " sq m</div>";
         }
-        // if (feature.properties.area != "N/A") {
-        //   popupText += "<div class='col-md-4 col-xs-6'>Acres: " + feature.properties.area + "</div>";
-        // }
+        if (feature.properties["price/sqft"] && feature.properties["price/sqft"] != "N/A") {
+          popupText += "<div class='col-md-6 col-xs-6'>Price/SqFt: " + feature.properties["price/sqft"];
+          popupText += "<br>" + feature.properties["acres"] + " acres</div>";
+        }
         if (feature.properties.link) {
           popupText += "<div class='col-12 py-1'><a target='_blank' href='"+feature.properties.link+"'>Learn more...</a></div>";
         }
@@ -223,7 +226,6 @@
       images[images.length-1].addEventListener('click', function () {
         // console.log('click');
         // console.log(images[images.length-1].attributes[1]);
-        var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
         document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
                 "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
         imageModal.show();
