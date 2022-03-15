@@ -50,6 +50,64 @@
 
   L.DomUtil.addClass(zoomControl.getContainer(), 'zoomControl');
 
+  const breaks = ["Listed","Vacant","Interesting","Joao's Building"];
+  const colors = ["#267ec9","#1a9e06","","#d95f02"];
+  const anchor = [12,41];
+  const popupAnchor = [-3, -23]
+  // console.log(L.Icon.Default.prototype.options);
+
+  const blueIcon = L.icon({
+    iconUrl: '../images/marker.svg',
+    iconSize: [20, 45],
+    iconAnchor: anchor,
+    popupAnchor: popupAnchor
+  });
+
+  const greenIcon = L.icon({
+    iconUrl: '../images/marker-green.svg',
+    iconSize: [20, 45],
+    iconAnchor: anchor,
+    popupAnchor: popupAnchor
+  });
+
+  const redIcon = L.icon({
+    iconUrl: '../images/marker-red.svg',
+    iconSize: [20, 45],
+    iconAnchor: anchor
+  });
+
+  const purpleIcon = L.icon({
+    iconUrl: '../images/marker-purple.svg',
+    iconSize: [20, 45],
+    iconAnchor: anchor
+  });
+
+  const blueStar = L.icon({
+    iconUrl: '../images/star-blue.svg',
+    iconSize: [35, 35],
+    iconAnchor: anchor
+  });
+
+  const greenStar = L.icon({
+    iconUrl: '../images/star-green.svg',
+    iconSize: [35, 35],
+    iconAnchor: anchor
+  });
+
+  const yellowStar = L.icon({
+    iconUrl: '../images/star-yellow.svg',
+    iconSize: [35, 35],
+    iconAnchor: [18,15]
+  });
+
+  const myIcons = {
+    'normal': blueIcon,
+    'red': redIcon,
+    'green': greenIcon,
+    'normal-interesting': yellowStar,
+    'green-interesting': yellowStar
+  }
+
   var propertiesData = [
     {
       name: "setubal",
@@ -68,12 +126,14 @@
 
   // PROCESS DATA FUNCTION
   function processData(properties) {
-    console.log(properties[0].features);
+    console.log(properties[0].data.features);
     var setubalLayer = drawMap(properties[0]);
     var cascaisLayer = drawMap(properties[1]);
 
     map.setZoom(map.getBoundsZoom(setubalLayer.getBounds()),{animate:false});
     map.zoomOut(.1,{animate:false});
+
+    drawLegend(breaks, colors);
 
     // createInfoSections(properties, div);
 
@@ -82,65 +142,6 @@
   // DRAW MAP FUNCTION
   function drawMap(properties) {
 
-    const breaks = ["Listed","Vacant","Interesting","Joao's Building"];
-    const colors = ["#267ec9","#1a9e06","","#d95f02"];
-    const anchor = [12,41];
-    const popupAnchor = [-3, -23]
-    // console.log(L.Icon.Default.prototype.options);
-
-    blueIcon = L.icon({
-      iconUrl: '../images/marker.svg',
-      iconSize: [20, 45],
-      iconAnchor: anchor,
-      popupAnchor: popupAnchor
-    });
-
-    greenIcon = L.icon({
-      iconUrl: '../images/marker-green.svg',
-      iconSize: [20, 45],
-      iconAnchor: anchor,
-      popupAnchor: popupAnchor
-    });
-
-    redIcon = L.icon({
-      iconUrl: '../images/marker-red.svg',
-      iconSize: [20, 45],
-      iconAnchor: anchor
-    });
-
-    purpleIcon = L.icon({
-      iconUrl: '../images/marker-purple.svg',
-      iconSize: [20, 45],
-      iconAnchor: anchor
-    });
-
-    blueStar = L.icon({
-      iconUrl: '../images/star-blue.svg',
-      iconSize: [35, 35],
-      iconAnchor: anchor
-    });
-
-    greenStar = L.icon({
-      iconUrl: '../images/star-green.svg',
-      iconSize: [35, 35],
-      iconAnchor: anchor
-    });
-
-    yellowStar = L.icon({
-      iconUrl: '../images/star-yellow.svg',
-      iconSize: [35, 35],
-      iconAnchor: [18,15]
-    });
-
-    myIcons = {
-      'normal': blueIcon,
-      'red': redIcon,
-      'green': greenIcon,
-      'normal-interesting': yellowStar,
-      'green-interesting': yellowStar
-    }
-
-    drawLegend(breaks, colors);
 
     // var markers = L.markerClusterGroup({
     //   showCoverageOnHover: false,
