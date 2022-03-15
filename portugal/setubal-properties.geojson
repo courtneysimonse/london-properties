@@ -1,0 +1,822 @@
+var setubalJSON = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "mainImage": "joaosbuilding.jpg",
+        "marker": "red",
+        "locationName": "R. Serpa Pinto 8",
+        "locationLink": "https://goo.gl/maps/qbynj4vk9y4kjxTd8",
+        "price": "€75,000",
+        "price/sqm": "€620",
+        "area-sqm": "121"
+        },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.89190,
+          38.52399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "mainImage": "R_do_Maj_Afonso_Pala.jpg",
+        "marker": "normal",
+        "locationName": "R. do Maj. Afonso Pala",
+        "locationLink": "https://goo.gl/maps/Ne36h7V2yed1XBnU9",
+        "agency": "ReMax",
+        "price": "€283,000",
+        "price/sqm": "€1,387",
+        "area-sqm": "204",
+        "link": "https://www.remax.pt/123991028-197"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.89007,
+          38.52479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "mainImage": "R_dos_Correeiros_6.jpg",
+        "marker": "normal",
+        "price": "€650,000",
+        "locationName": "R. dos Correeiros 6",
+        "locationLink": "https://goo.gl/maps/PqTBna1Qk2GyMWPx8",
+        "agency": "ReMax",
+        "price/sqm": "€2,166",
+        "area-sqm": "300",
+        "link": "https://www.remax.pt/imoveis/arrendamento-industrial-t0-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/123991126-14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891739,
+          38.524063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "mainImage": "Largo_do_Dr_Francisco_Soveral_7.jpg",
+        "marker": "normal",
+        "price": "€650,000",
+        "locationName": "Largo do Dr. Francisco Soveral 7",
+        "locationLink": "https://goo.gl/maps/YMoU7MGxHq8VAQnz8",
+        "agency": "Sotheby's",
+        "price/sqm": "€2,549",
+        "area-sqm": "255",
+        "link": "https://www.sothebysrealtypt.com/properties/building-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca-s_pt1_51484#"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.892008,
+          38.523739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "mainImage": "Praça_de_Bocage.jpg",
+        "marker": "normal",
+        "price": "€229,900",
+        "locationName": "Rua Luís de Camões, 43 a 47",
+        "locationLink": "https://goo.gl/maps/LCcKzNSrZQhyo5Gw7",
+        "agency": "ReMax",
+        "price/sqm": "€1,754",
+        "area-sqm": "131",
+        "link": "https://www.remax.pt/123991091-40"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891995,
+          38.524515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "mainImage": "Rus_dos_Correeiros_44.jpg",
+        "marker": "normal",
+        "price": "€385,000",
+        "locationName": "R. dos Correeiros 44",
+        "locationLink": "https://goo.gl/maps/cBGx77SMFMWS1Bg57",
+        "agency": "ReMax",
+        "price/sqm": "€1,146",
+        "area-sqm": "205",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851004-145"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891671,
+          38.524727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "mainImage": "Av_5_de_Outubro_105.jpg",
+        "marker": "normal",
+        "price": "€330,600",
+        "locationName": "Av. 5 de Outubro 105",
+        "locationLink": "https://goo.gl/maps/FJnUrgyByzaNNt718",
+        "agency": "ReMax",
+        "price/sqm": "€989",
+        "area-sqm": "334",
+        "link": "https://www.remax.pt/123991007-413"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.893195,
+          38.525408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "mainImage": "Tv_de_Nenhures_8.jpg",
+        "marker": "normal",
+        "price": "€329,900",
+        "locationName": "Rua do Romeu, 20 e 22, 3º Andar",
+        "locationLink": "https://goo.gl/maps/SxjogwcbK1fjNaSz9",
+        "agency": "ReMax",
+        "price/sqm": "€1,768",
+        "area-sqm": "186",
+        "link": "https://www.remax.pt/123991091-39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.892022,
+          38.524293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "mainImage": "R_João_Eloy_do_Amaral_61.jpg",
+        "marker": "normal",
+        "price": "€685,000",
+        "locationName": "Rua Acacio Barradas, 19A-25E",
+        "locationLink": "https://goo.gl/maps/46hgtUb8MsnDL1Ua7",
+        "agency": "ReMax",
+        "price/sqm": "€1,703",
+        "area-sqm": "402",
+        "link": "https://www.remax.pt/123991084-95"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.896438,
+          38.525554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "mainImage": "R_dos_Mareantes.jpg",
+        "marker": "normal",
+        "price": "€150,000",
+        "locationName": "R. dos Mareantes",
+        "locationLink": "https://goo.gl/maps/eL5EKxzVX9JHeVEx5",
+        "agency": "ReMax",
+        "price/sqm": "€1,056",
+        "area-sqm": "142",
+        "link": "https://www.remax.pt/124291007-476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.889469,
+          38.523441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "mainImage": "Rua_dos_Almocreves_11_13.jpg",
+        "marker": "normal",
+        "price": "€295,000",
+        "locationName": "Rua dos Almocreves 11&13",
+        "locationLink": "https://goo.gl/maps/mJKoUiN2PuuCZYw77",
+        "agency": "Util Imobiliaria",
+        "price/sqm": "€1,092",
+        "area-sqm": "270",
+        "link": "https://utilimobiliaria.pt/Imovel/wvxnvq"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891383,
+          38.524954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "mainImage": "R_Álvaro_Castelões_57.jpg",
+        "marker": "normal",
+        "price": "€160,000",
+        "locationName": "R. Álvaro Castelões 57",
+        "locationLink": "https://goo.gl/maps/kXSmEnJ2rkhLbU347",
+        "agency": "Century21",
+        "price/sqm": "€1,975",
+        "area-sqm": "81",
+        "link": "https://www.century21.pt/comprar/predio/setubal/predio-misto-t3-80m2-excelente-oportunidade-de-investimento-predio-misto-com-81m2-no-centro-historico-de-setubal-sjuliao-nsao-da-anunciada-e-smaria-da-graca-baixa-2245302/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891360,
+          38.524080
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "mainImage": "Rua_Dr_Paula_Borba_52.jpg",
+        "marker": "normal",
+        "price": "€400,000",
+        "locationName": "Rua Dr. Paula Borba 52",
+        "locationLink": "https://goo.gl/maps/z7syjwDfngZMsNLx6",
+        "agency": "Century21",
+        "price/sqm": "€1,526",
+        "area-sqm": "262",
+        "link": "https://www.mysitec21.com/c21pt/poliane-bandeira/propriedades-para-venda/propriedade/Predio-de-3-andares-na-Rua-Dr-Paula-Borba-Baixa-de-Setubal---zona-historica-com-263m2-e-enorme-potencial--Setubal-SJuliao-NSao-da-Anunciada-e-SMaria-da-Graca-Baixa/2244699"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.891284,
+          38.523950
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "mainImage": "Av_5_de_Outubro_83.jpg",
+        "marker": "normal-interesting",
+        "price": "€1,450,000",
+        "locationName": "Av. 5 de Outubro 83",
+        "locationLink": "https://goo.gl/maps/84MxH8iwRhYdavmM9",
+        "agency": "Habita",
+        "price/sqm": "€1,239",
+        "area-sqm": "1,170",
+        "link": "https://www.habita-imoveis.pt/casa/predio-praca-bocage-setubal/10884420"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.892470,
+          38.525432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "mainImage": "Largo_do_Carmo_6.jpg",
+        "marker": "normal",
+        "price": "€3,000,000",
+        "locationName": "Largo do Carmo 6",
+        "locationLink": "https://goo.gl/maps/G58joJG6u4Bczcyg7",
+        "agency": "Habita",
+        "price/sqm": "€1,200",
+        "area-sqm": "2,500",
+        "link": "https://www.habita-imoveis.pt/casa/predio-secular-av-todi-setubal/4620664"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.895554,
+          38.523744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "mainImage": "Av_Luísa_Todi_20.jpg",
+        "marker": "normal-interesting",
+        "price": "€1,100,000",
+        "locationName": "Nº, Av. Luísa Todi 20",
+        "locationLink": "https://goo.gl/maps/7sNK9NDqCjG7BKqo7",
+        "agency": "Hall",
+        "price/sqm": "€1,160",
+        "area-sqm": "948",
+        "link": "http://www.hall.pt/pt-PT/Imovel/Venda/Predio/Setubal/Setubal/S_Juliao-N_S_-da-Anunciada-e-S_Maria-da-Graca/894950?c=en-US"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.885724,
+          38.522675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "mainImage": "R_João_Soveral_39.jpg",
+        "marker": "normal",
+        "price": "€460,000",
+        "locationName": "Rua Vasco da Gama, 56 a 60",
+        "locationLink": "https://goo.gl/maps/mfdwHAHp4VRGhGg96",
+        "agency": "ReMax",
+        "price/sqm": "€1,893",
+        "area-sqm": "243",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851004-167"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.899995,
+          38.523047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "mainImage": "Travessa_Postigo_do_Cais.jpg",
+        "marker": "normal",
+        "price": "€296,000",
+        "locationName": "Travessa Postigo do Cais",
+        "locationLink": "https://goo.gl/maps/5M27BMweoQDxr9g47",
+        "agency": "Properstar",
+        "price/sqm": "€1,838",
+        "area-sqm": "161",
+        "link": "http://www.cjproperties.pt/imovel/predio-residencial-com-3-pisos-para-venda-na-travessa-postigo-do-cais/18999083"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8881651,
+          38.5231726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "mainImage": "98_Av_Luísa_Todi.jpg",
+        "marker": "normal",
+        "price": "€980,000",
+        "locationName": "98 Av. Luísa Todi",
+        "locationLink": "https://goo.gl/maps/cq2zWpfEmLNgspEd9",
+        "agency": "IAD",
+        "price/sqm": "€621",
+        "area-sqm": "1,576",
+        "link": "https://www.iadportugal.pt/en/ad/building-sale-28-bedrooms-setubal-sao-sebastiao-1576sq-m/r33237"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8873388,
+          38.5231513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "mainImage": "98_Av_Luísa_Todi_2.jpg",
+        "marker": "normal",
+        "price": "€1,000,000",
+        "locationName": "98 Av. Luísa Todi",
+        "locationLink": "https://goo.gl/maps/vrEMva9mBPKDFphU6",
+        "agency": "Unknown",
+        "price/sqm": "€1,187",
+        "area-sqm": "842",
+        "documents": [
+          ["Exterior Plans","AlçadosExistPropostaSetubal.pdf"],
+          ["Site Plans","Arq Trav Sol-proposto.pdf"],
+          ["Floor Dimensions","PortadoSol_Areas_Lic_Quadro Sinoptico.pdf"],
+          ["Floor -1","Portas_do_Sol_Lic Plantas_Propo_Piso-1.pdf"],
+          ["Floor 0","Portas_do_Sol_Lic Plantas_Propo_Piso0.pdf"],
+          ["Floor 1","Portas_do_Sol_Lic Plantas_Propo_Piso1.pdf"],
+          ["Floor 2","Portas_do_Sol_Lic Plantas_Propo_Piso2.pdf"],
+          ["Dimensions","Setubal-Mapa Areas-fracções.pdf"],
+          ["Summary Map Description","Setubal-Mapa Areas-resumo.pdf"]
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.887200,
+          38.523320
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "mainImage": "R_Dr_Estevam_de_Vasconcelos_48.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "R. Dr. Estevam de Vasconcelos 48",
+        "locationLink": "https://goo.gl/maps/3Hc7VzuvkpDcQ1Nd8",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8912054,
+          38.5248756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "mainImage": "R_dos_Correeiros_58.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "R. dos Correeiros 58",
+        "locationLink": "https://goo.gl/maps/JoouTuDd27XTkQQ5A",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8916173,
+          38.5248888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "mainImage": "R_da_Marquesa_do_Faial_1.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "R. da Marquesa do Faial 1",
+        "locationLink": "https://goo.gl/maps/5vpi88zLg4j7KfZr7",
+        "agency": "Unknown",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8920585,
+          38.5248660
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24,
+        "mainImage": "Rua_dos_Mareantes_3.jpg",
+        "marker": "normal",
+        "price": "€270,000",
+        "locationName": "Rua dos Mareantes, 3",
+        "locationLink": "https://goo.gl/maps/c2odV7k4Mrmjpr6e8",
+        "agency": "ReMax",
+        "price/sqm": "€1,500",
+        "area-sqm": "180",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t0-setubal-setubal/124071008-91/p2Nols3l1yZTln0IZRVNRDrS0JfardIt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8894789,
+          38.5230000
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 25,
+        "mainImage": "Rua_Gil_Vicente_19.jpg",
+        "marker": "normal",
+        "price": "€360,000",
+        "locationName": "Rua Gil Vicente, 19, 1º Andar, 1º",
+        "locationLink": "https://goo.gl/maps/CyfisyD7er2BbYUi9",
+        "agency": "ReMax",
+        "price/sqm": "€1,714",
+        "area-sqm": "210",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t2-setubal-setubal/124071008-95/p2Nols3l1yZTln0IZRVNREKWba4jAUpG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8859204,
+          38.5235393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26,
+        "mainImage": "Rua_Vasco_Soveral_21.jpg",
+        "marker": "normal",
+        "price": "€190,000",
+        "locationName": "Rua Vasco Soveral, 21",
+        "locationLink": "https://goo.gl/maps/hZY6D6i4L8ASeEcj6",
+        "agency": "ReMax",
+        "price/sqm": "€1,348",
+        "area-sqm": "141",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t2-setubal-setubal/124071008-96/p2Nols3l1yZTln0IZRVNRKfnTA9ANoxX"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8885831,
+          38.5234581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 27,
+        "mainImage": "Rua_Ladeira_das_Fontainhas_34_36.jpg",
+        "marker": "normal",
+        "price": "€127,500",
+        "locationName": "Rua Ladeira das Fontainhas, 34 /36",
+        "locationLink": "https://goo.gl/maps/wz5ta9PvdtmfwBW47",
+        "agency": "ReMax",
+        "price/sqm": "€1,821",
+        "area-sqm": "70",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t-setubal-setubal/124071008-148/p2Nols3l1yZTln0IZRVNRJfp5tm1pcHT"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8853349,
+          38.5230775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 29,
+        "mainImage": "Rua_Vasco_da_Gama_26_a_30.jpg",
+        "marker": "normal",
+        "price": "€195,000",
+        "locationName": "Rua Vasco da Gama, 26 a 30",
+        "locationLink": "https://goo.gl/maps/PjgDwQHTJTXbBpir6",
+        "agency": "ReMax",
+        "price/sqm": "€823",
+        "area-sqm": "237",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t-setubal-setubal/124071008-161/p2Nols3l1yZTln0IZRVNRJJsc348paSh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8996152,
+          38.5232928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30,
+        "mainImage": "Rua_António_Maria_Eusébio_58.jpg",
+        "marker": "normal",
+        "price": "€285,000",
+        "locationName": "Rua António Maria Eusébio, ns.58 a 62, 60, Andar Serviço",
+        "locationLink": "https://goo.gl/maps/7ZvAjFoVUgTqCHWFA",
+        "agency": "ReMax",
+        "price/sqm": "€1,524",
+        "area-sqm": "187",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t5-setubal-setubal/123991059-49/p2Nols3l1ybciAcQ3dXvN3U7mRru7tKa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8955507,
+          38.5241404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "mainImage": "Rua_do_Castelo_13_e_15.jpg",
+        "marker": "normal",
+        "price": "€145,000",
+        "locationName": "Rua do Castelo, 13 e 15",
+        "locationLink": "https://goo.gl/maps/TP7UvwsnyKTt2Mvt5",
+        "agency": "ReMax",
+        "price/sqm": "€2,417",
+        "area-sqm": "60",
+        "link": "https://www.remax.pt/imoveis/venda-predio-t5-setubal-setubal/123991019-278/p2Nols3l1ybciAcQ3dXvNyPU7jj5qk9v"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9028846,
+          38.5218634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 32,
+        "mainImage": "Av_Luísa_Todi_376.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "Av. Luísa Todi 376",
+        "locationLink": "https://goo.gl/maps/xdRZAST6GmxkaQM36",
+        "agency": "N/A",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8957099,
+          38.5235712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 33,
+        "mainImage": "Av_Luísa_Todi_534.jpg",
+        "marker": "normal",
+        "price": "€305,000",
+        "locationName": "Av. Luísa Todi 534",
+        "locationLink": "https://goo.gl/maps/evjdQcXNy26aZe2z5",
+        "agency": "Lux Properties",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A",
+        "link": "https://www.luxproperties.pt/en-gb/property/building-edificio-de-dois-pisos-e-viabilidade-para-dois-outros-adicionais-em-localizacao-privilegiada-no-ce/19071552"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8996214,
+          38.5225500
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34,
+        "mainImage": "Av_Luísa_Todi_440.jpg",
+        "marker": "normal",
+        "price": "€345,000",
+        "locationName": "Av. Luísa Todi 440",
+        "locationLink": "https://goo.gl/maps/nkBkR3ArPyJWmahP6",
+        "agency": "Century21",
+        "price/sqm": "€4,107",
+        "area-sqm": "84",
+        "link": "https://www.mysitec21.com/c21pt/ptrovao/pt-PT/propriedades-para-venda/propriedade/Vamos-reabilitar-Setubal---predio-na-Av-Luisa-Todi--Setubal-SJuliao-NSao-da-Anunciada-e-SMaria-da-Graca-Luisa-Todi/2229377"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8978348,
+          38.5235952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 35,
+        "mainImage": "Av_Luísa_Todi_460.jpg",
+        "marker": "normal",
+        "price": "€399,000",
+        "locationName": "Av. Luísa Todi 460",
+        "locationLink": "https://goo.gl/maps/Gndb3p9YLamMqRt88",
+        "agency": "ReMax",
+        "price/sqm": "€4,156",
+        "area-sqm": "96",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851028-2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8981361,
+          38.5233903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "mainImage": "Praça_do_Quebedo_41.jpg",
+        "marker": "green",
+        "price": "N/A",
+        "locationName": "Praça do Quebedo 41",
+        "locationLink": "https://goo.gl/maps/a6KeeKMQmdyHFvkJ6",
+        "agency": "N/A",
+        "price/sqm": "N/A",
+        "area-sqm": "N/A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.8871708,
+          38.5247386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "mainImage": "Tv_Álvaro_Anes_22.jpg",
+        "marker": "normal",
+        "price": "€195,000",
+        "locationName": "next to Avenida Luísa Todi",
+        "locationLink": "https://goo.gl/maps/SYUKdP1Ciexxe95X6",
+        "agency": "ReMax",
+        "price/sqm": "€840",
+        "area-sqm": "232",
+        "link": "https://www.remax.pt/imoveis/venda-predio-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/125851004-154"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9002548,
+          38.5233047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 37,
+        "mainImage": "green_bldg.jpg",
+        "marker": "normal",
+        "price": "€495,000",
+        "locationName": "next to Avenida Luísa Todi",
+        "locationLink": "https://goo.gl/maps/oZwNiFNo9YTCDMua6",
+        "agency": "ReMax",
+        "price/sqm": "€1,617",
+        "area-sqm": "306",
+        "link": "https://www.remax.pt/imoveis/venda-industrial-t0-setubal-setubal-sao-juliao-nossa-senhora-da-anunciada-e-santa-maria-da-graca/123991091-21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9009139,
+          38.5229875
+        ]
+      }
+    }
+  ]
+};

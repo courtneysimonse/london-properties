@@ -1,0 +1,278 @@
+var cascaisJSON = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "mainImage": "pamela-palace.jpg",
+        "location": "precise",
+        "agency": "Fine & Country/FT",
+        "locationName": "Palmela Palace, Cascais Bay",
+        "price": "€25,000,000",
+        "price/sqft": "€929",
+        "acres": "0.74",
+        "link": "https://propertylistings.ft.com/homes/2796191/cascais-property-for-sale/one-of-a-kind-manor-house-cascais"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.413453,
+          38.701076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "mainImage": "sintra-cascais.jpg",
+        "location": "general",
+        "locationName": "Sinstra Cascais Natural Park",
+        "agency": "NestSeekers",
+        "price": "€42,000,000",
+        "price/sqft": "€780",
+        "acres": "64",
+        "link": "https://www.primelocation.com/overseas/details/59161385/?search_identifier=0851a4a307292da91759f31768e3f94a"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.4601986,
+          38.7936463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "mainImage": "alcabideche.jpg",
+        "location": "precise",
+        "price": "€25,000,000",
+        "locationName": "Quinta Patino",
+        "agency": "Sotheby's",
+        "price/sqft": "€1,723",
+        "acres": "1.62",
+        "link": "https://www.sothebysrealtypt.com/conteudos/imoveis/detalhe.aspx?idimovel=48866&idioma=en&hash=a6fe045b-a2d6-4f5b-9284-e67a76bc0c3b"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.394417,
+          38.726556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "mainImage": "estoril.jpg",
+        "location": "general",
+        "locationName": "Estoril",
+        "agency": "Sotheby's",
+        "price": "€23,000,000",
+        "price/sqft": "€639",
+        "acres": "7.66",
+        "link": "https://www.francisyork.com/blog/the-patino-palace-on-the-portuguese-riviera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.39367,
+          38.71331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "mainImage": "quinta.jpg",
+        "location": "precise",
+        "locationName": "Cascais",
+        "agency": "Christies",
+        "price": "€20,400,000",
+        "price/sqft": "€877",
+        "acres": "7.67",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1709071439700015/unique-quinta-in-the-centre-of-cascais-which-has-a-land-area-of-31-060-sqm-and-a-residence-on-it-which-is-spread-over-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.4136331,
+          38.7271128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "mainImage": "cascais.jpg",
+        "location": "precise",
+        "locationName": "Cascais",
+        "agency": "Christies",
+        "price": "€17,340,000",
+        "price/sqft": "€1,581",
+        "acres": "1.45",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1608111117700073/magnificent-and-unique-property-in-the-centre-of-cascais-with-approximately-5-900-sqm-of-land-and-1-019-sqm-of-gross-li-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.428306,
+          38.697583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "mainImage": "patino.jpg",
+        "location": "general",
+        "price": "€12,750,000",
+        "locationName": "Quinta Patino",
+        "agency": "Christies",
+        "price/sqft": "€896",
+        "acres": "1.22",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-2110140842520701/quinta-patino-alcabideche-cascais-li-av-republic"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.3983,
+          38.7300
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "mainImage": "patino-2.jpg",
+        "location": "general",
+        "locationName": "Quinta Patino",
+        "agency": "Christies",
+        "price": "€12,200,000",
+        "price/sqft": "€2,056",
+        "acres": "1.14",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-f1144865763/8-bedroom-house-cascais-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.3955,
+          38.7292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "mainImage": "marinha-2.jpg",
+        "location": "precise",
+        "price": "€12,000,000",
+        "locationName": "Quinta de Marinha",
+        "agency": "Sotheby's",
+        "price/sqft": "€2,362",
+        "acres": "1",
+        "link": "https://www.sothebysrealtypt.com/conteudos/imoveis/detalhe.aspx?idimovel=49656&idioma=en&hash=615c114b-72a7-4fc0-9311-1641a7fe02fd"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.459806,
+           38.698722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "mainImage": "guincho.jpg",
+        "location": "precise",
+        "locationName": "Guincho, Cascais",
+        "agency": "Fine & Country",
+        "price": "€9,000,000",
+        "price/sqft": "€836",
+        "acres": "2.96",
+        "link": "https://www.irglux.com/listing/for-sale-detached-villa-guincho-cascais-portugal-mor3346nd/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.467750,
+          38.733194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "mainImage": "malviera.jpg",
+        "location": "precise",
+        "price": "€7,000,000",
+        "locationName": "Malveira da Serra",
+        "agency": "Sotheby's",
+        "price/sqft": "N/A",
+        "acres": "N/A",
+        "link": "https://www.sothebysrealty.com/eng/sales/detail/180-l-481-jt5bgb/house-8-bedrooms-for-sale-malveira-da-serra-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.446445,
+          38.753432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "mainImage": "marinha.jpg",
+        "location": "precise",
+        "price": "€5,950,000",
+        "locationName": "Quinta da Marinha",
+        "agency": "Christies",
+        "price/sqft": "N/A",
+        "acres": "N/A",
+        "link": "https://www.christiesrealestate.com/sales/detail/170-l-78233-2111220959373632/quinta-da-marinha-quinta-da-marinha-cascais-li"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.456250,
+          38.699306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "mainImage": "parede.jpg",
+        "location": "precise",
+        "locationName": "Cascais (Parede)",
+        "agency": "Savills",
+        "price": "€5,500,000",
+        "price/sqft": "€671",
+        "acres": "1.63",
+        "link": "https://search.savills.com/property-detail/gblisblbn210382"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.364222,
+          38.692306
+        ]
+      }
+    }
+  ]
+};
