@@ -57,45 +57,45 @@
   // console.log(L.Icon.Default.prototype.options);
 
   const blueIcon = L.icon({
-    iconUrl: '../images/marker.svg',
+    iconUrl: '../../images/marker.svg',
     iconSize: [20, 45],
     iconAnchor: anchor,
     popupAnchor: popupAnchor
   });
 
   const greenIcon = L.icon({
-    iconUrl: '../images/marker-green.svg',
+    iconUrl: '../../images/marker-green.svg',
     iconSize: [20, 45],
     iconAnchor: anchor,
     popupAnchor: popupAnchor
   });
 
   const redIcon = L.icon({
-    iconUrl: '../images/marker-red.svg',
+    iconUrl: '../../images/marker-red.svg',
     iconSize: [20, 45],
     iconAnchor: anchor
   });
 
   const purpleIcon = L.icon({
-    iconUrl: '../images/marker-purple.svg',
+    iconUrl: '../../images/marker-purple.svg',
     iconSize: [20, 45],
     iconAnchor: anchor
   });
 
   const blueStar = L.icon({
-    iconUrl: '../images/star-blue.svg',
+    iconUrl: '../../images/star-blue.svg',
     iconSize: [35, 35],
     iconAnchor: anchor
   });
 
   const greenStar = L.icon({
-    iconUrl: '../images/star-green.svg',
+    iconUrl: '../../images/star-green.svg',
     iconSize: [35, 35],
     iconAnchor: anchor
   });
 
   const yellowStar = L.icon({
-    iconUrl: '../images/star-yellow.svg',
+    iconUrl: '../../images/star-yellow.svg',
     iconSize: [35, 35],
     iconAnchor: [18,15]
   });
@@ -129,6 +129,7 @@
     console.log(properties[0].data.features);
     var setubalLayer = drawMap(properties[0]);
     var cascaisLayer = drawMap(properties[1]);
+    L.marker([38.80905, -9.289156], {icon: redIcon}).addTo(map);
 
     map.setZoom(map.getBoundsZoom(setubalLayer.getBounds()),{animate:false});
     map.zoomOut(.1,{animate:false});
@@ -259,7 +260,7 @@
     legend.innerHTML = '<h3>Location</h3><ul>' +
     '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
     '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
-    '<li><span><img src="../images/star-yellow.svg"></span> ' + 'Interesting' + '</li>' +
+    '<li><span><img src="../../images/star-yellow.svg"></span> ' + 'Interesting' + '</li>' +
     '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>' +
     '</ul>';
     // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
