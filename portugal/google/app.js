@@ -187,4 +187,21 @@ function initMap() {
     }
 
   } // end drawMarkers
+
+  const legend = document.createElement('div');
+  legend.id = "legend";
+  legend.classList = "legend ms-2";
+
+  const breaks = ["Listed","Vacant","Interesting","Joao's Building"];
+  const colors = ["#267ec9","#1a9e06","","#d95f02"];
+
+  legend.innerHTML = '<h3>Location</h3><ul>' +
+  '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
+  '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
+  '<li><span><img src="../../images/star-yellow.svg"></span> ' + 'Interesting' + '</li>' +
+  '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>' +
+  '</ul>';
+
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+
 } //end initMap
