@@ -64,38 +64,38 @@
   });
 
   const greenIcon = L.icon({
-    iconUrl: '../../images/marker-green.svg',
+    iconUrl: '../images/marker-green.svg',
     iconSize: [20, 45],
     iconAnchor: anchor,
     popupAnchor: popupAnchor
   });
 
   const redIcon = L.icon({
-    iconUrl: '../../images/marker-red.svg',
+    iconUrl: '../images/marker-red.svg',
     iconSize: [20, 45],
     iconAnchor: anchor
   });
 
   const purpleIcon = L.icon({
-    iconUrl: '../../images/marker-purple.svg',
+    iconUrl: '../images/marker-purple.svg',
     iconSize: [20, 45],
     iconAnchor: anchor
   });
 
   const blueStar = L.icon({
-    iconUrl: '../../images/star-blue.svg',
+    iconUrl: '../images/star-blue.svg',
     iconSize: [35, 35],
     iconAnchor: anchor
   });
 
   const greenStar = L.icon({
-    iconUrl: '../../images/star-green.svg',
+    iconUrl: '../images/star-green.svg',
     iconSize: [35, 35],
     iconAnchor: anchor
   });
 
   const yellowStar = L.icon({
-    iconUrl: '../../images/star-yellow.svg',
+    iconUrl: '../images/star-yellow.svg',
     iconSize: [35, 35],
     iconAnchor: [18,15]
   });
