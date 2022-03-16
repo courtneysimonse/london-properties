@@ -43,32 +43,44 @@ function initMap() {
     drawMarkers(data);
   });
 
-  const myIcons = {
-    'normal': '../../images/marker.svg',
-    'red': '../../images/marker-red.svg',
-    'green': '../../images/marker-green.svg',
-    'normal-interesting': '../../images/star-yellow.svg',
-    'green-interesting': '../../images/star-yellow.svg'
-  };
-
   const svgMarker = {
-    path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-    fillColor: "blue",
-    fillOpacity: 0.6,
+    path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+    // fillColor: "blue",
+    fillOpacity: 0.8,
     strokeWeight: 0,
     rotation: 0,
-    scale: 2,
-    anchor: new google.maps.Point(15, 30),
+    scale: .5,
+    // anchor: new google.maps.Point(15, 30),
+  };
+  // console.log(svgMarker);
+
+  var blueMarker = Object.assign({},svgMarker);
+  blueMarker = Object.assign(blueMarker,{fillColor: "blue"});
+
+  var redMarker = Object.assign({},svgMarker);
+  redMarker = Object.assign(redMarker,{fillColor: "red"});
+
+  var greenMarker = Object.assign({},svgMarker);
+  greenMarker = Object.assign(greenMarker,{fillColor: "green"});
+
+  var yellowStar = {
+    url: '../../images/star-yellow.svg'
   };
 
-  // map.data.setStyle(function (feature) {
-  //   if (!myIcons[feature.getProperty('marker')]) {
-  //     console.log(feature);
-  //   }
-  //   return {
-  //     icon:{url:myIcons[feature.getProperty('marker')]}
-  //   };
-  // });
+  const myIcons = {
+    'normal': blueMarker,
+    'red': redMarker,
+    'green': greenMarker,
+    'normal-interesting': yellowStar,
+    'green-interesting': yellowStar
+  };
+
+  // console.log(myIcons);
+
+  map.data.setStyle(function (feature) {
+    // console.log(myIcons[feature.getProperty('marker')]);
+    return {icon:myIcons[feature.getProperty('marker')]};
+  });
 
   new google.maps.Marker({
     position: { lat: 38.80905, lng: -9.289156 },
@@ -83,6 +95,25 @@ function initMap() {
       features: data
     };
     console.log(geojson);
-    map.data.addGeoJson(geojson);
+    var propertyFeatures = map.data.addGeoJson(geojson);
+
+    console.log(propertyFeatures);
+    propertyFeatures.forEach((feature) => {
+      // console.log(feature);
+    });
+
+    const infowindow = new google.maps.InfoWindow({
+      content: "Test",
+      maxWidth: 200
+    });
+    map.data.addListener("click", (event) => {
+      console.log(event.feature.getProperty("locationName"));
+      console.log(event.feature.getGeometry().getType());
+      infowindow.open({
+        anchor:event.latLng,
+        map,
+        shouldFocus: false
+      })
+    });
   }
 } //end initMap
