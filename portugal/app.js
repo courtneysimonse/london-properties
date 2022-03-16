@@ -57,7 +57,7 @@
   // console.log(L.Icon.Default.prototype.options);
 
   const blueIcon = L.icon({
-    iconUrl: '../../images/marker.svg',
+    iconUrl: '../images/marker.svg',
     iconSize: [20, 45],
     iconAnchor: anchor,
     popupAnchor: popupAnchor
