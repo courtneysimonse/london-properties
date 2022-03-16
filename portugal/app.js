@@ -121,6 +121,36 @@
 
   var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
+  L.Control.FlyBtns = L.Control.extend({
+    onAdd: function(map) {
+      var btnGroup = L.DomUtil.create('div','btn-group btn-group-sm');
+      btnGroup.setAttribute('role','group');
+      var button1 = L.DomUtil.create('button','btn btn-secondary',btnGroup);
+      button1.innerText = 'Setubal';
+      var button2 = L.DomUtil.create('button','btn btn-secondary',btnGroup);
+      button2.innerText = 'Cascais';
+
+      L.DomEvent.on(button1,'click',function(e) {
+        map.flyTo([38.525, -8.893],15);
+      });
+
+      L.DomEvent.on(button2,'click',function(e) {
+        map.flyTo([38.75, -9.39],12);
+      })
+      return btnGroup;
+    },
+
+    onRemove: function(map) {
+
+    }
+  });
+
+  L.control.flyBtns = function(opts) {
+    return new L.Control.FlyBtns;
+  }
+
+  L.control.flyBtns({position: 'topright'}).addTo(map);
+
   // GET DATA
   processData(propertiesData);
 
@@ -267,7 +297,9 @@
   //
   } // end drawLegend()
 
+  function locationButton() {
 
+  }
 
 
 })();
