@@ -82,10 +82,23 @@ function initMap() {
     return {icon:myIcons[feature.getProperty('marker')]};
   });
 
-  new google.maps.Marker({
+  var markerEx = new google.maps.Marker({
     position: { lat: 38.80905, lng: -9.289156 },
     map,
     title: "Marker",
+  });
+
+  const testInfowindow = new google.maps.InfoWindow({
+    content: "test",
+    maxWidth: 200
+  });
+
+  markerEx.addListener("click", () => {
+    testInfowindow.open({
+      anchor:markerEx,
+      map,
+      shouldFocus: false
+    });
   });
 
 
@@ -95,7 +108,7 @@ function initMap() {
       features: data
     };
     console.log(geojson);
-    var propertyFeatures = map.data.addGeoJson(geojson);
+    var propertyFeatures = map.data.addGeoJson(geojson,{idPropertyName:"id"});
 
     console.log(propertyFeatures);
     propertyFeatures.forEach((feature) => {
@@ -104,16 +117,48 @@ function initMap() {
 
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
-      maxWidth: 200
+      maxWidth: 400,
+      pixelOffset: new google.maps.Size(0,-20)
     });
+
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
-      console.log(event.feature.getGeometry().getType());
-      infowindow.open({
-        anchor:event.latLng,
-        map,
-        shouldFocus: false
-      })
+
+      let popupHTML = '';
+      popupHTML += "<img class='mainImage mx-auto' src='../images/" + event.feature.getProperty('mainImage') + "'>"
+      popupHTML += "<div class='row'>";
+      popupHTML += "<div class='col-md-6 col-xs-6'>";
+      if (event.feature.getProperty('price') != "N/A") {
+        popupHTML += "Price: " + event.feature.getProperty('price') + "<br>";
+      }
+      if (event.feature.getProperty("locationLink") != "") {
+        popupHTML += "<a href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+      } else {
+        popupHTML += event.feature.getProperty("locationName");
+      }
+      popupHTML += "</div>";
+      if (event.feature.getProperty("price/sqm") != "N/A") {
+        popupHTML += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + event.feature.getProperty("price/sqm");
+        popupHTML += "<br>" + event.feature.getProperty("area-sqm") + " sq m</div>";
+      }
+      if (event.feature.getProperty('link') != "") {
+        popupHTML += "<div class='col-12 py-1'><a target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+      }
+      if (event.feature.getProperty('documents') != "") {
+        console.log(event.feature.getProperty('documents'));
+        let documents = eval(event.feature.getProperty('documents'));
+        popupHTML += "<div class='col-12 py-0'>Documents:";
+        documents.forEach((item, i) => {
+          popupHTML += "<a target='_blank' href='../documents/"+item[1]+"'>"+item[0]+"</a> ";
+        });
+        popupHTML += "</div>";
+      }
+
+      infowindow.setContent(popupHTML);
+
+      infowindow.setPosition(event.feature.getGeometry().get());
+
+      infowindow.open(map);
     });
   }
 } //end initMap
