@@ -1,5 +1,7 @@
 let map;
 
+var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "90e7ec06f513d4a4",
@@ -160,5 +162,19 @@ function initMap() {
 
       infowindow.open(map);
     });
+
+    infowindow.addListener('domready', () => {
+      console.log('domready');
+
+      var images = document.getElementsByClassName('mainImage');
+      images[images.length-1].addEventListener('click', function () {
+        // console.log('click');
+        // console.log(images[images.length-1].attributes[1]);
+        document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
+                "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
+        imageModal.show();
+      });
+    });
+    
   }
 } //end initMap
