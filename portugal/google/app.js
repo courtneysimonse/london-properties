@@ -1,6 +1,8 @@
 let map;
 
 var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+var cascaisBtn = document.getElementById('cascaisBtn');
+var setubalBtn = document.getElementById('setubalBtn');
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("mapid"), {
@@ -175,6 +177,14 @@ function initMap() {
         imageModal.show();
       });
     });
-    
-  }
+
+    cascaisBtn.addEventListener('click', () => {zoomToCenter({lat: 38.75, lng: -9.39},12)});
+    setubalBtn.addEventListener('click', () => {zoomToCenter({lat: 38.525, lng: -8.893},15)});
+
+    function zoomToCenter(latLng, zoom) {
+      map.panTo(latLng);
+      map.setZoom(zoom);
+    }
+
+  } // end drawMarkers
 } //end initMap
