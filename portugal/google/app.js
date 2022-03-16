@@ -12,7 +12,7 @@ function initMap() {
     mapTypeControlOptions: {
       position: google.maps.ControlPosition.RIGHT_TOP,
       style: google.maps.MapTypeControlStyle.DEFAULT,
-      mapTypeIds: ["roadmap", "satellite"],
+      mapTypeIds: ["roadmap","terrain", "satellite"],
     }
   });
 
@@ -88,18 +88,18 @@ function initMap() {
     title: "Marker",
   });
 
-  const testInfowindow = new google.maps.InfoWindow({
-    content: "test",
-    maxWidth: 200
-  });
-
-  markerEx.addListener("click", () => {
-    testInfowindow.open({
-      anchor:markerEx,
-      map,
-      shouldFocus: false
-    });
-  });
+  // const testInfowindow = new google.maps.InfoWindow({
+  //   content: "test",
+  //   maxWidth: 200
+  // });
+  //
+  // markerEx.addListener("click", () => {
+  //   testInfowindow.open({
+  //     anchor:markerEx,
+  //     map,
+  //     shouldFocus: false
+  //   });
+  // });
 
 
   function drawMarkers(data) {
