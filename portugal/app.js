@@ -260,7 +260,7 @@
     legend.innerHTML = '<h3>Location</h3><ul>' +
     '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
     '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
-    '<li><span><img src="../../images/star-yellow.svg"></span> ' + 'Interesting' + '</li>' +
+    '<li><span><img src="../images/star-yellow.svg"></span> ' + 'Interesting' + '</li>' +
     '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>' +
     '</ul>';
     // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
