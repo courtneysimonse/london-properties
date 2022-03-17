@@ -130,7 +130,7 @@ function initMap() {
 
       let popupHTML = '';
       popupHTML += "<img class='mainImage mx-auto' src='../images/" + event.feature.getProperty('mainImage') + "'>"
-      popupHTML += "<div class='row'>";
+      popupHTML += "<div class='row' style='max-width: 100%;'>";
       popupHTML += "<div class='col-md-6 col-xs-6'>";
       if (event.feature.getProperty('price') != "N/A") {
         popupHTML += "Price: " + event.feature.getProperty('price') + "<br>";
