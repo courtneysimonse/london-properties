@@ -6,7 +6,7 @@ var setubalBtn = document.getElementById('setubalBtn');
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("mapid"), {
-    mapId: "90e7ec06f513d4a4",
+    mapId: "4b8d32be0b6717d",
     center: { lat: 38.525, lng: -8.893 },
     zoom: 15,
     fullscreenControlOptions: {
