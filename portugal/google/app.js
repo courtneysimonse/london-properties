@@ -16,7 +16,7 @@ function initMap() {
     mapTypeControlOptions: {
       position: google.maps.ControlPosition.RIGHT_TOP,
       style: google.maps.MapTypeControlStyle.DEFAULT,
-      mapTypeIds: ["roadmap","terrain", "satellite"],
+      mapTypeIds: ["satellite","roadmap","terrain"],
     }
   });
 
