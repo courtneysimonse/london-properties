@@ -12,11 +12,12 @@ function initMap() {
     fullscreenControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
     mapTypeControl: true,
     mapTypeControlOptions: {
       position: google.maps.ControlPosition.RIGHT_TOP,
       style: google.maps.MapTypeControlStyle.DEFAULT,
-      mapTypeIds: ["satellite","roadmap","terrain"],
+      mapTypeIds: ["satellite","terrain","roadmap"],
     }
   });
 
