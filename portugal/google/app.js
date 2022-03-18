@@ -59,13 +59,13 @@ function initMap() {
   // console.log(svgMarker);
 
   var blueMarker = Object.assign({},svgMarker);
-  blueMarker = Object.assign(blueMarker,{fillColor: "blue"});
+  blueMarker = Object.assign(blueMarker,{fillColor: "#267ec9"});
 
   var redMarker = Object.assign({},svgMarker);
-  redMarker = Object.assign(redMarker,{fillColor: "red"});
+  redMarker = Object.assign(redMarker,{fillColor: "#d95f02"});
 
   var greenMarker = Object.assign({},svgMarker);
-  greenMarker = Object.assign(greenMarker,{fillColor: "green"});
+  greenMarker = Object.assign(greenMarker,{fillColor: "#1a9e06"});
 
   var yellowStar = {
     url: '../../images/star-yellow.svg'
