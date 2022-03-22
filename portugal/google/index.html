@@ -35,9 +35,19 @@
     <!-- <h1>Setubal Property Snapshot</h1> -->
     <div id="mapid"></div>
 
-    <div class="btn-group btn-group-sm m-3">
+    <!-- <div class="btn-group btn-group-sm m-3">
       <button class="btn btn-secondary" type="button" name="CascaisBtn" id="cascaisBtn">Cascais</button>
       <button class="btn btn-secondary" type="button" name="SetubalBtn" id="setubalBtn">Setúbal</button>
+    </div> -->
+
+    <div class="dropdown m-3">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="citiesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Cities
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="citiesDropdown">
+        <li><button class="dropdown-item" type="button" id="cascaisBtn">Cascais</button></li>
+        <li><button class="dropdown-item" type="button" id="setubalBtn">Setúbal</button></li>
+      </ul>
     </div>
 
     <div class="modal modal-fullscreen-md-down" tabindex="-1" id="imageModal">
