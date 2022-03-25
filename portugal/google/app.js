@@ -95,20 +95,6 @@ function initMap() {
     title: "Marker",
   });
 
-  // const testInfowindow = new google.maps.InfoWindow({
-  //   content: "test",
-  //   maxWidth: 200
-  // });
-  //
-  // markerEx.addListener("click", () => {
-  //   testInfowindow.open({
-  //     anchor:markerEx,
-  //     map,
-  //     shouldFocus: false
-  //   });
-  // });
-
-
   function drawMarkers(data) {
     var geojson = {
       type: "FeatureCollection",
