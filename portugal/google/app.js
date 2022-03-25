@@ -200,6 +200,8 @@ function initMap() {
     }
   });
 
+  map.setTilt(45);
+
   // map.mapTypes.set("terrain_simple", styledMapTerrain);
 
   d3.csv("./portugal_properties.csv", (d) => {
