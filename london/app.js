@@ -1,15 +1,15 @@
 let map;
 
 var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-var cascaisBtn = document.getElementById('cascaisBtn');
-var setubalBtn = document.getElementById('setubalBtn');
+// var cascaisBtn = document.getElementById('cascaisBtn');
+// var setubalBtn = document.getElementById('setubalBtn');
 
 function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
-    center: { lat: 38.525, lng: -8.893 },
-    zoom: 15,
+    center: { lat: 51.515, lng: -0.155 },
+    zoom: 12,
     fullscreenControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
@@ -23,7 +23,8 @@ function initMap() {
 
   map.setTilt(45);
 
-  d3.csv("./portugal_properties.csv", (d) => {
+  d3.csv("./london-properties.csv", (d) => {
+    console.log(d);
     return {
       type: "Feature",
       properties: {
@@ -33,8 +34,8 @@ function initMap() {
         locationName: d.locationName,
         locationLink: d.locationLink,
         price: d.price,
-        "price/sqm": d["price/sqm"],
-        "area-sqm": d["area-sqm"],
+        "price-sqft": d["price-sqft"],
+        "area-sqft": d["area-sqft"],
         acres: d.acres,
         link: d.link,
         documents: d.documents,
@@ -94,35 +95,36 @@ function initMap() {
 
   // console.log(myIcons);
 
-
-  const breaks = [1500,10000,"Vacant"];
+  // 15-25, 25-35, 35+
+  const breaks = [15000000,25000000,35000000,"Vacant"];
   const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
 
   map.data.setStyle(function (feature) {
     // console.log(myIcons[feature.getProperty('marker')]);
-    let pricesqm = feature.getProperty('price/sqm');
-    if (pricesqm == "N/A") {
+    let tier = feature.getProperty('price');
+    if (tier == "N/A") {
       return {icon:myIcons['N/A']};
     } else {
-      pricesqm = +pricesqm.replace('€','').replace(/,/g,'');
-      if (pricesqm < breaks[0]) {
+      tier = +tier.replace('£','').replace(/,/g,'');
+      // console.log(tier);
+      if (tier < breaks[0]) {
         return {icon:myIcons['tier1']};
-      } else if (pricesqm < breaks[1]) {
+      } else if (tier < breaks[1]) {
         return {icon:myIcons['tier2']};
       } else {
         return {icon:myIcons['tier3']};
       }
     }
-    console.log(pricesqm);
+    console.log(tier);
 
     return {icon:myIcons[feature.getProperty('marker')]};
   });
 
-  var marker1 = new google.maps.Marker({
-    position: { lat: 38.80905, lng: -9.289156 },
-    map,
-    title: "Marker",
-  });
+  // var marker1 = new google.maps.Marker({
+  //   position: { lat: 38.80905, lng: -9.289156 },
+  //   map,
+  //   title: "Marker",
+  // });
 
   function drawMarkers(data) {
     var geojson = {
@@ -147,7 +149,7 @@ function initMap() {
       console.log(event.feature.getProperty("locationName"));
 
       let popupHTML = '';
-      popupHTML += "<img class='mainImage mx-auto' src='../images/" + event.feature.getProperty('mainImage') + "'>"
+      popupHTML += "<img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "'>"
       popupHTML += "<div class='row' style='max-width: 100%;'>";
       popupHTML += "<div class='col-md-6 col-xs-6'>";
       if (event.feature.getProperty('price') != "N/A") {
@@ -159,9 +161,9 @@ function initMap() {
         popupHTML += event.feature.getProperty("locationName");
       }
       popupHTML += "</div>";
-      if (event.feature.getProperty("price/sqm") != "N/A") {
-        popupHTML += "<div class='col-md-6 col-xs-6'>Price/SqMeter: " + event.feature.getProperty("price/sqm");
-        popupHTML += "<br>" + event.feature.getProperty("area-sqm") + " sq m</div>";
+      if (event.feature.getProperty("price-sqft") != "N/A") {
+        popupHTML += "<div class='col-md-6 col-xs-6'>Price/SqFt: " + event.feature.getProperty("price-sqft");
+        popupHTML += "<br>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
       }
       if (event.feature.getProperty('link') != "") {
         popupHTML += "<div class='col-12 py-1'><a target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
@@ -196,8 +198,8 @@ function initMap() {
       });
     });
 
-    cascaisBtn.addEventListener('click', () => {zoomToCenter({lat: 38.75, lng: -9.39},12)});
-    setubalBtn.addEventListener('click', () => {zoomToCenter({lat: 38.525, lng: -8.893},15)});
+    // cascaisBtn.addEventListener('click', () => {zoomToCenter({lat: 38.75, lng: -9.39},12)});
+    // setubalBtn.addEventListener('click', () => {zoomToCenter({lat: 38.525, lng: -8.893},15)});
 
     function zoomToCenter(latLng, zoom) {
       map.panTo(latLng);
@@ -211,12 +213,12 @@ function initMap() {
   legend.id = "legend";
   legend.classList = "legend ms-2";
 
-  let legendHTML = '<h3>€/SqMeter</h3><ul>';
+  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
 
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> < ' + breaks[0] + '</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[0] + ' &mdash; ' + breaks[1] + '</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[1] + '</li>';
-  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[2] + '</li>';
+  legendHTML += '<li><span style="background:' + colors[0] + '"></span> < ' + breaks[0]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[0]/1000000 + ' &mdash; ' + breaks[1]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[1]/1000000 + ' million</li>';
+  // legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[2] + '</li>';
   legendHTML += '</ul>';
 
   legend.innerHTML = legendHTML;
