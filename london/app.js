@@ -107,9 +107,9 @@ function initMap() {
     } else {
       tier = +tier.replace('£','').replace(/,/g,'');
       // console.log(tier);
-      if (tier < breaks[0]) {
+      if (tier < breaks[1]) {
         return {icon:myIcons['tier1']};
-      } else if (tier < breaks[1]) {
+      } else if (tier < breaks[2]) {
         return {icon:myIcons['tier2']};
       } else {
         return {icon:myIcons['tier3']};
@@ -215,9 +215,9 @@ function initMap() {
 
   let legendHTML = '<h3>Price (&pound;)</h3><ul>';
 
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> < ' + breaks[0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[0]/1000000 + ' &mdash; ' + breaks[1]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[1]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0]/1000000 + ' &mdash; ' + breaks[1]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1]/1000000 + ' &mdash; ' + breaks[2]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[2]/1000000 + ' million</li>';
   // legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[2] + '</li>';
   legendHTML += '</ul>';
 
