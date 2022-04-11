@@ -96,7 +96,7 @@ function initMap() {
   // console.log(myIcons);
 
   // 15-25, 25-35, 35+
-  const breaks = [25000000,30000000,35000000,"Vacant"];
+  const breaks = [15000000,25000000,35000000,"Vacant"];
   const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
 
   map.data.setStyle(function (feature) {
