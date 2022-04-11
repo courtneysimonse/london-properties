@@ -96,7 +96,7 @@ function initMap() {
   // console.log(myIcons);
 
   // 15-25, 25-35, 35+
-  const breaks = [15000000,25000000,35000000,"Vacant"];
+  const breaks = [25000000,30000000,35000000,"Vacant"];
   const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
 
   map.data.setStyle(function (feature) {
@@ -152,7 +152,7 @@ function initMap() {
       popupHTML += "<img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "'>"
       popupHTML += "<div class='row' style='max-width: 100%;'>";
       popupHTML += "<div class='col-md-6 col-xs-6'>";
-      if (event.feature.getProperty('price') != "N/A") {
+      if (event.feature.getProperty('price') != "N/A" || event.feature.getProperty('price') != "Price on Application") {
         popupHTML += "Price: " + event.feature.getProperty('price') + "<br>";
       }
       if (event.feature.getProperty("locationLink") != "") {
