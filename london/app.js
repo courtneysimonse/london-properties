@@ -158,29 +158,34 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
       maxWidth: 400,
+      minWidth: 400,
       pixelOffset: new google.maps.Size(0,-20)
     });
 
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = "<div class='card'><div class='row' style='max-width: 100%;'>";
-      popupHTML += "<div class='col-6'><img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=180&h=130'></div>"
-      popupHTML += "<div class='col-6'>";
+      let popupHTML = "<div style='height: 100px;'><div class='row' style='max-width: 100%; height: 100px;'>";
+      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:98.4167px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98.4167'></div>"
+      popupHTML += "<div class='col-6 ps-0'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       popupHTML += "<div>"
-      if (event.feature.getProperty('price') != "N/A" || event.feature.getProperty('price') != "Price on Application") {
-        popupHTML += "Price: " + event.feature.getProperty('price') + "<br>";
-      }
+      popupHTML += "<p class='mb-1 pb-0 fs-6'><strong>";
       if (event.feature.getProperty("locationLink") != "") {
-        popupHTML += "<a href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        popupHTML += "<a class='iw-link' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
       } else {
         popupHTML += event.feature.getProperty("locationName");
       }
+      popupHTML += "</strong></p>";
+
+      if (event.feature.getProperty('price') != "N/A") {
+        popupHTML += "<p class='fs-6'>Price: " + event.feature.getProperty('price') + "</p>";
+      }
+
       popupHTML += "</div>";
       if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += "<div class='col-md-6 col-xs-6'>Price/SqFt: " + event.feature.getProperty("price-sqft");
-        popupHTML += "<br>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
+        popupHTML += "<div class='row'><div class='col-7 pe-0'>&pound;/SqFt: " + event.feature.getProperty("price-sqft") + "</div>";
+        popupHTML += "<div class='col-5 ps-0'>" + event.feature.getProperty("area-sqft") + " sq ft</div></div>";
       }
       if (event.feature.getProperty('link') != "") {
         popupHTML += "<div class='col-12 py-1'><a target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
