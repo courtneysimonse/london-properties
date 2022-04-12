@@ -165,7 +165,7 @@ function initMap() {
       console.log(event.feature.getProperty("locationName"));
 
       let popupHTML = "<div class='card'><div class='row' style='max-width: 100%;'>";
-      popupHTML += "<div class='col-6'><img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "'></div>"
+      popupHTML += "<div class='col-6'><img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=180&h=130'></div>"
       popupHTML += "<div class='col-6'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       popupHTML += "<div>"
