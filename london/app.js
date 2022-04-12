@@ -165,8 +165,8 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = "<div style='height: 100px;'><div class='row' style='max-width: 100%; height: 100px;'>";
-      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:98.4167px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98.4167'></div>"
+      let popupHTML = "<div class='m-0 p-0' style='height: 100px;'><div class='row' style='max-width: 100%; height: 100px;'>";
+      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:98px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98'></div>"
       popupHTML += "<div class='col-6 ps-0'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       popupHTML += "<div>"
