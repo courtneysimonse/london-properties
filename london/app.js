@@ -7,7 +7,7 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
-    mapId: "4b8d32be0b6717d",
+    mapId: "ddda8f9544c3072b",
     center: { lat: 51.515, lng: -0.155 },
     zoom: 12,
     fullscreenControlOptions: {
@@ -179,6 +179,9 @@ function initMap() {
       }
 
       infowindow.setContent(popupHTML);
+
+      // center map on marker
+      map.panTo(event.feature.getGeometry().get());
 
       infowindow.setPosition(event.feature.getGeometry().get());
 
