@@ -96,7 +96,7 @@ function initMap() {
   // console.log(myIcons);
 
   // 15-25, 25-35, 35+
-  const breaks = [15000000,25000000,35000000,"Vacant"];
+  const breaks = [15000000,25000000,35000000,"Price on Application"];
   const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
 
   map.data.setStyle(function (feature) {
@@ -133,11 +133,27 @@ function initMap() {
     };
     console.log(geojson);
     var propertyFeatures = map.data.addGeoJson(geojson,{idPropertyName:"id"});
+    // console.log(propertyFeatures);
 
     // console.log(propertyFeatures);
     // propertyFeatures.forEach((feature) => {
     //   // console.log(feature);
     // });
+
+
+    google.maps.event.addListenerOnce(map, 'idle', function () {
+
+          const bounds = new google.maps.LatLngBounds();
+
+          propertyFeatures.forEach((feature) => {
+            const geometry = feature.getGeometry();
+
+            if (geometry) {
+              processPoints(geometry, bounds.extend, bounds);
+            }
+          });
+          map.fitBounds(bounds, 0);
+    });
 
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
@@ -148,10 +164,11 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = '';
-      popupHTML += "<img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "'>"
-      popupHTML += "<div class='row' style='max-width: 100%;'>";
-      popupHTML += "<div class='col-md-6 col-xs-6'>";
+      let popupHTML = "<div class='card'><div class='row' style='max-width: 100%;'>";
+      popupHTML += "<div class='col-6'><img class='mainImage mx-auto' src='images/" + event.feature.getProperty('mainImage') + "'></div>"
+      popupHTML += "<div class='col-6'>";
+      // popupHTML += "<div class='col-md-6 col-xs-6'>";
+      popupHTML += "<div>"
       if (event.feature.getProperty('price') != "N/A" || event.feature.getProperty('price') != "Price on Application") {
         popupHTML += "Price: " + event.feature.getProperty('price') + "<br>";
       }
@@ -177,6 +194,7 @@ function initMap() {
         });
         popupHTML += "</div>";
       }
+      popupHTML += "</div>"
 
       infowindow.setContent(popupHTML);
 
@@ -221,7 +239,7 @@ function initMap() {
   legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0]/1000000 + ' &mdash; ' + breaks[1]/1000000 + ' million</li>';
   legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1]/1000000 + ' &mdash; ' + breaks[2]/1000000 + ' million</li>';
   legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[2]/1000000 + ' million</li>';
-  // legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[2] + '</li>';
+  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>';
   legendHTML += '</ul>';
 
   legend.innerHTML = legendHTML;
@@ -229,3 +247,15 @@ function initMap() {
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
 } //end initMap
+
+function processPoints(geometry, callback, thisArg) {
+  if (geometry instanceof google.maps.LatLng) {
+    callback.call(thisArg, geometry);
+  } else if (geometry instanceof google.maps.Data.Point) {
+    callback.call(thisArg, geometry.get());
+  } else {
+    geometry.getArray().forEach((g) => {
+      processPoints(g, callback, thisArg);
+    });
+  }
+}
