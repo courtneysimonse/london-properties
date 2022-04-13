@@ -21,7 +21,7 @@ for (var cat in breaks) {
 function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
-    mapId: "ddda8f9544c3072b",
+    mapId: "4b8d32be0b6717d",
     center: { lat: 51.515, lng: -0.155 },
     zoom: 12,
     fullscreenControlOptions: {
@@ -252,9 +252,9 @@ function initMap() {
 
   const categoryDiv = document.createElement('div');
   categoryControl(categoryDiv, categories, map);
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
+  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
 
-  updateCategory(category);
+  // updateCategory(category);
 
 } //end initMap
 
