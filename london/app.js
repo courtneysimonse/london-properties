@@ -4,6 +4,20 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 // var cascaisBtn = document.getElementById('cascaisBtn');
 // var setubalBtn = document.getElementById('setubalBtn');
 
+
+// 15-25, 25-35, 35+
+const breaks = {
+  "Price (&pound;)": [15000000,25000000,35000000,"Price on Application"],
+  "&pound;/sq ft": [1000,3000,4000,"N/A"],
+  "Sq ft": [400,6000,8000,"N/A"]
+};
+const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
+var category = "Price (&pound;)";
+var categories = [];
+for (var cat in breaks) {
+  categories.push(cat);
+}
+
 function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
@@ -95,9 +109,6 @@ function initMap() {
 
   // console.log(myIcons);
 
-  // 15-25, 25-35, 35+
-  const breaks = [15000000,25000000,35000000,"Price on Application"];
-  const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
 
   map.data.setStyle(function (feature) {
     // console.log(myIcons[feature.getProperty('marker')]);
@@ -107,9 +118,9 @@ function initMap() {
     } else {
       tier = +tier.replace('£','').replace(/,/g,'');
       // console.log(tier);
-      if (tier < breaks[1]) {
+      if (tier < breaks[category][1]) {
         return {icon:myIcons['tier1']};
-      } else if (tier < breaks[2]) {
+      } else if (tier < breaks[category][2]) {
         return {icon:myIcons['tier2']};
       } else {
         return {icon:myIcons['tier3']};
@@ -236,22 +247,69 @@ function initMap() {
   } // end drawMarkers
 
   const legend = document.createElement('div');
+  legendControl(legend, map);
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+
+  const categoryDiv = document.createElement('div');
+  categoryControl(categoryDiv, categories, map);
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
+
+  updateCategory(category);
+
+} //end initMap
+
+function legendControl(legend, map) {
+
   legend.id = "legend";
   legend.classList = "legend ms-2";
 
   let legendHTML = '<h3>Price (&pound;)</h3><ul>';
 
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0]/1000000 + ' &mdash; ' + breaks[1]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1]/1000000 + ' &mdash; ' + breaks[2]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[2]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[3] + '</li>';
+  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/1000000 + ' &mdash; ' + breaks[category][1]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/1000000 + ' &mdash; ' + breaks[category][2]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
   legendHTML += '</ul>';
 
   legend.innerHTML = legendHTML;
 
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+}
 
-} //end initMap
+function categoryControl(categoryControl, categories, map) {
+  categoryControl.id = "categoryControl";
+  categoryControl.classList = "btn-group dropup m-2"
+
+  let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
+            'Choose a Parameter' + '</button>' +
+            '<ul class="dropdown-menu">';
+
+  for (var cat of categories) {
+    categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+  }
+  categoryHTML += '</ul></div>';
+  categoryControl.innerHTML = categoryHTML;
+
+  categoryControl.addEventListener("click", () => {
+    console.log('click');
+  });
+}
+
+
+function updateCategory(category) {
+  console.log(document.getElementById('legend'));
+  const legendDiv = document.getElementById('legend');
+
+  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+
+  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/1000000 + ' &mdash; ' + breaks[category][1]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/1000000 + ' &mdash; ' + breaks[category][2]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
+  legendHTML += '</ul>';
+
+  legendDiv.innerHTML = legendHTML;
+
+}
 
 function processPoints(geometry, callback, thisArg) {
   if (geometry instanceof google.maps.LatLng) {
