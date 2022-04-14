@@ -7,16 +7,80 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
 // 15-25, 25-35, 35+
 const breaks = {
-  "Price (&pound;)": [15000000,25000000,35000000,"Price on Application"],
-  "&pound;/sq ft": [1000,3000,4000,"N/A"],
-  "Sq ft": [400,6000,8000,"N/A"]
+  price: [15000000,25000000,35000000,"Price on Application"],
+  "price-sqft": [1000,4000,5000,"N/A"],
+  "area-sqft": [400,6000,8000,"N/A"]
 };
-const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
-var category = "Price (&pound;)";
-var categories = [];
-for (var cat in breaks) {
-  categories.push(cat);
+const labels = {
+  price: "Price (£)",
+  "price-sqft": "£/sq ft",
+  "area-sqft": "Sq ft"
 }
+console.log(breaks['ppsf']);
+const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
+var category = "price";
+// var categories = [];
+// for (var cat in breaks) {
+//   categories.push(cat);
+// }
+
+const svgMarker = {
+  // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+  // fillColor: "blue",
+  path: "M 0.000 20.000" +
+      "L 23.511 32.361" +
+      "L 19.021 6.180" +
+      "L 38.042 -12.361" +
+      "L 11.756 -16.180" +
+      "L 0.000 -40.000" +
+      "L -11.756 -16.180" +
+      "L -38.042 -12.361" +
+      "L -19.021 6.180" +
+      "L -23.511 32.361" +
+      "L 0.000 20.000",
+  fillOpacity: 0.8,
+  strokeWeight: 1,
+  strokeColor: 'grey',
+  rotation: 0,
+  scale: .3
+  // scale: .5, // for pin
+  // anchor: new google.maps.Point(15, 30),
+};
+// console.log(svgMarker);
+
+var blueMarker = Object.assign({},svgMarker);
+blueMarker = Object.assign(blueMarker,{fillColor: "#267ec9"});
+
+var redMarker = Object.assign({},svgMarker);
+redMarker = Object.assign(redMarker,{fillColor: "#d95f02"});
+
+var greenMarker = Object.assign({},svgMarker);
+greenMarker = Object.assign(greenMarker,{fillColor: "#1a9e06"});
+
+var yellowMarker = Object.assign({},svgMarker);
+yellowMarker = Object.assign(yellowMarker,{fillColor: "#ffcc00"});
+
+// var yellowStar = {
+//   url: '../../images/star-yellow.svg'
+// };
+
+// const myIcons = {
+//   'normal': blueMarker,
+//   'red': redMarker,
+//   'green': greenMarker,
+//   'normal-interesting': yellowStar,
+//   'green-interesting': yellowStar
+// };
+
+const myIcons = {
+  'tier1': blueMarker,
+  'tier2': yellowMarker,
+  'tier3': redMarker,
+  'N/A': greenMarker,
+};
+
+// console.log(myIcons);
+
 
 function initMap() {
 
@@ -65,62 +129,6 @@ function initMap() {
     drawMarkers(data);
   });
 
-  const svgMarker = {
-    // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
-    // fillColor: "blue",
-    path: "M 0.000 20.000" +
-        "L 23.511 32.361" +
-        "L 19.021 6.180" +
-        "L 38.042 -12.361" +
-        "L 11.756 -16.180" +
-        "L 0.000 -40.000" +
-        "L -11.756 -16.180" +
-        "L -38.042 -12.361" +
-        "L -19.021 6.180" +
-        "L -23.511 32.361" +
-        "L 0.000 20.000",
-    fillOpacity: 0.8,
-    strokeWeight: 1,
-    strokeColor: 'grey',
-    rotation: 0,
-    scale: .3
-    // scale: .5, // for pin
-    // anchor: new google.maps.Point(15, 30),
-  };
-  // console.log(svgMarker);
-
-  var blueMarker = Object.assign({},svgMarker);
-  blueMarker = Object.assign(blueMarker,{fillColor: "#267ec9"});
-
-  var redMarker = Object.assign({},svgMarker);
-  redMarker = Object.assign(redMarker,{fillColor: "#d95f02"});
-
-  var greenMarker = Object.assign({},svgMarker);
-  greenMarker = Object.assign(greenMarker,{fillColor: "#1a9e06"});
-
-  var yellowMarker = Object.assign({},svgMarker);
-  yellowMarker = Object.assign(yellowMarker,{fillColor: "#ffcc00"});
-
-  // var yellowStar = {
-  //   url: '../../images/star-yellow.svg'
-  // };
-
-  // const myIcons = {
-  //   'normal': blueMarker,
-  //   'red': redMarker,
-  //   'green': greenMarker,
-  //   'normal-interesting': yellowStar,
-  //   'green-interesting': yellowStar
-  // };
-
-  const myIcons = {
-    'tier1': blueMarker,
-    'tier2': yellowMarker,
-    'tier3': redMarker,
-    'N/A': greenMarker,
-  };
-
-  // console.log(myIcons);
 
 
   map.data.setStyle(function (feature) {
@@ -202,13 +210,18 @@ function initMap() {
       }
       popupHTML += "</strong></p>";
 
-      if (event.feature.getProperty('price') != "N/A") {
+      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "Price on Application" ) {
         popupHTML += "<p class='fs-6'>Price: " + event.feature.getProperty('price') + "</p>";
       }
 
       popupHTML += "</div>";
+      popupHTML += "<div class='row'><div class='col-7 pe-0'>&pound;/SqFt: ";
       if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += "<div class='row'><div class='col-7 pe-0'>&pound;/SqFt: " + event.feature.getProperty("price-sqft") + "</div>";
+        popupHTML += event.feature.getProperty('price-sqft') + "</div>";
+      } else {
+        popupHTML += "N/A</div>";
+      }
+      if (event.feature.getProperty("area-sqft") != "N/A") {
         popupHTML += "<div class='col-5 ps-0'>" + event.feature.getProperty("area-sqft") + " sq ft</div></div>";
       }
       if (event.feature.getProperty('link') != "") {
@@ -264,8 +277,8 @@ function initMap() {
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
   const categoryDiv = document.createElement('div');
-  categoryControl(categoryDiv, categories, map);
-  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
+  categoryControl(categoryDiv, map);
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
 
   // updateCategory(category);
 
@@ -288,39 +301,75 @@ function legendControl(legend, map) {
 
 }
 
-function categoryControl(categoryControl, categories, map) {
+function categoryControl(categoryControl, map) {
   categoryControl.id = "categoryControl";
   categoryControl.classList = "btn-group dropup m-2"
 
-  let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
-            'Choose a Parameter' + '</button>' +
-            '<ul class="dropdown-menu">';
+  // let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
+  //           'Choose a Parameter' + '</button>' +
+  //           '<ul class="dropdown-menu">';
 
-  for (var cat of categories) {
-    categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+  let categoryHTML = '<select class="form-select form-select-sm">';
+
+  for (var cat in labels) {
+    console.log(cat);
+    // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+    categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
   }
-  categoryHTML += '</ul></div>';
+  // categoryHTML += '</ul></div>';
+  categoryHTML += '</select>'
   categoryControl.innerHTML = categoryHTML;
 
-  categoryControl.addEventListener("click", () => {
-    console.log('click');
+  categoryControl.addEventListener("change", () => {
+    console.log(event.target.value);
+    updateCategory(event.target.value);
   });
 }
 
 
 function updateCategory(category) {
+  console.log(category);
+  console.log(breaks[category]);
   console.log(document.getElementById('legend'));
   const legendDiv = document.getElementById('legend');
 
-  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+  let legendHTML = '<h3>'+labels[category]+'</h3><ul>';
 
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/1000000 + ' &mdash; ' + breaks[category][1]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/1000000 + ' &mdash; ' + breaks[category][2]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/1000000 + ' million</li>';
+  let legendText = '';
+  let legendMult = 1;
+  if (category == 'price') {
+    legendText = ' million';
+    legendMult = 1000000;
+  }
+
+  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/legendMult + ' &mdash; ' + breaks[category][1]/legendMult + legendText + '</li>';
+  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/legendMult + ' &mdash; ' + breaks[category][2]/legendMult + legendText + '</li>';
+  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/legendMult + legendText + '</li>';
   legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
   legendHTML += '</ul>';
 
   legendDiv.innerHTML = legendHTML;
+
+  map.data.setStyle(function (feature) {
+    // console.log(myIcons[feature.getProperty('marker')]);
+    let tier = feature.getProperty(category);
+    if (tier == "N/A") {
+      return {icon:myIcons['N/A']};
+    } else {
+      tier = +tier.replace('£','').replace(/,/g,'');
+      // console.log(tier);
+      if (tier < breaks[category][1]) {
+        return {icon:myIcons['tier1']};
+      } else if (tier < breaks[category][2]) {
+        return {icon:myIcons['tier2']};
+      } else {
+        return {icon:myIcons['tier3']};
+      }
+    }
+    console.log(tier);
+
+    return {icon:myIcons[feature.getProperty('marker')]};
+  });
 
 }
 
