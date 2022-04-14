@@ -66,12 +66,24 @@ function initMap() {
   });
 
   const svgMarker = {
-    path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+    // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
     // fillColor: "blue",
+    path: "M 0.000 20.000" +
+        "L 23.511 32.361" +
+        "L 19.021 6.180" +
+        "L 38.042 -12.361" +
+        "L 11.756 -16.180" +
+        "L 0.000 -40.000" +
+        "L -11.756 -16.180" +
+        "L -38.042 -12.361" +
+        "L -19.021 6.180" +
+        "L -23.511 32.361" +
+        "L 0.000 20.000",
     fillOpacity: 0.8,
     strokeWeight: 0,
     rotation: 0,
-    scale: .5,
+    scale: .3
+    // scale: .5, // for pin
     // anchor: new google.maps.Point(15, 30),
   };
   // console.log(svgMarker);
@@ -170,7 +182,7 @@ function initMap() {
       content: "Test",
       maxWidth: 400,
       minWidth: 400,
-      pixelOffset: new google.maps.Size(0,-20)
+      pixelOffset: new google.maps.Size(0,-15)
     });
 
     map.data.addListener("click", (event) => {
