@@ -80,7 +80,8 @@ function initMap() {
         "L -23.511 32.361" +
         "L 0.000 20.000",
     fillOpacity: 0.8,
-    strokeWeight: 0,
+    strokeWeight: 1,
+    strokeColor: 'grey',
     rotation: 0,
     scale: .3
     // scale: .5, // for pin
