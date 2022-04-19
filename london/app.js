@@ -8,7 +8,7 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 // 15-25, 25-35, 35+
 const breaks = {
   price: [25000000,35000000,50000000,"Price on Application"],
-  "price-sqft": [1000,4000,5000,"N/A"],
+  "price-sqft": [2700,5000,7000,"N/A"],
   "area-sqft": [400,6000,8000,"N/A"]
 };
 const labels = {
@@ -17,7 +17,7 @@ const labels = {
   "area-sqft": "Sq ft"
 }
 console.log(breaks['ppsf']);
-const colors = ["#267ec9","#ffcc00","#d95f02","#1a9e06"];
+const colors = ["#4264fb","#ffcc00","#ff0000","#1a9e06"];
 var category = "price";
 // var categories = [];
 // for (var cat in breaks) {
@@ -27,17 +27,17 @@ var category = "price";
 const svgMarker = {
   // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
   // fillColor: "blue",
-  path: "M 0.000 20.000" +
-      "L 23.511 32.361" +
-      "L 19.021 6.180" +
-      "L 38.042 -12.361" +
-      "L 11.756 -16.180" +
-      "L 0.000 -40.000" +
-      "L -11.756 -16.180" +
-      "L -38.042 -12.361" +
-      "L -19.021 6.180" +
-      "L -23.511 32.361" +
-      "L 0.000 20.000",
+  // path: "M 0.000 20.000" +
+  //     "L 23.511 32.361" +
+  //     "L 19.021 6.180" +
+  //     "L 38.042 -12.361" +
+  //     "L 11.756 -16.180" +
+  //     "L 0.000 -40.000" +
+  //     "L -11.756 -16.180" +
+  //     "L -38.042 -12.361" +
+  //     "L -19.021 6.180" +
+  //     "L -23.511 32.361" +
+  //     "L 0.000 20.000",
   fillOpacity: 0.8,
   strokeWeight: 1,
   strokeColor: 'grey',
@@ -49,16 +49,16 @@ const svgMarker = {
 // console.log(svgMarker);
 
 var blueMarker = Object.assign({},svgMarker);
-blueMarker = Object.assign(blueMarker,{fillColor: "#267ec9"});
+blueMarker = Object.assign(blueMarker,{url: "icons/blue-star.svg"});
 
 var redMarker = Object.assign({},svgMarker);
-redMarker = Object.assign(redMarker,{fillColor: "#d95f02"});
+redMarker = Object.assign(redMarker,{url: "icons/red-star.svg"});
 
 var greenMarker = Object.assign({},svgMarker);
-greenMarker = Object.assign(greenMarker,{fillColor: "#1a9e06"});
+greenMarker = Object.assign(greenMarker,{url: "icons/green-star.svg"});
 
 var yellowMarker = Object.assign({},svgMarker);
-yellowMarker = Object.assign(yellowMarker,{fillColor: "#ffcc00"});
+yellowMarker = Object.assign(yellowMarker,{url: "icons/yellow-star.svg"});
 
 // var yellowStar = {
 //   url: '../../images/star-yellow.svg'
@@ -73,9 +73,9 @@ yellowMarker = Object.assign(yellowMarker,{fillColor: "#ffcc00"});
 // };
 
 const myIcons = {
-  'tier1': blueMarker,
-  'tier2': yellowMarker,
-  'tier3': redMarker,
+  'tier1': yellowMarker,
+  'tier2': redMarker,
+  'tier3': blueMarker,
   'N/A': greenMarker,
 };
 
@@ -201,7 +201,7 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = "<div class='m-0 p-0 bg-dark text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
+      let popupHTML = "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
       popupHTML += "<div class='col-8'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>"
       popupHTML += "<div class='col-4 px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
