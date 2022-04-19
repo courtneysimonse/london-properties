@@ -16,7 +16,7 @@ const labels = {
   "price-sqft": "£/sq ft",
   "area-sqft": "Sq ft"
 }
-console.log(breaks['ppsf']);
+
 const colors = ["#ffcc00","#ff0000","#4264fb","#1a9e06"];
 var category = "price";
 // var categories = [];
@@ -64,14 +64,6 @@ yellowMarker = Object.assign(yellowMarker,{url: "icons/yellow-star.svg"});
 //   url: '../../images/star-yellow.svg'
 // };
 
-// const myIcons = {
-//   'normal': blueMarker,
-//   'red': redMarker,
-//   'green': greenMarker,
-//   'normal-interesting': yellowStar,
-//   'green-interesting': yellowStar
-// };
-
 const myIcons = {
   'tier1': yellowMarker,
   'tier2': redMarker,
@@ -117,7 +109,9 @@ function initMap() {
         acres: d.acres,
         link: d.link,
         documents: d.documents,
-        locationType: d.locationType
+        locationType: d.locationType,
+        numImages: d.numImages,
+        image: d.image
       },
       geometry: {
         type: "Point",
@@ -203,7 +197,17 @@ function initMap() {
 
       let popupHTML = "";
       popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
-      popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>"
+
+      if (event.feature.getProperty('numImages')) {
+        popupHTML += "<div class='col-sm-8 col-12'>";
+        let carousel = addCarousel(event.feature);
+        console.log(carousel);
+        popupHTML += carousel.outerHTML;
+        popupHTML += "</div>"
+      } else {
+        popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>";
+      }
+
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       // popupHTML += "<div>"
@@ -267,16 +271,20 @@ function initMap() {
       console.log('domready');
 
       var images = document.getElementsByClassName('mainImage');
-      images[images.length-1].addEventListener('click', function () {
-        // console.log('click');
-        let url = images[images.length-1].attributes[2].nodeValue;
-        console.log(url);
-        url = url.replace(/\?.*/,"");
-        console.log(url);
-        document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
-                "<img class='modalImg' src='"+url+"'>"
-        imageModal.show();
-      });
+
+      if (images[images.length-1]) {
+        images[images.length-1].addEventListener('click', function () {
+          // console.log('click');
+          let url = images[images.length-1].attributes[2].nodeValue;
+          console.log(url);
+          url = url.replace(/\?.*/,"");
+          console.log(url);
+          document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
+                  "<img class='modalImg' src='"+url+"'>"
+          imageModal.show();
+        });
+      }
+
     });
 
     // cascaisBtn.addEventListener('click', () => {zoomToCenter({lat: 38.75, lng: -9.39},12)});
@@ -401,4 +409,70 @@ function processPoints(geometry, callback, thisArg) {
       processPoints(g, callback, thisArg);
     });
   }
+}
+
+function addCarousel(prop) {
+  const carouselDiv = document.createElement('div');
+  carouselDiv.classList.add('carousel', 'slide', 'carousel-fade');
+  carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
+  carouselDiv.setAttribute('data-bs-ride','carousel');
+  // propDiv.appendChild(carouselDiv);
+
+  const carouselIndicators = document.createElement('div')
+  carouselIndicators.classList.add('carousel-indicators');
+
+  const carouselInner = document.createElement('div');
+  carouselInner.classList.add('carousel-inner','w-100');
+
+  numImages = prop.getProperty('numImages');
+  images = prop.getProperty('images');
+  for (var i = 1; i < numImages; i++) {
+    const carouselBtn = document.createElement('button');
+    carouselBtn.setAttribute('data-bs-target',carouselDiv.id);
+    carouselBtn.setAttribute('data-bs-slide-to',i);
+    carouselBtn.setAttribute('aria-label','Slide'+(i+1));
+
+    const carouselItem = document.createElement('div');
+    carouselItem.classList.add('carousel-item');
+
+    const img = document.createElement('img');
+    img.classList.add('d-block','w-100');
+    img.setAttribute('src','./images/'+prop.getProperty('image')+'-'+i+'.jpg?nf_resize=smartcrop&w=209&h=198');
+    img.setAttribute('height','209px')
+    img.setAttribute('width','198px')
+
+    if (i==1) {
+      carouselBtn.setAttribute('aria-current','true');
+      carouselBtn.classList.add('active');
+      carouselItem.classList.add('active');
+    }
+
+    carouselItem.appendChild(img);
+
+    carouselIndicators.appendChild(carouselBtn);
+    carouselInner.appendChild(carouselItem);
+  }
+
+  carouselDiv.appendChild(carouselIndicators);
+  carouselDiv.appendChild(carouselInner);
+
+  const carouselCntrlPrev = document.createElement('button');
+  carouselCntrlPrev.classList.add('carousel-control-prev');
+  carouselCntrlPrev.setAttribute('type','button');
+  carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
+  carouselCntrlPrev.setAttribute('data-bs-slide','prev');
+  carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-left"></i></span>' +
+    '<span class="visually-hidden">Previous</span>';  //change default arrow icon
+  carouselDiv.appendChild(carouselCntrlPrev);
+
+  const carouselCntrlNext = document.createElement('button');
+  carouselCntrlNext.classList.add('carousel-control-next');
+  carouselCntrlNext.setAttribute('type','button');
+  carouselCntrlNext.setAttribute('data-bs-target','#'+carouselDiv.id);
+  carouselCntrlNext.setAttribute('data-bs-slide','next');
+  carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-right"></i></span>' +
+    '<span class="visually-hidden">Next</span>';
+  carouselDiv.appendChild(carouselCntrlNext);
+
+  return carouselDiv;
 }
