@@ -243,7 +243,7 @@ function initMap() {
 
       // link
       if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='py-1 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
       }
 
       // documents
