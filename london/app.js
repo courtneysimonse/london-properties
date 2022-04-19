@@ -201,35 +201,35 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = "<div class='m-0 p-0' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
-      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98'></div>"
-      popupHTML += "<div class='col-6 ps-0'>";
+      let popupHTML = "<div class='m-0 p-0 bg-dark text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
+      popupHTML += "<div class='col-8'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>"
+      popupHTML += "<div class='col-4 px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       popupHTML += "<div>"
-      popupHTML += "<p class='mb-1 pb-0 fs-6'><strong>";
+      popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
       if (event.feature.getProperty("locationLink") != "") {
-        popupHTML += "<a class='iw-link' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        popupHTML += "<a class='iw-link link-light' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
       } else {
         popupHTML += event.feature.getProperty("locationName");
       }
       popupHTML += "</strong></p>";
 
       if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "Price on Application" ) {
-        popupHTML += "<p class='fs-6'>Price: " + event.feature.getProperty('price') + "</p>";
+        popupHTML += "<p class='fs-6 text-reset'>Price: " + event.feature.getProperty('price') + "</p>";
       }
 
       popupHTML += "</div>";
-      popupHTML += "<div class='row'><div class='col-7 pe-0'>&pound;/SqFt: ";
+      popupHTML += "<div class='text-end pb-1'>&pound;/SqFt: ";
       if (event.feature.getProperty("price-sqft") != "N/A") {
         popupHTML += event.feature.getProperty('price-sqft') + "</div>";
       } else {
         popupHTML += "N/A</div>";
       }
       if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<div class='col-5 ps-0'>" + event.feature.getProperty("area-sqft") + " sq ft</div></div>";
+        popupHTML += "<div class='text-end'>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
       }
       if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='col-12 py-1'><a target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        popupHTML += "<div class='py-1 position-absolute bottom-0'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
       }
       if (event.feature.getProperty('documents') != "") {
         console.log(event.feature.getProperty('documents'));
