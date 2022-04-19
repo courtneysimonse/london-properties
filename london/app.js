@@ -189,18 +189,20 @@ function initMap() {
           map.fitBounds(bounds, 0);
     });
 
+    const iwHeight = 200;
+    const iwWidth = 350;
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
-      maxWidth: 400,
-      minWidth: 400,
+      maxWidth: iwWidth,
+      minWidth: iwWidth,
       pixelOffset: new google.maps.Size(0,-15)
     });
 
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      let popupHTML = "<div class='m-0 p-0' style='height: 100px;'><div class='row' style='max-width: 100%; height: 100px;'>";
-      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:98px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98'></div>"
+      let popupHTML = "<div class='m-0 p-0' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
+      popupHTML += "<div class='col-6'><img class='mainImage' style='width:175px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=175&h=98'></div>"
       popupHTML += "<div class='col-6 ps-0'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       popupHTML += "<div>"
@@ -256,9 +258,12 @@ function initMap() {
       var images = document.getElementsByClassName('mainImage');
       images[images.length-1].addEventListener('click', function () {
         // console.log('click');
-        // console.log(images[images.length-1].attributes[1]);
+        let url = images[images.length-1].attributes[2].nodeValue;
+        console.log(url);
+        url = url.replace(/\?.*/,"");
+        console.log(url);
         document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
-                "<img class='modalImg' src='"+images[images.length-1].attributes[1].nodeValue+"'>"
+                "<img class='modalImg' src='"+url+"'>"
         imageModal.show();
       });
     });
