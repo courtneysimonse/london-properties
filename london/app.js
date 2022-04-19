@@ -7,7 +7,7 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
 // 15-25, 25-35, 35+
 const breaks = {
-  price: [15000000,25000000,35000000,"Price on Application"],
+  price: [25000000,35000000,50000000,"Price on Application"],
   "price-sqft": [1000,4000,5000,"N/A"],
   "area-sqft": [400,6000,8000,"N/A"]
 };
@@ -134,12 +134,14 @@ function initMap() {
   map.data.setStyle(function (feature) {
     // console.log(myIcons[feature.getProperty('marker')]);
     let tier = feature.getProperty('price');
-    if (tier == "N/A") {
+    if (tier == "N/A" || tier == "Price on Application") {
       return {icon:myIcons['N/A']};
     } else {
       tier = +tier.replace('£','').replace(/,/g,'');
       // console.log(tier);
-      if (tier < breaks[category][1]) {
+      if (tier < breaks[category[0]]) {
+
+      } else if (tier < breaks[category][1]) {
         return {icon:myIcons['tier1']};
       } else if (tier < breaks[category][2]) {
         return {icon:myIcons['tier2']};
