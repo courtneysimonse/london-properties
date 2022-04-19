@@ -17,7 +17,7 @@ const labels = {
   "area-sqft": "Sq ft"
 }
 console.log(breaks['ppsf']);
-const colors = ["#4264fb","#ffcc00","#ff0000","#1a9e06"];
+const colors = ["#ffcc00","#ff0000","#4264fb","#1a9e06"];
 var category = "price";
 // var categories = [];
 // for (var cat in breaks) {
@@ -134,14 +134,14 @@ function initMap() {
   map.data.setStyle(function (feature) {
     // console.log(myIcons[feature.getProperty('marker')]);
     let tier = feature.getProperty('price');
+    // console.log(tier);
     if (tier == "N/A" || tier == "Price on Application") {
+      // console.log(tier);
       return {icon:myIcons['N/A']};
     } else {
       tier = +tier.replace('£','').replace(/,/g,'');
       // console.log(tier);
-      if (tier < breaks[category[0]]) {
-
-      } else if (tier < breaks[category][1]) {
+      if (tier < breaks[category][1]) {
         return {icon:myIcons['tier1']};
       } else if (tier < breaks[category][2]) {
         return {icon:myIcons['tier2']};
@@ -205,7 +205,14 @@ function initMap() {
       popupHTML += "<div class='col-8'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>"
       popupHTML += "<div class='col-4 px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
-      popupHTML += "<div>"
+      // popupHTML += "<div>"
+
+      // price
+      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "Price on Application" ) {
+        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
+      }
+
+      // address
       popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
       if (event.feature.getProperty("locationLink") != "") {
         popupHTML += "<a class='iw-link link-light' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
@@ -214,33 +221,36 @@ function initMap() {
       }
       popupHTML += "</strong></p>";
 
-      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "Price on Application" ) {
-        popupHTML += "<p class='fs-6 text-reset'>Price: " + event.feature.getProperty('price') + "</p>";
+      popupHTML += "<div class='position-absolute bottom-0'>";
+      // sq ft
+      if (event.feature.getProperty("area-sqft") != "N/A") {
+        popupHTML += "<div class=''>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
       }
 
-      popupHTML += "</div>";
-      popupHTML += "<div class='text-end pb-1'>&pound;/SqFt: ";
+      // price/sqft
+      popupHTML += "<div class='pb-1'>";
       if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty('price-sqft') + "</div>";
+        popupHTML += event.feature.getProperty('price-sqft') + "/sq ft</div>";
       } else {
-        popupHTML += "N/A</div>";
-      }
-      if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<div class='text-end'>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
-      }
-      if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='py-1 position-absolute bottom-0'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-      }
-      if (event.feature.getProperty('documents') != "") {
-        console.log(event.feature.getProperty('documents'));
-        let documents = eval(event.feature.getProperty('documents'));
-        popupHTML += "<div class='col-12 py-0'>Documents:";
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' href='../documents/"+item[1]+"'>"+item[0]+"</a> ";
-        });
         popupHTML += "</div>";
       }
-      popupHTML += "</div>"
+
+      // link
+      if (event.feature.getProperty('link') != "") {
+        popupHTML += "<div class='py-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+      }
+
+      // documents
+      // if (event.feature.getProperty('documents') != "") {
+      //   console.log(event.feature.getProperty('documents'));
+      //   let documents = eval(event.feature.getProperty('documents'));
+      //   popupHTML += "<div class='col-12 py-0'>Documents:";
+      //   documents.forEach((item, i) => {
+      //     popupHTML += "<a target='_blank' href='../documents/"+item[1]+"'>"+item[0]+"</a> ";
+      //   });
+      //   popupHTML += "</div>";
+      // }
+      popupHTML += "</div></div>"
 
       infowindow.setContent(popupHTML);
 
