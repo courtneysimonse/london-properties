@@ -196,14 +196,15 @@ function initMap() {
       console.log(event.feature.getProperty("locationName"));
 
       let popupHTML = "";
-      popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px;'>";
+      popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
 
       if (event.feature.getProperty('numImages')) {
-        popupHTML += "<div class='col-sm-8 col-12'>";
+        // popupHTML += "<div class='col-sm-8 col-12'>";
         let carousel = addCarousel(event.feature);
+        carousel.classList.add('col-sm-8','col-12');
         console.log(carousel);
         popupHTML += carousel.outerHTML;
-        popupHTML += "</div>"
+        // popupHTML += "</div>"
       } else {
         popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>";
       }
@@ -242,7 +243,7 @@ function initMap() {
 
       // link
       if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='py-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        popupHTML += "<div class='py-1 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
       }
 
       // documents
@@ -461,7 +462,7 @@ function addCarousel(prop) {
   carouselCntrlPrev.setAttribute('type','button');
   carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
   carouselCntrlPrev.setAttribute('data-bs-slide','prev');
-  carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-left"></i></span>' +
+  carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><</span>' +
     '<span class="visually-hidden">Previous</span>';  //change default arrow icon
   carouselDiv.appendChild(carouselCntrlPrev);
 
@@ -470,7 +471,7 @@ function addCarousel(prop) {
   carouselCntrlNext.setAttribute('type','button');
   carouselCntrlNext.setAttribute('data-bs-target','#'+carouselDiv.id);
   carouselCntrlNext.setAttribute('data-bs-slide','next');
-  carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><i class="fas fa-chevron-circle-right"></i></span>' +
+  carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 3em; background-image:none">></i></span>' +
     '<span class="visually-hidden">Next</span>';
   carouselDiv.appendChild(carouselCntrlNext);
 
