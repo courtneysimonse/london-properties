@@ -183,8 +183,12 @@ function initMap() {
           map.fitBounds(bounds, 0);
     });
 
-    const iwHeight = 200;
-    const iwWidth = 350;
+    var windowHeight = window.innerHeight;
+    var windowWidth = window.innerWidth;
+    console.log(windowWidth + " " + windowHeight);
+    var iwHeight = windowHeight * .5;
+    var iwWidth = windowWidth * .6;
+
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
       maxWidth: iwWidth,
@@ -195,18 +199,37 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
+      windowHeight = window.innerHeight;
+      windowWidth = window.innerWidth;
+      console.log(windowWidth + " " + windowHeight);
+      iwHeight = windowHeight * .5;
+      iwWidth = windowWidth * .6;
+      var imgWidth, imgHeight;
+
       let popupHTML = "";
       popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
 
+      if (windowWidth < 576) {
+        console.log('xs');
+        imgWidth = iwWidth;
+        imgHeight = iwHeight;
+
+      } else {
+        console.log('sm or greater');
+        imgWidth = iwWidth * (8/12);
+        imgHeight = iwHeight;
+
+      }
+
       if (event.feature.getProperty('numImages')) {
         // popupHTML += "<div class='col-sm-8 col-12'>";
-        let carousel = addCarousel(event.feature);
+        let carousel = addCarousel(event.feature,imgWidth,imgHeight);
         carousel.classList.add('col-sm-8','col-12');
         console.log(carousel);
         popupHTML += carousel.outerHTML;
         // popupHTML += "</div>"
       } else {
-        popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:209px;height:198px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w=209&h=198'></div>";
+        popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+imgWidth+"&h="+imgHeight+"'></div>";
       }
 
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
@@ -270,6 +293,9 @@ function initMap() {
 
     infowindow.addListener('domready', () => {
       console.log('domready');
+
+      console.log(document.getElementById('carouselProp-london-1'));
+      document.getElementById('carouselProp-london-1')
 
       var images = document.getElementsByClassName('mainImage');
 
@@ -412,7 +438,7 @@ function processPoints(geometry, callback, thisArg) {
   }
 }
 
-function addCarousel(prop) {
+function addCarousel(prop,imgW,imgH) {
   const carouselDiv = document.createElement('div');
   carouselDiv.classList.add('carousel', 'slide', 'carousel-fade', 'carousel-dark');
   carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
@@ -438,9 +464,9 @@ function addCarousel(prop) {
 
     const img = document.createElement('img');
     img.classList.add('d-block','w-100');
-    img.setAttribute('src','./images/'+prop.getProperty('image')+'-'+i+'.jpg?nf_resize=smartcrop&w=209&h=198');
-    img.setAttribute('height','209px')
-    img.setAttribute('width','198px')
+    img.setAttribute('src','./images/'+prop.getProperty('image')+'-'+i+'.jpg?nf_resize=smartcrop&w='+imgW+'&h='+imgH);
+    img.setAttribute('height',imgH+'px');
+    img.setAttribute('width',imgW+'px');
 
     if (i==1) {
       carouselBtn.setAttribute('aria-current','true');
