@@ -186,8 +186,19 @@ function initMap() {
     var windowHeight = window.innerHeight;
     var windowWidth = window.innerWidth;
     console.log(windowWidth + " " + windowHeight);
-    var iwHeight = windowHeight * .5;
-    var iwWidth = windowWidth * .6;
+    var iwHeight, iwWidth;
+
+    if (windowWidth < 576) {
+      console.log('xs');
+      iwHeight = windowHeight * .3;
+      iwWidth = windowWidth * .8;
+
+    } else {
+      console.log('sm or greater');
+      iwHeight = windowHeight * .5;
+      iwWidth = windowWidth * .6;
+
+    }
 
     const infowindow = new google.maps.InfoWindow({
       content: "Test",
@@ -202,8 +213,17 @@ function initMap() {
       windowHeight = window.innerHeight;
       windowWidth = window.innerWidth;
       console.log(windowWidth + " " + windowHeight);
-      iwHeight = windowHeight * .5;
-      iwWidth = windowWidth * .6;
+      if (windowWidth < 576) {
+        console.log('xs');
+        iwHeight = windowHeight * .3;
+        iwWidth = windowWidth * .8;
+
+      } else {
+        console.log('sm or greater');
+        iwHeight = windowHeight * .5;
+        iwWidth = windowWidth * .6;
+
+      }
       var imgWidth, imgHeight;
 
       let popupHTML = "";
@@ -291,28 +311,28 @@ function initMap() {
       infowindow.open(map);
     });
 
-    infowindow.addListener('domready', () => {
-      console.log('domready');
-
-      console.log(document.getElementById('carouselProp-london-1'));
-      document.getElementById('carouselProp-london-1')
-
-      var images = document.getElementsByClassName('mainImage');
-
-      if (images[images.length-1]) {
-        images[images.length-1].addEventListener('click', function () {
-          // console.log('click');
-          let url = images[images.length-1].attributes[2].nodeValue;
-          console.log(url);
-          url = url.replace(/\?.*/,"");
-          console.log(url);
-          document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
-                  "<img class='modalImg' src='"+url+"'>"
-          imageModal.show();
-        });
-      }
-
-    });
+    // infowindow.addListener('domready', () => {
+    //   console.log('domready');
+    //
+    //   console.log(document.getElementById('carouselProp-london-1'));
+    //   document.getElementById('carouselProp-london-1')
+    //
+    //   var images = document.getElementsByClassName('mainImage');
+    //
+    //   if (images[images.length-1]) {
+    //     images[images.length-1].addEventListener('click', function () {
+    //       // console.log('click');
+    //       let url = images[images.length-1].attributes[2].nodeValue;
+    //       console.log(url);
+    //       url = url.replace(/\?.*/,"");
+    //       console.log(url);
+    //       document.getElementById('image').innerHTML = "<button type='button' class='btn-close pt-3 px-3' data-bs-dismiss='modal' aria-label='Close'></button>" +
+    //               "<img class='modalImg' src='"+url+"'>"
+    //       imageModal.show();
+    //     });
+    //   }
+    //
+    // });
 
     // cascaisBtn.addEventListener('click', () => {zoomToCenter({lat: 38.75, lng: -9.39},12)});
     // setubalBtn.addEventListener('click', () => {zoomToCenter({lat: 38.525, lng: -8.893},15)});
