@@ -259,6 +259,7 @@ InfoBox.prototype.getCloseBoxImg_ = function () {
     img += " position: relative;"; // Required by MSIE
     img += " cursor: pointer;";
     img += " margin: " + this.closeBoxMargin_ + ";";
+    img += " width: 10px; height: 10px;"  // added by Courtney Simonse
     img += "'>";
   }
 
