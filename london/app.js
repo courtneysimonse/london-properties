@@ -462,7 +462,7 @@ function addCarousel(prop) {
   carouselCntrlPrev.setAttribute('type','button');
   carouselCntrlPrev.setAttribute('data-bs-target','#'+carouselDiv.id);
   carouselCntrlPrev.setAttribute('data-bs-slide','prev');
-  carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 3em; background-image:none"><</span>' +
+  carouselCntrlPrev.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
     '<span class="visually-hidden">Previous</span>';  //change default arrow icon
   carouselDiv.appendChild(carouselCntrlPrev);
 
@@ -471,7 +471,7 @@ function addCarousel(prop) {
   carouselCntrlNext.setAttribute('type','button');
   carouselCntrlNext.setAttribute('data-bs-target','#'+carouselDiv.id);
   carouselCntrlNext.setAttribute('data-bs-slide','next');
-  carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 3em; background-image:none">></i></span>' +
+  carouselCntrlNext.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
     '<span class="visually-hidden">Next</span>';
   carouselDiv.appendChild(carouselCntrlNext);
 
