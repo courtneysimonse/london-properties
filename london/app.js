@@ -414,7 +414,7 @@ function processPoints(geometry, callback, thisArg) {
 
 function addCarousel(prop) {
   const carouselDiv = document.createElement('div');
-  carouselDiv.classList.add('carousel', 'slide', 'carousel-fade');
+  carouselDiv.classList.add('carousel', 'slide', 'carousel-fade', 'carousel-dark');
   carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
   carouselDiv.setAttribute('data-bs-ride','carousel');
   // propDiv.appendChild(carouselDiv);
