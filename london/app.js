@@ -459,6 +459,7 @@ function processPoints(geometry, callback, thisArg) {
 }
 
 function addCarousel(prop,imgW,imgH) {
+  console.log(Math.round(imgH));
   const carouselDiv = document.createElement('div');
   carouselDiv.classList.add('carousel', 'slide', 'carousel-fade', 'carousel-dark');
   carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
