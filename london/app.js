@@ -484,7 +484,7 @@ function addCarousel(prop,imgW,imgH) {
 
     const img = document.createElement('img');
     img.classList.add('d-block','w-100');
-    img.setAttribute('src','./images/'+prop.getProperty('image')+'-'+i+'.jpg?nf_resize=smartcrop&w='+imgW+'&h='+imgH);
+    img.setAttribute('src','./images/'+prop.getProperty('image')+'-'+i+'.jpg?nf_resize=smartcrop&w='+Math.round(imgW)+'&h='+Math.round(imgH));
     img.setAttribute('height',imgH+'px');
     img.setAttribute('width',imgW+'px');
 
