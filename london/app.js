@@ -249,7 +249,7 @@ function initMap() {
         popupHTML += carousel.outerHTML;
         // popupHTML += "</div>"
       } else {
-        popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+imgWidth+"&h="+imgHeight+"'></div>";
+        popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
       }
 
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
@@ -459,7 +459,7 @@ function processPoints(geometry, callback, thisArg) {
 }
 
 function addCarousel(prop,imgW,imgH) {
-  console.log(Math.round(imgH));
+  // console.log(Math.round(imgH));
   const carouselDiv = document.createElement('div');
   carouselDiv.classList.add('carousel', 'slide', 'carousel-fade', 'carousel-dark');
   carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
