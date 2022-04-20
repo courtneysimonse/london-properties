@@ -89,7 +89,7 @@ function initMap() {
     },
     mapTypeControl: true,
     mapTypeControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_TOP,
+      position: google.maps.ControlPosition.LEFT_TOP,
       style: google.maps.MapTypeControlStyle.DEFAULT,
       mapTypeIds: ["roadmap","satellite"],
     }
