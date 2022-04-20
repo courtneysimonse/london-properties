@@ -213,7 +213,7 @@ function initMap() {
       pixelOffset: new google.maps.Size(-1*iwWidth/2,-1*iwHeight-18),
       maxWidth: iwWidth,
       infoBoxClearance: new google.maps.Size(10,10),
-      closeBoxURL: "icons/close.svg"
+      closeBoxURL: "icons/close.gif"
     });
 
     // popup = new Popup(
