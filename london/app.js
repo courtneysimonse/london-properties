@@ -125,8 +125,6 @@ function initMap() {
     drawMarkers(data);
   });
 
-
-
   map.data.setStyle(function (feature) {
     // console.log(myIcons[feature.getProperty('marker')]);
     let tier = feature.getProperty('price');
@@ -342,6 +340,13 @@ function initMap() {
 
       // infowindow.open(map);
       infobox.open(map);
+    });
+
+
+    map.addListener('click', () => {
+      if (infobox) {
+          infobox.close();
+      }
     });
 
     // infowindow.addListener('domready', () => {
