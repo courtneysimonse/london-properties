@@ -169,19 +169,19 @@ function initMap() {
     // });
 
 
-    google.maps.event.addListenerOnce(map, 'idle', function () {
-
-          const bounds = new google.maps.LatLngBounds();
-
-          propertyFeatures.forEach((feature) => {
-            const geometry = feature.getGeometry();
-
-            if (geometry) {
-              processPoints(geometry, bounds.extend, bounds);
-            }
-          });
-          map.fitBounds(bounds, 0);
-    });
+    // google.maps.event.addListenerOnce(map, 'idle', function () {
+    //
+    //       const bounds = new google.maps.LatLngBounds();
+    //
+    //       propertyFeatures.forEach((feature) => {
+    //         const geometry = feature.getGeometry();
+    //
+    //         if (geometry) {
+    //           processPoints(geometry, bounds.extend, bounds);
+    //         }
+    //       });
+    //       map.fitBounds(bounds, 0);
+    // });
 
     var windowHeight = window.innerHeight;
     var windowWidth = window.innerWidth;
