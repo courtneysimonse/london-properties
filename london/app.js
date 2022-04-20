@@ -232,7 +232,7 @@ function initMap() {
       if (windowWidth < 576) {
         console.log('xs');
         imgWidth = iwWidth;
-        imgHeight = iwHeight;
+        imgHeight = iwHeight - 39;
 
       } else {
         console.log('sm or greater');
@@ -250,6 +250,13 @@ function initMap() {
         // popupHTML += "</div>"
       } else {
         popupHTML += "<div class='col-sm-8 col-12'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+      }
+
+      // link
+      if (event.feature.getProperty('link') != "") {
+        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+        popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        popupHTML += "</div>"
       }
 
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
