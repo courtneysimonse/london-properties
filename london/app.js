@@ -15,12 +15,12 @@ const breaks = {
   ],
   "price-sqft": [
     [2500,"#ffcc00"],
-    [3500,"orange"],
-    [4000,"#ff0000"],
-    [4500,"purple"],
-    [5000,"skyblue"],
+    [3500,"#ff0000"],
+    [4000,"#b2df8a"],
+    [4500,"#33a02c"],
+    [5000,"#a6cee3"],
     [5500,"#4264fb"],
-    ["N/A","#1a9e06"]
+    ["N/A","#fdbf6f"]
   ],
   "area-sqft": [
     [400,"#ffcc00"],
@@ -218,15 +218,18 @@ function initMap() {
 
     }
 
-    const infowindow = new google.maps.InfoWindow({
-      content: "Test",
-      maxWidth: iwWidth,
-      minWidth: iwWidth,
-      pixelOffset: new google.maps.Size(0,-15)
-    });
+    // const infowindow = new google.maps.InfoWindow({
+    //   content: "Test",
+    //   maxWidth: iwWidth,
+    //   minWidth: iwWidth,
+    //   pixelOffset: new google.maps.Size(0,-15)
+    // });
+
+    var xOffset = -1*iwWidth/2;
 
     var infobox = new InfoBox({
-      pixelOffset: new google.maps.Size(-1*iwWidth/2,-1*iwHeight-18),
+      alignBottom: true,
+      pixelOffset: new google.maps.Size(xOffset,-31),
       maxWidth: iwWidth,
       infoBoxClearance: new google.maps.Size(10,10),
       closeBoxURL: "icons/close.svg",
@@ -344,7 +347,7 @@ function initMap() {
       // }
       popupHTML += "</div></div>"
 
-      infowindow.setContent(popupHTML);
+      // infowindow.setContent(popupHTML);
       infobox.setContent(popupHTML);
       // popup.outerHTML = popupHTML;
 
@@ -660,15 +663,17 @@ function addCarousel(prop,imgW,imgH) {
 function markerStyle (category, feature) {
   // console.log(myIcons[feature.getProperty('marker')]);
   let tier = feature.getProperty(category);
-  console.log(tier);
+  // console.log(tier);
   // console.log(tier);
   // return {icon:{
   //   size: new google.maps.Size(30,30),
   //   scaledSize: new google.maps.Size(20,20),
   //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
   // }};
+  // let anchorPoint = new google.maps.Point(10,0);
   if (tier == "N/A" || tier == "Price on Application") {
     return {icon:{
+      // anchor: anchorPoint,
       size: new google.maps.Size(30,30),
       scaledSize: new google.maps.Size(20,20),
       url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
