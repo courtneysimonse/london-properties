@@ -7,9 +7,27 @@ var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
 // 15-25, 25-35, 35+
 const breaks = {
-  price: [25000000,35000000,50000000,"Price on Application"],
-  "price-sqft": [2700,5000,7000,"N/A"],
-  "area-sqft": [400,6000,8000,"N/A"]
+  price: [
+    [25000000,"#ffcc00"],
+    [35000000,"#ff0000"],
+    [50000000,"#4264fb"],
+    ["Price on Application","#1a9e06"]
+  ],
+  "price-sqft": [
+    [2500,"#ffcc00"],
+    [3500,"orange"],
+    [4000,"#ff0000"],
+    [4500,"purple"],
+    [5000,"skyblue"],
+    [5500,"#4264fb"],
+    ["N/A","#1a9e06"]
+  ],
+  "area-sqft": [
+    [400,"#ffcc00"],
+    [6000,"#ff0000"],
+    [8000,"#4264fb"],
+    ["N/A","#1a9e06"]
+  ]
 };
 const labels = {
   price: "Price (£)",
@@ -24,52 +42,69 @@ var category = "price";
 //   categories.push(cat);
 // }
 
-const svgMarker = {
-  // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
-  // fillColor: "blue",
-  // path: "M 0.000 20.000" +
-  //     "L 23.511 32.361" +
-  //     "L 19.021 6.180" +
-  //     "L 38.042 -12.361" +
-  //     "L 11.756 -16.180" +
-  //     "L 0.000 -40.000" +
-  //     "L -11.756 -16.180" +
-  //     "L -38.042 -12.361" +
-  //     "L -19.021 6.180" +
-  //     "L -23.511 32.361" +
-  //     "L 0.000 20.000",
-  fillOpacity: 0.8,
-  strokeWeight: 1,
-  strokeColor: 'grey',
-  rotation: 0,
-  scale: .3
-  // scale: .5, // for pin
-  // anchor: new google.maps.Point(15, 30),
-};
+// const svgMarker = {
+//   // path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+//   fillColor: "navy",
+//   // path: "M 0.000 20.000" +
+//   //     "L 23.511 32.361" +
+//   //     "L 19.021 6.180" +
+//   //     "L 38.042 -12.361" +
+//   //     "L 11.756 -16.180" +
+//   //     "L 0.000 -40.000" +
+//   //     "L -11.756 -16.180" +
+//   //     "L -38.042 -12.361" +
+//   //     "L -19.021 6.180" +
+//   //     "L -23.511 32.361" +
+//   //     "L 0.000 20.000",
+//   // path: 'M 0.000 5.000 L 5.878 8.090 L 4.755 1.545 L 9.511 -3.090 L 2.939 -4.045 L 0.000 -10.000 L -2.939 -4.045 L -9.511 -3.090 L -4.755 1.545 L -5.878 8.090 L 0.000 5.000',
+//   // fillOpacity: 0.8,
+//   fillOpacity: 1,
+//   path: "M 0 0 l 0.000 20.000  l -20.000 0.000 l 0.000 -20.000 l 20.000 0.000",  // rectangle
+//   // strokeWeight: 1,
+//   // strokeColor: 'grey',
+//   rotation: 0,
+//   scale: .75,
+//   // url: "icons/blank-star.svg"
+//   // scale: .5, // for pin
+//   // anchor: new google.maps.Point(15, 30),
+// };
 // console.log(svgMarker);
 
-var blueMarker = Object.assign({},svgMarker);
-blueMarker = Object.assign(blueMarker,{url: "icons/blue-star.svg"});
+var markerImage = document.querySelector('.markerImage');
+var markerImageSvg = markerImage.innerHTML;
 
-var redMarker = Object.assign({},svgMarker);
-redMarker = Object.assign(redMarker,{url: "icons/red-star.svg"});
-
-var greenMarker = Object.assign({},svgMarker);
-greenMarker = Object.assign(greenMarker,{url: "icons/green-star.svg"});
-
-var yellowMarker = Object.assign({},svgMarker);
-yellowMarker = Object.assign(yellowMarker,{url: "icons/yellow-star.svg"});
+// var blueMarker = Object.assign({},svgMarker);
+// blueMarker = Object.assign(blueMarker,{fillColor: "#4264fb"});
+// // blueMarker = Object.assign(blueMarker,{url: "icons/blue-star.svg"});
+//
+// var redMarker = Object.assign({},svgMarker);
+// redMarker = Object.assign(redMarker, {fillColor: "#ff0000"});
+// // redMarker = Object.assign(redMarker,{url: "icons/red-star.svg"});
+//
+// var greenMarker = Object.assign({},svgMarker);
+// greenMarker = Object.assign(greenMarker,{url: "icons/green-star.svg"});
+//
+// var yellowMarker = Object.assign({},svgMarker);
+// yellowMarker = Object.assign(yellowMarker,{url: "icons/yellow-star.svg"});
+//
+// var orangeMarker = Object.assign({},svgMarker);
+// orangeMarker = Object.assign(orangeMarker,{url: "icons/yellow-star.svg"});
+//
+// var purpleMarker = Object.assign({},svgMarker);
+// purpleMarker = Object.assign(purpleMarker,{url: "icons/yellow-star.svg"});
 
 // var yellowStar = {
 //   url: '../../images/star-yellow.svg'
 // };
 
-const myIcons = {
-  'tier1': yellowMarker,
-  'tier2': redMarker,
-  'tier3': blueMarker,
-  'N/A': greenMarker,
-};
+// const myIcons = {
+//   'tier1': yellowMarker,
+//   'tier1b': orangeMarker,
+//   'tier2': redMarker,
+//   'tier2b': purpleMarker,
+//   'tier3': blueMarker,
+//   'N/A': greenMarker,
+// };
 
 // console.log(myIcons);
 
@@ -127,27 +162,8 @@ function initMap() {
     drawMarkers(data);
   });
 
-  map.data.setStyle(function (feature) {
-    // console.log(myIcons[feature.getProperty('marker')]);
-    let tier = feature.getProperty('price');
-    // console.log(tier);
-    if (tier == "N/A" || tier == "Price on Application") {
-      // console.log(tier);
-      return {icon:myIcons['N/A']};
-    } else {
-      tier = +tier.replace('£','').replace(/,/g,'');
-      // console.log(tier);
-      if (tier < breaks[category][1]) {
-        return {icon:myIcons['tier1']};
-      } else if (tier < breaks[category][2]) {
-        return {icon:myIcons['tier2']};
-      } else {
-        return {icon:myIcons['tier3']};
-      }
-    }
-    console.log(tier);
-
-    return {icon:myIcons[feature.getProperty('marker')]};
+  map.data.setStyle(function(feature) {
+    return markerStyle(category,feature);
   });
 
   // var marker1 = new google.maps.Marker({
@@ -443,9 +459,9 @@ function initMap() {
   legendControl(legend, map);
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
-  const categoryDiv = document.createElement('div');
-  categoryControl(categoryDiv, map);
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
+  // const categoryDiv = document.createElement('div');
+  // categoryControl(categoryDiv, map);
+  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
 
   // updateCategory(category);
 
@@ -453,29 +469,11 @@ function initMap() {
 
 function legendControl(legend, map) {
 
-  legend.id = "legend";
   legend.classList = "legend ms-2";
 
-  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
-
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/1000000 + ' &mdash; ' + breaks[category][1]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/1000000 + ' &mdash; ' + breaks[category][2]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
-  legendHTML += '</ul>';
-
-  legend.innerHTML = legendHTML;
-
-}
-
-function categoryControl(categoryControl, map) {
-  categoryControl.id = "categoryControl";
-  categoryControl.classList = "btn-group dropup m-2"
-
-  // let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
-  //           'Choose a Parameter' + '</button>' +
-  //           '<ul class="dropdown-menu">';
-
+  var categoryDiv = document.createElement('div');
+  categoryDiv.id = "categoryControl";
+  categoryDiv.classList = "btn-group dropup m-2"
   let categoryHTML = '<select class="form-select form-select-sm">';
 
   for (var cat in labels) {
@@ -485,13 +483,58 @@ function categoryControl(categoryControl, map) {
   }
   // categoryHTML += '</ul></div>';
   categoryHTML += '</select>'
-  categoryControl.innerHTML = categoryHTML;
+  categoryDiv.innerHTML = categoryHTML;
 
-  categoryControl.addEventListener("change", () => {
+  legend.appendChild(categoryDiv);
+
+  categoryDiv.addEventListener("change", () => {
     console.log(event.target.value);
     updateCategory(event.target.value);
   });
+
+  var legendDiv = document.createElement('div');
+  legendDiv.id = "legend";
+
+  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+
+  let catBreaks = breaks[category];
+
+  legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0]/1000000 + ' &mdash; ' + catBreaks[1][0]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0]/1000000 + ' &mdash; ' + catBreaks[2][0]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
+  legendHTML += '</ul>';
+
+  legendDiv.innerHTML = legendHTML;
+
+  legend.appendChild(legendDiv);
+
 }
+
+// function categoryControl(categoryControl, map) {
+//   categoryControl.id = "categoryControl";
+//   categoryControl.classList = "btn-group dropup m-2"
+//
+//   // let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
+//   //           'Choose a Parameter' + '</button>' +
+//   //           '<ul class="dropdown-menu">';
+//
+//   let categoryHTML = '<select class="form-select form-select-sm">';
+//
+//   for (var cat in labels) {
+//     console.log(cat);
+//     // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+//     categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
+//   }
+//   // categoryHTML += '</ul></div>';
+//   categoryHTML += '</select>'
+//   categoryControl.innerHTML = categoryHTML;
+//
+//   categoryControl.addEventListener("change", () => {
+//     console.log(event.target.value);
+//     updateCategory(event.target.value);
+//   });
+// }
 
 
 function updateCategory(category) {
@@ -509,33 +552,28 @@ function updateCategory(category) {
     legendMult = 1000000;
   }
 
-  legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/legendMult + ' &mdash; ' + breaks[category][1]/legendMult + legendText + '</li>';
-  legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/legendMult + ' &mdash; ' + breaks[category][2]/legendMult + legendText + '</li>';
-  legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/legendMult + legendText + '</li>';
-  legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
+  for (var i = 0; i < breaks[category].length; i++) {
+    console.log(breaks[category][i]);
+    let j = breaks[category];
+    if (i <= (j.length - 3)) {
+      legendHTML += '<li><span style="background:' + j[i][1] + '"></span> ' + j[i][0]/legendMult + ' &mdash; ' + j[i+1][0]/legendMult + legendText + '</li>';
+    } else if (i == (j.length - 2)) {
+      legendHTML += '<li><span style="background:' + j[i][1] + '"></span> > ' + j[i][0]/legendMult + legendText + '</li>';
+    } else {
+      legendHTML += '<li><span style="background:' + j[i][1] + '"></span> ' + j[i][0] + '</li>';
+    }
+
+  }
+  // legendHTML += '<li><span style="background:' + colors[0] + '"></span> ' + breaks[category][0]/legendMult + ' &mdash; ' + breaks[category][1]/legendMult + legendText + '</li>';
+  // legendHTML += '<li><span style="background:' + colors[1] + '"></span> ' + breaks[category][1]/legendMult + ' &mdash; ' + breaks[category][2]/legendMult + legendText + '</li>';
+  // legendHTML += '<li><span style="background:' + colors[2] + '"></span> > ' + breaks[category][2]/legendMult + legendText + '</li>';
+  // legendHTML += '<li><span style="background:' + colors[3] + '"></span> ' + breaks[category][3] + '</li>';
   legendHTML += '</ul>';
 
   legendDiv.innerHTML = legendHTML;
 
-  map.data.setStyle(function (feature) {
-    // console.log(myIcons[feature.getProperty('marker')]);
-    let tier = feature.getProperty(category);
-    if (tier == "N/A") {
-      return {icon:myIcons['N/A']};
-    } else {
-      tier = +tier.replace('£','').replace(/,/g,'');
-      // console.log(tier);
-      if (tier < breaks[category][1]) {
-        return {icon:myIcons['tier1']};
-      } else if (tier < breaks[category][2]) {
-        return {icon:myIcons['tier2']};
-      } else {
-        return {icon:myIcons['tier3']};
-      }
-    }
-    console.log(tier);
-
-    return {icon:myIcons[feature.getProperty('marker')]};
+  map.data.setStyle(function(feature) {
+    return markerStyle(category,feature);
   });
 
 }
@@ -617,4 +655,51 @@ function addCarousel(prop,imgW,imgH) {
   carouselDiv.appendChild(carouselCntrlNext);
 
   return carouselDiv;
+}
+
+function markerStyle (category, feature) {
+  // console.log(myIcons[feature.getProperty('marker')]);
+  let tier = feature.getProperty(category);
+  console.log(tier);
+  // console.log(tier);
+  // return {icon:{
+  //   size: new google.maps.Size(30,30),
+  //   scaledSize: new google.maps.Size(20,20),
+  //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+  // }};
+  if (tier == "N/A" || tier == "Price on Application") {
+    return {icon:{
+      size: new google.maps.Size(30,30),
+      scaledSize: new google.maps.Size(20,20),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+    }};
+  } else {
+    tier = +tier.replace('£','').replace(/,/g,'');
+    // console.log(tier);
+    for (var i = 0; i < breaks[category].length; i++) {
+      if (tier < breaks[category][i][0]) {
+        if (i==0) {
+          return {icon:{
+            size: new google.maps.Size(30,30),
+            scaledSize: new google.maps.Size(20,20),
+            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+          }};
+        }
+        return {icon:{
+          size: new google.maps.Size(30,30),
+          scaledSize: new google.maps.Size(20,20),
+          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
+        }};
+      } else if (i == breaks[category].length - 2) {
+        return {icon:{
+          size: new google.maps.Size(30,30),
+          scaledSize: new google.maps.Size(20,20),
+          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+        }};
+      }
+    }
+  }
+  // console.log(tier);
+
+  // return {icon:myIcons[feature.getProperty('marker')]};
 }

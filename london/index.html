@@ -19,7 +19,7 @@
     <link href='css/styles.css' rel='stylesheet' />
 
     <style>
-    #legend {
+    .legend {
       background: #fff;
       color: #919191;
       width: auto;
@@ -58,6 +58,10 @@
       font-weight: 400;
       color: #ffe300;
     }
+
+    .markerImage {
+      display: none;
+    }
     </style>
 
     <title>London Property Snapshot</title>
@@ -67,6 +71,28 @@
     <!-- <h1>Setubal Property Snapshot</h1> -->
     <div id="mapid"></div>
     <div id="content"></div>
+
+    <div class="markerImage">
+      <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <rect
+             style="fill:navy;fill-opacity:1;stroke-width:0;"
+             id="outline"
+             width="30"
+             height="30"
+             x="0"
+             y="0" />
+          <path
+             id="star"
+             fill="{{markerColor}}"
+             d="M0 15L17.634 24.27L14.265 4.635L28.533 -9.27L8.817 -12.135L0 -30L-8.817 -12.135L-28.533 -9.27L-14.265 4.635L-17.634 24.27L0 15"
+             transform="scale(.4) translate(38,38)"
+              />
+        </g>
+    </svg>
+    </div>
+
+
 
     <!-- <div class="btn-group btn-group-sm m-3">
       <button class="btn btn-secondary" type="button" name="CascaisBtn" id="cascaisBtn">Cascais</button>
