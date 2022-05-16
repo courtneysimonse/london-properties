@@ -335,6 +335,16 @@ function initMap() {
         popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
       }
 
+      if (event.feature.getProperty('documents') != "") {
+        popupHTML += "<div class='col-12 py-0'>Documents:";
+        let documents = JSON.parse(event.feature.getProperty('documents'));
+        console.log(documents);
+        documents.forEach((item, i) => {
+          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+        });
+        popupHTML += "</div>";
+      }
+
       // documents
       // if (event.feature.getProperty('documents') != "") {
       //   console.log(event.feature.getProperty('documents'));
