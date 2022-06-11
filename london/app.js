@@ -625,7 +625,7 @@ function addCarousel(prop,imgW,imgH) {
     const carouselBtn = document.createElement('button');
     carouselBtn.setAttribute('data-bs-target',carouselDiv.id);
     carouselBtn.setAttribute('data-bs-slide-to',i-1);
-    carouselBtn.setAttribute('aria-label','Slide'+i);
+    carouselBtn.setAttribute('aria-label','Slide '+i);
 
     const carouselItem = document.createElement('div');
     carouselItem.classList.add('carousel-item');
