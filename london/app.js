@@ -320,6 +320,8 @@ function initMap() {
       // sq ft
       if (event.feature.getProperty("area-sqft") != "N/A") {
         popupHTML += "<div class=''>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
+      } else {
+        console.log(event.feature.getProperty("area-sqft"));
       }
 
       // price/sqft
@@ -682,6 +684,7 @@ function markerStyle (category, feature) {
   // }};
   // let anchorPoint = new google.maps.Point(10,0);
   if (tier == "N/A" || tier == "Price on Application") {
+    console.log(feature.getProperty("locationName") + tier);
     return {icon:{
       // anchor: anchorPoint,
       size: new google.maps.Size(30,30),
@@ -690,6 +693,7 @@ function markerStyle (category, feature) {
     }};
   } else {
     tier = +tier.replace('£','').replace(/,/g,'');
+    console.log(feature.getProperty("locationName") + tier);
     // console.log(tier);
     for (var i = 0; i < breaks[category].length; i++) {
       if (tier < breaks[category][i][0]) {
@@ -714,7 +718,6 @@ function markerStyle (category, feature) {
       }
     }
   }
-  // console.log(tier);
 
   // return {icon:myIcons[feature.getProperty('marker')]};
 }
