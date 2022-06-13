@@ -132,7 +132,9 @@ function initMap() {
 
   map.setTilt(45);
 
-  d3.csv("./london-properties.csv", (d) => {
+  //https://docs.google.com/spreadsheets/d/{key}/gviz/tq?tqx=out:csv&sheet={sheetname}
+
+  d3.csv("https://docs.google.com/spreadsheets/d/1seMGNKFqOe05r_h-ZWaAUV0gGchdsQHMM3s0FpyaEPM/gviz/tq?tqx=out:csv&sheet=Sheet1", (d) => {
     console.log(d);
     return {
       type: "Feature",
