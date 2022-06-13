@@ -294,11 +294,11 @@ function initMap() {
       }
 
       // link
-      if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
-        popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-        popupHTML += "</div>"
-      }
+      // if (event.feature.getProperty('link') != "") {
+      //   popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+      //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+      //   popupHTML += "</div>"
+      // }
 
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
@@ -335,9 +335,9 @@ function initMap() {
       }
 
       // link
-      if (event.feature.getProperty('link') != "") {
-        popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-      }
+      // if (event.feature.getProperty('link') != "") {
+      //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+      // }
 
       if (event.feature.getProperty('documents') != "") {
         popupHTML += "<div class='col-12 py-0'>Documents:";
