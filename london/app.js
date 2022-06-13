@@ -311,8 +311,10 @@ function initMap() {
       // popupHTML += "<div>"
 
       // price
-      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "Price on Application" ) {
+      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
         popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
+      } else if (event.feature.getProperty('price') == "") {
+        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
       }
 
       // address
