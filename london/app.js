@@ -17,10 +17,10 @@ const breaks = {
     [2500,"#ffcc00"],
     [3500,"#ff0000"],
     [4000,"#b2df8a"],
-    [4500,"#33a02c"],
-    [5000,"#a6cee3"],
-    [5500,"#4264fb"],
-    ["N/A","#fdbf6f"]
+    [4500,"#a6cee3"],
+    [5000,"#4264fb"],
+    [5500,"purple"],
+    ["N/A","#1a9e06"]
   ],
   "area-sqft": [
     [400,"#ffcc00"],
@@ -527,32 +527,6 @@ function legendControl(legend, map) {
   legend.appendChild(legendDiv);
 
 }
-
-// function categoryControl(categoryControl, map) {
-//   categoryControl.id = "categoryControl";
-//   categoryControl.classList = "btn-group dropup m-2"
-//
-//   // let categoryHTML = '<button type="button" id="categoryDropdown" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">' +
-//   //           'Choose a Parameter' + '</button>' +
-//   //           '<ul class="dropdown-menu">';
-//
-//   let categoryHTML = '<select class="form-select form-select-sm">';
-//
-//   for (var cat in labels) {
-//     console.log(cat);
-//     // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
-//     categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
-//   }
-//   // categoryHTML += '</ul></div>';
-//   categoryHTML += '</select>'
-//   categoryControl.innerHTML = categoryHTML;
-//
-//   categoryControl.addEventListener("change", () => {
-//     console.log(event.target.value);
-//     updateCategory(event.target.value);
-//   });
-// }
-
 
 function updateCategory(category) {
   console.log(category);
