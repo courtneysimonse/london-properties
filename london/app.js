@@ -312,9 +312,9 @@ function initMap() {
       // address
       popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
       if (event.feature.getProperty("locationLink") != "") {
-        popupHTML += "<a class='iw-link link-light' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
       } else {
-        popupHTML += event.feature.getProperty("locationName");
+        popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
       }
       popupHTML += "</strong></p>";
 
