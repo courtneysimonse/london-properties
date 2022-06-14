@@ -273,7 +273,7 @@ function initMap() {
       if (windowWidth < 576) {
         console.log('xs');
         imgWidth = iwWidth;
-        imgHeight = iwHeight - 39;
+        imgHeight = iwHeight - 70;
 
       } else {
         console.log('sm or greater');
@@ -293,9 +293,13 @@ function initMap() {
         popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
       }
 
-      // link
+      // mobile only section
+      popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+      // name on mobile
+      popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
+
+      // documents on mobile
       if (event.feature.getProperty('documents') != "") {
-        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
         popupHTML += "Documents:";
         let documents = JSON.parse(event.feature.getProperty('documents'));
         console.log(documents);
@@ -357,16 +361,6 @@ function initMap() {
         popupHTML += "</div>";
       }
 
-      // documents
-      // if (event.feature.getProperty('documents') != "") {
-      //   console.log(event.feature.getProperty('documents'));
-      //   let documents = eval(event.feature.getProperty('documents'));
-      //   popupHTML += "<div class='col-12 py-0'>Documents:";
-      //   documents.forEach((item, i) => {
-      //     popupHTML += "<a target='_blank' href='../documents/"+item[1]+"'>"+item[0]+"</a> ";
-      //   });
-      //   popupHTML += "</div>";
-      // }
       popupHTML += "</div></div>"
 
       // infowindow.setContent(popupHTML);
