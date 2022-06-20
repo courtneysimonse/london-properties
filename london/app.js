@@ -289,6 +289,8 @@ function initMap() {
         console.log(carousel);
         popupHTML += carousel.outerHTML;
         // popupHTML += "</div>"
+      } else if (event.feature.getProperty('mainImage') == "N/A") {
+        popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'></div>";
       } else {
         popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
       }
@@ -306,9 +308,8 @@ function initMap() {
         documents.forEach((item, i) => {
           popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
         });
-
-        popupHTML += "</div>"
       }
+      popupHTML += "</div>"  // end mobile-only section
 
       popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
