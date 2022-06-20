@@ -152,7 +152,8 @@ function initMap() {
         documents: d.documents,
         locationType: d.locationType,
         numImages: d.numImages,
-        image: d.image
+        image: d.image,
+        bedrooms: d.bedrooms
       },
       geometry: {
         type: "Point",
@@ -300,9 +301,18 @@ function initMap() {
       // name on mobile
       popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
 
+      // sq ft
+      if (event.feature.getProperty("area-sqft") != "N/A") {
+        popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
+      }
+
+      if (event.feature.getProperty("bedrooms") != "") {
+        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
+      }
+
       // documents on mobile
       if (event.feature.getProperty('documents') != "") {
-        popupHTML += "Documents:";
+        popupHTML += "Documents: ";
         let documents = JSON.parse(event.feature.getProperty('documents'));
         console.log(documents);
         documents.forEach((item, i) => {
@@ -343,6 +353,14 @@ function initMap() {
       popupHTML += "<div class='pb-1'>";
       if (event.feature.getProperty("price-sqft") != "N/A") {
         popupHTML += event.feature.getProperty('price-sqft') + "/sq ft</div>";
+      } else {
+        popupHTML += "</div>";
+      }
+
+      // bedrooms
+      popupHTML += "<div class='pb-1'>";
+      if (event.feature.getProperty("bedrooms") != "") {
+        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms</div>";
       } else {
         popupHTML += "</div>";
       }
