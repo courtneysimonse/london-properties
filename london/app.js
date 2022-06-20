@@ -662,7 +662,7 @@ function markerStyle (category, feature) {
   // }};
   // let anchorPoint = new google.maps.Point(10,0);
   if (tier == "N/A" || tier == "Price on Application") {
-    console.log(feature.getProperty("locationName") + tier);
+    console.log(feature.getProperty("locationName") + " - " + tier);
     return {icon:{
       // anchor: anchorPoint,
       size: new google.maps.Size(30,30),
