@@ -661,7 +661,7 @@ function markerStyle (category, feature) {
   //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
   // }};
   // let anchorPoint = new google.maps.Point(10,0);
-  if (tier == "N/A" || tier == "Price on Application") {
+  if (tier == "N/A" || tier == "") {
     console.log(feature.getProperty("locationName") + " - " + tier);
     return {icon:{
       // anchor: anchorPoint,
