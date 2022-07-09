@@ -1,9 +1,6 @@
 let map, popup, Popup;
 
 var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-// var cascaisBtn = document.getElementById('cascaisBtn');
-// var setubalBtn = document.getElementById('setubalBtn');
-
 
 // 15-25, 25-35, 35+
 const breaks = {
@@ -73,41 +70,6 @@ var category = "price";
 var markerImage = document.querySelector('.markerImage');
 var markerImageSvg = markerImage.innerHTML;
 
-// var blueMarker = Object.assign({},svgMarker);
-// blueMarker = Object.assign(blueMarker,{fillColor: "#4264fb"});
-// // blueMarker = Object.assign(blueMarker,{url: "icons/blue-star.svg"});
-//
-// var redMarker = Object.assign({},svgMarker);
-// redMarker = Object.assign(redMarker, {fillColor: "#ff0000"});
-// // redMarker = Object.assign(redMarker,{url: "icons/red-star.svg"});
-//
-// var greenMarker = Object.assign({},svgMarker);
-// greenMarker = Object.assign(greenMarker,{url: "icons/green-star.svg"});
-//
-// var yellowMarker = Object.assign({},svgMarker);
-// yellowMarker = Object.assign(yellowMarker,{url: "icons/yellow-star.svg"});
-//
-// var orangeMarker = Object.assign({},svgMarker);
-// orangeMarker = Object.assign(orangeMarker,{url: "icons/yellow-star.svg"});
-//
-// var purpleMarker = Object.assign({},svgMarker);
-// purpleMarker = Object.assign(purpleMarker,{url: "icons/yellow-star.svg"});
-
-// var yellowStar = {
-//   url: '../../images/star-yellow.svg'
-// };
-
-// const myIcons = {
-//   'tier1': yellowMarker,
-//   'tier1b': orangeMarker,
-//   'tier2': redMarker,
-//   'tier2b': purpleMarker,
-//   'tier3': blueMarker,
-//   'N/A': greenMarker,
-// };
-
-// console.log(myIcons);
-
 
 function initMap() {
 
@@ -133,8 +95,9 @@ function initMap() {
   map.setTilt(45);
 
   //https://docs.google.com/spreadsheets/d/{key}/gviz/tq?tqx=out:csv&sheet={sheetname}
+  // https://docs.google.com/spreadsheets/d/1b-b0LPCGVj1u1Y92xhADyRSLb2TpEJZ_d46moTdPpFI/edit#gid=0
 
-  d3.csv("https://docs.google.com/spreadsheets/d/1seMGNKFqOe05r_h-ZWaAUV0gGchdsQHMM3s0FpyaEPM/gviz/tq?tqx=out:csv&sheet=Sheet1", (d) => {
+  d3.csv("https://docs.google.com/spreadsheets/d/1b-b0LPCGVj1u1Y92xhADyRSLb2TpEJZ_d46moTdPpFI/gviz/tq?tqx=out:csv&sheet=Map", (d) => {
     console.log(d);
     return {
       type: "Feature",
@@ -248,155 +211,174 @@ function initMap() {
     map.data.addListener("click", (event) => {
       console.log(event.feature.getProperty("locationName"));
 
-      windowHeight = window.innerHeight;
-      windowWidth = window.innerWidth;
-      console.log(windowWidth + " " + windowHeight);
-      if (windowWidth < 576) {
-        console.log('xs');
-        iwHeight = windowHeight * .3;
-        iwWidth = windowWidth * .8;
+      if (event.feature.getProperty("marker") == "property") {
+        windowHeight = window.innerHeight;
+        windowWidth = window.innerWidth;
+        console.log(windowWidth + " " + windowHeight);
+        if (windowWidth < 576) {
+          console.log('xs');
+          iwHeight = windowHeight * .3;
+          iwWidth = windowWidth * .8;
 
-      } else {
-        console.log('sm or greater');
-        iwHeight = windowHeight * .5;
-        iwWidth = windowWidth * .6;
+        } else {
+          console.log('sm or greater');
+          iwHeight = windowHeight * .5;
+          iwWidth = windowWidth * .6;
 
-      }
-      var imgWidth, imgHeight;
+        }
+        var imgWidth, imgHeight;
 
-      infobox.setOptions({
-        maxWidth: iwWidth
-      });
-
-      let popupHTML = "";
-      popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
-
-      if (windowWidth < 576) {
-        console.log('xs');
-        imgWidth = iwWidth;
-        imgHeight = iwHeight - 70;
-
-      } else {
-        console.log('sm or greater');
-        imgWidth = iwWidth * (8/12);
-        imgHeight = iwHeight;
-
-      }
-
-      if (event.feature.getProperty('numImages')) {
-        // popupHTML += "<div class='col-sm-8 col-12'>";
-        let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-        carousel.classList.add('col-sm-8','col-12','ps-3','pe-0');
-        console.log(carousel);
-        popupHTML += carousel.outerHTML;
-        // popupHTML += "</div>"
-      } else if (event.feature.getProperty('mainImage') == "N/A") {
-        popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'></div>";
-      } else {
-        popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
-      }
-
-      // mobile only section
-      popupHTML += "<div class='col-12 d-sm-none ms-2'>";
-      // name on mobile
-      popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
-
-      // sq ft
-      if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
-      }
-
-      if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
-      }
-
-      // documents on mobile
-      if (event.feature.getProperty('documents') != "") {
-        popupHTML += "Documents: ";
-        let documents = JSON.parse(event.feature.getProperty('documents'));
-        console.log(documents);
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+        infobox.setOptions({
+          maxWidth: iwWidth
         });
-      }
-      popupHTML += "</div>"  // end mobile-only section
 
-      popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
-      // popupHTML += "<div class='col-md-6 col-xs-6'>";
-      // popupHTML += "<div>"
+        let popupHTML = "";
+        popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
 
-      // price
-      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
-        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
-      } else if (event.feature.getProperty('price') == "") {
-        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
-      }
+        if (windowWidth < 576) {
+          console.log('xs');
+          imgWidth = iwWidth;
+          imgHeight = iwHeight - 70;
 
-      // address
-      popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
-      if (event.feature.getProperty("locationLink") != "") {
-        popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        } else {
+          console.log('sm or greater');
+          imgWidth = iwWidth * (8/12);
+          imgHeight = iwHeight;
+
+        }
+
+        if (event.feature.getProperty('numImages')) {
+          // popupHTML += "<div class='col-sm-8 col-12'>";
+          let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+          carousel.classList.add('col-sm-8','col-12','ps-3','pe-0');
+          console.log(carousel);
+          popupHTML += carousel.outerHTML;
+          // popupHTML += "</div>"
+        } else if (event.feature.getProperty('mainImage') == "N/A") {
+          popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'></div>";
+        } else {
+          popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+        }
+
+        // mobile only section
+        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+        // name on mobile
+        popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
+
+        // sq ft
+        if (event.feature.getProperty("area-sqft") != "N/A") {
+          popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
+        }
+
+        if (event.feature.getProperty("bedrooms") != "") {
+          popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
+        }
+
+        // documents on mobile
+        if (event.feature.getProperty('documents') != "") {
+          popupHTML += "Documents: ";
+          let documents = JSON.parse(event.feature.getProperty('documents'));
+          console.log(documents);
+          documents.forEach((item, i) => {
+            popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+          });
+        }
+        popupHTML += "</div>"  // end mobile-only section
+
+        popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
+        // popupHTML += "<div class='col-md-6 col-xs-6'>";
+        // popupHTML += "<div>"
+
+        // price
+        if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
+          popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
+        } else if (event.feature.getProperty('price') == "" || event.feature.getProperty('price') == "N/A") {
+          popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
+        }
+
+        // address
+        popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
+        if (event.feature.getProperty("locationLink") != "") {
+          popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        } else {
+          popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+        }
+        popupHTML += "</strong></p>";
+
+        popupHTML += "<div class='position-absolute bottom-0'>";
+        // sq ft
+        if (event.feature.getProperty("area-sqft") != "N/A") {
+          popupHTML += "<div class=''>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
+        } else {
+          console.log(event.feature.getProperty("area-sqft"));
+        }
+
+        // price/sqft
+        popupHTML += "<div class='pb-1'>";
+        if (event.feature.getProperty("price-sqft") != "N/A" && event.feature.getProperty("price-sqft") != "#VALUE!") {
+          popupHTML += event.feature.getProperty('price-sqft') + "/sq ft</div>";
+        } else {
+          popupHTML += "</div>";
+        }
+
+        // bedrooms
+        popupHTML += "<div class='pb-1'>";
+        if (event.feature.getProperty("bedrooms") != "") {
+          popupHTML += event.feature.getProperty('bedrooms') + " bedrooms</div>";
+        } else {
+          popupHTML += "</div>";
+        }
+
+        // link
+        // if (event.feature.getProperty('link') != "") {
+        //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        // }
+
+        if (event.feature.getProperty('documents') != "") {
+          popupHTML += "<div class='col-12 py-0'>Documents:";
+          let documents = JSON.parse(event.feature.getProperty('documents'));
+          console.log(documents);
+          documents.forEach((item, i) => {
+            popupHTML += "<a target='_blank' class='link-light' href='"+item[1]+"'>"+item[0]+"</a> ";
+          });
+          popupHTML += "</div>";
+        }
+
+        popupHTML += "</div></div>"
+
+        // infowindow.setContent(popupHTML);
+        infobox.setContent(popupHTML);
+        // popup.outerHTML = popupHTML;
+
+        // center map on marker
+        map.panTo(event.feature.getGeometry().get());
+
+        // infowindow.setPosition(event.feature.getGeometry().get());
+        // popup.position = event.feature.getGeometry().get();
+        // console.log(popup);
+        infobox.setPosition(event.feature.getGeometry().get());
+
+
+        // infowindow.open(map);
+        infobox.open(map);
       } else {
-        popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
-      }
-      popupHTML += "</strong></p>";
-
-      popupHTML += "<div class='position-absolute bottom-0'>";
-      // sq ft
-      if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<div class=''>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
-      } else {
-        console.log(event.feature.getProperty("area-sqft"));
-      }
-
-      // price/sqft
-      popupHTML += "<div class='pb-1'>";
-      if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty('price-sqft') + "/sq ft</div>";
-      } else {
-        popupHTML += "</div>";
-      }
-
-      // bedrooms
-      popupHTML += "<div class='pb-1'>";
-      if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms</div>";
-      } else {
-        popupHTML += "</div>";
-      }
-
-      // link
-      // if (event.feature.getProperty('link') != "") {
-      //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-      // }
-
-      if (event.feature.getProperty('documents') != "") {
-        popupHTML += "<div class='col-12 py-0'>Documents:";
-        let documents = JSON.parse(event.feature.getProperty('documents'));
-        console.log(documents);
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+        const infowindow = new google.maps.InfoWindow({
+          content: event.feature.getProperty("locationName"),
+          pixelOffset: new google.maps.Size(-5,-25)
         });
-        popupHTML += "</div>";
+
+        // console.log(event);
+
+        infowindow.setPosition(event.latLng)
+
+        infowindow.open({
+          map,
+          shouldFocus: false,
+        });
+
       }
 
-      popupHTML += "</div></div>"
 
-      // infowindow.setContent(popupHTML);
-      infobox.setContent(popupHTML);
-      // popup.outerHTML = popupHTML;
-
-      // center map on marker
-      map.panTo(event.feature.getGeometry().get());
-
-      // infowindow.setPosition(event.feature.getGeometry().get());
-      // popup.position = event.feature.getGeometry().get();
-      // console.log(popup);
-      infobox.setPosition(event.feature.getGeometry().get());
-
-
-      // infowindow.open(map);
-      infobox.open(map);
     });
 
 
@@ -439,58 +421,6 @@ function initMap() {
     }
 
   } // end drawMarkers
-
-  // class Popup extends google.maps.OverlayView {
-  //   position;
-  //   containerDiv;
-  //   constructor(position, content) {
-  //     super();
-  //     this.position = position;
-  //     content.classList.add("popup-bubble");
-  //
-  //     // This zero-height div is positioned at the bottom of the bubble.
-  //     const bubbleAnchor = document.createElement("div");
-  //
-  //     bubbleAnchor.classList.add("popup-bubble-anchor");
-  //     bubbleAnchor.appendChild(content);
-  //     // This zero-height div is positioned at the bottom of the tip.
-  //     this.containerDiv = document.createElement("div");
-  //     this.containerDiv.classList.add("popup-container");
-  //     this.containerDiv.appendChild(bubbleAnchor);
-  //     // Optionally stop clicks, etc., from bubbling up to the map.
-  //     Popup.preventMapHitsAndGesturesFrom(this.containerDiv);
-  //   }
-  //   /** Called when the popup is added to the map. */
-  //   onAdd() {
-  //     this.getPanes().floatPane.appendChild(this.containerDiv);
-  //   }
-  //   /** Called when the popup is removed from the map. */
-  //   onRemove() {
-  //     if (this.containerDiv.parentElement) {
-  //       this.containerDiv.parentElement.removeChild(this.containerDiv);
-  //     }
-  //   }
-  //   /** Called each frame when the popup needs to draw itself. */
-  //   draw() {
-  //     const divPosition = this.getProjection().fromLatLngToDivPixel(
-  //       this.position
-  //     );
-  //     // Hide the popup when it is far out of view.
-  //     const display =
-  //       Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000
-  //         ? "block"
-  //         : "none";
-  //
-  //     if (display === "block") {
-  //       this.containerDiv.style.left = divPosition.x + "px";
-  //       this.containerDiv.style.top = divPosition.y + "px";
-  //     }
-  //
-  //     if (this.containerDiv.style.display !== display) {
-  //       this.containerDiv.style.display = display;
-  //     }
-  //   }
-  // }
 
 
   const legend = document.createElement('div');
@@ -671,50 +601,66 @@ function addCarousel(prop,imgW,imgH) {
 
 function markerStyle (category, feature) {
   // console.log(myIcons[feature.getProperty('marker')]);
-  let tier = feature.getProperty(category);
-  // console.log(tier);
-  // console.log(tier);
-  // return {icon:{
-  //   size: new google.maps.Size(30,30),
-  //   scaledSize: new google.maps.Size(20,20),
-  //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
-  // }};
-  // let anchorPoint = new google.maps.Point(10,0);
-  if (tier == "N/A" || tier == "") {
-    console.log(feature.getProperty("locationName") + " - " + tier);
-    return {icon:{
-      // anchor: anchorPoint,
-      size: new google.maps.Size(30,30),
-      scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
-    }};
-  } else {
-    tier = +tier.replace('£','').replace(/,/g,'');
-    console.log(feature.getProperty("locationName") + tier);
+
+  if (feature.getProperty("marker") == "property") {
+    let tier = feature.getProperty(category);
     // console.log(tier);
-    for (var i = 0; i < breaks[category].length; i++) {
-      if (tier < breaks[category][i][0]) {
-        if (i==0) {
+    // console.log(tier);
+    // return {icon:{
+    //   size: new google.maps.Size(30,30),
+    //   scaledSize: new google.maps.Size(20,20),
+    //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+    // }};
+    // let anchorPoint = new google.maps.Point(10,0);
+    if (tier == "N/A" || tier == "") {
+      console.log(feature.getProperty("locationName") + " - " + tier);
+      return {icon:{
+        // anchor: anchorPoint,
+        size: new google.maps.Size(30,30),
+        scaledSize: new google.maps.Size(20,20),
+        url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+      }};
+    } else {
+      tier = +tier.replace('£','').replace(/,/g,'');
+      console.log(feature.getProperty("locationName") + tier);
+      // console.log(tier);
+      for (var i = 0; i < breaks[category].length; i++) {
+        if (tier < breaks[category][i][0]) {
+          if (i==0) {
+            return {icon:{
+              size: new google.maps.Size(30,30),
+              scaledSize: new google.maps.Size(20,20),
+              url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+            }};
+          }
+          return {icon:{
+            size: new google.maps.Size(30,30),
+            scaledSize: new google.maps.Size(20,20),
+            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
+          }};
+        } else if (i == breaks[category].length - 2) {
           return {icon:{
             size: new google.maps.Size(30,30),
             scaledSize: new google.maps.Size(20,20),
             url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
           }};
         }
-        return {icon:{
-          size: new google.maps.Size(30,30),
-          scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
-        }};
-      } else if (i == breaks[category].length - 2) {
-        return {icon:{
-          size: new google.maps.Size(30,30),
-          scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
-        }};
       }
     }
+
+  } else if (feature.getProperty("marker") == "school") {
+
+    return {icon:{
+      // anchor: new google.maps.Size(10,10),
+      size: new google.maps.Size(30,30),
+      scaledSize: new google.maps.Size(20,20),
+      url: "icons/graduation-cap-solid.svg",
+    }};
+
+  } else {
+    console.log(feature.getProperty("marker"));
   }
+
 
   // return {icon:myIcons[feature.getProperty('marker')]};
 }
