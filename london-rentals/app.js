@@ -295,7 +295,7 @@ function initMap() {
         if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
           popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
         } else if (event.feature.getProperty('price') == "" || event.feature.getProperty('price') == "N/A") {
-          popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
+          // popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
         }
 
         // address
