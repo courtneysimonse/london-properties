@@ -20,20 +20,20 @@ const breaks = {
     ["N/A","#1a9e06"]
   ],
   "area-sqft": [
-    [400,"#ffcc00"],
-    [6000,"#ff0000"],
-    [8000,"#4264fb"],
+    [8000,"#ffcc00"],
+    [12000,"#ff0000"],
+    [14000,"#4264fb"],
     ["N/A","#1a9e06"]
   ]
 };
 const labels = {
-  price: "Price (£)",
-  "price-sqft": "£/sq ft",
+  // price: "Price (£)",
+  // "price-sqft": "£/sq ft",
   "area-sqft": "Sq ft"
 }
 
 const colors = ["#ffcc00","#ff0000","#4264fb","#1a9e06"];
-var category = "price";
+var category = "area-sqft";
 // var categories = [];
 // for (var cat in breaks) {
 //   categories.push(cat);
@@ -80,7 +80,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
     center: { lat: 51.515, lng: -0.155 },
-    zoom: 12,
+    zoom: 11,
     fullscreenControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
@@ -153,19 +153,20 @@ function initMap() {
     // });
 
 
-    // google.maps.event.addListenerOnce(map, 'idle', function () {
-    //
-    //       const bounds = new google.maps.LatLngBounds();
-    //
-    //       propertyFeatures.forEach((feature) => {
-    //         const geometry = feature.getGeometry();
-    //
-    //         if (geometry) {
-    //           processPoints(geometry, bounds.extend, bounds);
-    //         }
-    //       });
-    //       map.fitBounds(bounds, 0);
-    // });
+    google.maps.event.addListenerOnce(map, 'idle', function () {
+
+          const bounds = new google.maps.LatLngBounds();
+
+          propertyFeatures.forEach((feature) => {
+            const geometry = feature.getGeometry();
+
+            if (geometry) {
+              processPoints(geometry, bounds.extend, bounds);
+            }
+          });
+          map.fitBounds(bounds, 0);
+
+    });
 
     var windowHeight = window.innerHeight;
     var windowWidth = window.innerWidth;
@@ -263,7 +264,8 @@ function initMap() {
         // mobile only section
         popupHTML += "<div class='col-12 d-sm-none ms-2'>";
         // name on mobile
-        popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
+        popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+"</h4>";
+          //" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
 
         // sq ft
         if (event.feature.getProperty("area-sqft") != "N/A") {
@@ -427,6 +429,7 @@ function initMap() {
   legendControl(legend, map);
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
+
   // const categoryDiv = document.createElement('div');
   // categoryControl(categoryDiv, map);
   // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(categoryDiv);
@@ -439,39 +442,42 @@ function legendControl(legend, map) {
 
   legend.classList = "legend ms-2";
 
-  var categoryDiv = document.createElement('div');
-  categoryDiv.id = "categoryControl";
-  categoryDiv.classList = "btn-group dropup m-2"
-  let categoryHTML = '<select class="form-select form-select-sm">';
+  // var categoryDiv = document.createElement('div');
+  // categoryDiv.id = "categoryControl";
+  // categoryDiv.classList = "btn-group dropup m-2"
+  // let categoryHTML = '<select class="form-select form-select-sm">';
 
-  for (var cat in labels) {
-    console.log(cat);
-    // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
-    categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
-  }
+  // for (var cat in labels) {
+  //   console.log(cat);
+  //   // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+  //   categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
+  // }
   // categoryHTML += '</ul></div>';
-  categoryHTML += '</select>'
-  categoryDiv.innerHTML = categoryHTML;
+  // categoryHTML += '</select>'
+  // categoryDiv.innerHTML = categoryHTML;
 
-  legend.appendChild(categoryDiv);
+  // legend.appendChild(categoryDiv);
 
-  categoryDiv.addEventListener("change", () => {
-    console.log(event.target.value);
-    updateCategory(event.target.value);
-  });
+  // categoryDiv.addEventListener("change", () => {
+  //   console.log(event.target.value);
+  //   updateCategory(event.target.value);
+  // });
 
   var legendDiv = document.createElement('div');
   legendDiv.id = "legend";
 
-  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+  // let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+  let legendHTML = '<h3>Sq Ft</h3><ul>';
 
   let catBreaks = breaks[category];
 
-  legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0]/1000000 + ' &mdash; ' + catBreaks[1][0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0]/1000000 + ' &mdash; ' + catBreaks[2][0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0]/1000000 + ' million</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0] + ' &mdash; ' + catBreaks[1][0] + '</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0] + ' &mdash; ' + catBreaks[2][0] + '</li>';
+  legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0] + '</li>';
   legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
   legendHTML += '</ul>';
+
+
 
   legendDiv.innerHTML = legendHTML;
 
