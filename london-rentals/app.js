@@ -425,9 +425,9 @@ function initMap() {
   } // end drawMarkers
 
 
-  const legend = document.createElement('div');
-  legendControl(legend, map);
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+  // const legend = document.createElement('div');
+  // legendControl(legend, map);
+  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
 
   // const categoryDiv = document.createElement('div');
@@ -618,41 +618,47 @@ function markerStyle (category, feature) {
     //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
     // }};
     // let anchorPoint = new google.maps.Point(10,0);
-    if (tier == "N/A" || tier == "") {
-      console.log(feature.getProperty("locationName") + " - " + tier);
-      return {icon:{
-        // anchor: anchorPoint,
-        size: new google.maps.Size(30,30),
-        scaledSize: new google.maps.Size(20,20),
-        url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'orange')),
-      }};
-    } else {
-      tier = +tier.replace('£','').replace(/,/g,'');
-      console.log(feature.getProperty("locationName") + tier);
-      // console.log(tier);
-      for (var i = 0; i < breaks[category].length; i++) {
-        if (tier < breaks[category][i][0]) {
-          if (i==0) {
-            return {icon:{
-              size: new google.maps.Size(30,30),
-              scaledSize: new google.maps.Size(20,20),
-              url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
-            }};
-          }
-          return {icon:{
-            size: new google.maps.Size(30,30),
-            scaledSize: new google.maps.Size(20,20),
-            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
-          }};
-        } else if (i == breaks[category].length - 2) {
-          return {icon:{
-            size: new google.maps.Size(30,30),
-            scaledSize: new google.maps.Size(20,20),
-            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
-          }};
-        }
+    return {icon:{
+      size: new google.maps.Size(30,30),
+      scaledSize: new google.maps.Size(20,20),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#4264fb')),
       }
-    }
+    };
+    // if (tier == "N/A" || tier == "") {
+    //   console.log(feature.getProperty("locationName") + " - " + tier);
+    //   return {icon:{
+    //     // anchor: anchorPoint,
+    //     size: new google.maps.Size(30,30),
+    //     scaledSize: new google.maps.Size(20,20),
+    //     url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'orange')),
+    //   }};
+    // } else {
+    //   tier = +tier.replace('£','').replace(/,/g,'');
+    //   console.log(feature.getProperty("locationName") + tier);
+    //   // console.log(tier);
+    //   for (var i = 0; i < breaks[category].length; i++) {
+    //     if (tier < breaks[category][i][0]) {
+    //       if (i==0) {
+    //         return {icon:{
+    //           size: new google.maps.Size(30,30),
+    //           scaledSize: new google.maps.Size(20,20),
+    //           url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+    //         }};
+    //       }
+    //       return {icon:{
+    //         size: new google.maps.Size(30,30),
+    //         scaledSize: new google.maps.Size(20,20),
+    //         url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
+    //       }};
+    //     } else if (i == breaks[category].length - 2) {
+    //       return {icon:{
+    //         size: new google.maps.Size(30,30),
+    //         scaledSize: new google.maps.Size(20,20),
+    //         url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+    //       }};
+    //     }
+    //   }
+    // }
 
   } else if (feature.getProperty("marker") == "school") {
 
