@@ -20,10 +20,10 @@ const breaks = {
     ["N/A","#1a9e06"]
   ],
   "area-sqft": [
-    [8000,"#ffcc00"],
-    [12000,"#ff0000"],
-    [14000,"#4264fb"],
-    ["N/A","#1a9e06"]
+    [8000,"#1a9e06"],
+    [12000,"#4264fb"],
+    [14000,"purple"],
+    ["N/A","orange"]
   ]
 };
 const labels = {
@@ -32,7 +32,7 @@ const labels = {
   "area-sqft": "Sq ft"
 }
 
-const colors = ["#ffcc00","#ff0000","#4264fb","#1a9e06"];
+const colors = ["#1a9e06","#4264fb","purple","orange"];
 var category = "area-sqft";
 // var categories = [];
 // for (var cat in breaks) {
@@ -624,7 +624,7 @@ function markerStyle (category, feature) {
         // anchor: anchorPoint,
         size: new google.maps.Size(30,30),
         scaledSize: new google.maps.Size(20,20),
-        url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+        url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'orange')),
       }};
     } else {
       tier = +tier.replace('£','').replace(/,/g,'');
