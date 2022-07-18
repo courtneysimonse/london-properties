@@ -80,7 +80,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
     center: { lat: 51.77, lng: -1.25 },
-    zoom: 11,
+    zoom: 10,
     fullscreenControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
@@ -397,17 +397,23 @@ function initMap() {
           map,
           shouldFocus: false,
         });
+
+        map.addListener('click', () => {
+          if (infowindow) {
+            infowindow.close();
+          }
+        });
     })
 
 
-    map.addListener('click', () => {
-      if (infobox) {
-          infobox.close();
-      }
-      if (infowindow) {
-        infowindow.close();
-      }
-    });
+    // map.addListener('click', () => {
+    //   if (infobox) {
+    //       infobox.close();
+    //   }
+    //   if (infowindow) {
+    //     infowindow.close();
+    //   }
+    // });
 
     // infowindow.addListener('domready', () => {
     //   console.log('domready');
