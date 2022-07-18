@@ -383,10 +383,29 @@ function initMap() {
     //
     // });
 
+    map.data.addListener("click", (event) => {
+        const infowindow = new google.maps.InfoWindow({
+          content: event.feature.getProperty("locationName"),
+          pixelOffset: new google.maps.Size(-5,-25)
+        });
+
+        // console.log(event);
+
+        infowindow.setPosition(event.latLng)
+
+        infowindow.open({
+          map,
+          shouldFocus: false,
+        });
+    })
+
 
     map.addListener('click', () => {
       if (infobox) {
           infobox.close();
+      }
+      if (infowindow) {
+        infowindow.close();
       }
     });
 
@@ -425,9 +444,9 @@ function initMap() {
   } // end drawMarkers
 
 
-  // const legend = document.createElement('div');
-  // legendControl(legend, map);
-  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+  const legend = document.createElement('div');
+  legendControl(legend, map);
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
 
   // const categoryDiv = document.createElement('div');
@@ -467,18 +486,20 @@ function legendControl(legend, map) {
   legendDiv.id = "legend";
 
   // let legendHTML = '<h3>Price (&pound;)</h3><ul>';
-  let legendHTML = '<h3>Sq Ft</h3><ul>';
+  // let legendHTML = '<h3>Sq Ft</h3><ul>';
+  //
+  // let catBreaks = breaks[category];
+  //
+  // legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0] + ' &mdash; ' + catBreaks[1][0] + '</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0] + ' &mdash; ' + catBreaks[2][0] + '</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0] + '</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
+  // legendHTML += '</ul>';
 
-  let catBreaks = breaks[category];
-
-  legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0] + ' &mdash; ' + catBreaks[1][0] + '</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0] + ' &mdash; ' + catBreaks[2][0] + '</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0] + '</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
+  let legendHTML = '<h3>Legend</h3><ul>';
+  legendHTML += '<li><span style="background: #4264fb"></span> For Sale</li>';
+  legendHTML += '<li><span style="background: #1a9e06"></span> For Rent</li>';
   legendHTML += '</ul>';
-
-
-
   legendDiv.innerHTML = legendHTML;
 
   legend.appendChild(legendDiv);
