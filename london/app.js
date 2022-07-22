@@ -217,7 +217,15 @@ function initMap() {
     } else {
       console.log('sm or greater');
       iwHeight = windowHeight * .5;
+
+      if (iwHeight > 200) {
+        iwHeight = 200;
+      }
       iwWidth = windowWidth * .6;
+
+      if (iwWidth > 600) {
+        iwWidth = 600;
+      }
 
     }
 
@@ -259,7 +267,15 @@ function initMap() {
       } else {
         console.log('sm or greater');
         iwHeight = windowHeight * .5;
+
+        if (iwHeight > 200) {
+          iwHeight = 200;
+        }
         iwWidth = windowWidth * .6;
+
+        if (iwWidth > 600) {
+          iwWidth = 600;
+        }
 
       }
       var imgWidth, imgHeight;
@@ -293,10 +309,10 @@ function initMap() {
       } else if (event.feature.getProperty('mainImage') == "N/A") {
         popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'></div>";
       } else {
-        popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+        popupHTML += "<div class='col-sm-8 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
       }
 
-      // mobile only section
+      /* Start mobile only section */
       popupHTML += "<div class='col-12 d-sm-none ms-2'>";
       // name on mobile
       popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
@@ -319,9 +335,11 @@ function initMap() {
           popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
         });
       }
-      popupHTML += "</div>"  // end mobile-only section
+      popupHTML += "</div>"
+      /* End mobile-only section */
 
-      popupHTML += "<div class='col-4 d-none d-sm-block px-0 position-relative'>";
+
+      popupHTML += "<div class='col-4 d-none d-sm-block ps-3 pe-0 mb-2 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       // popupHTML += "<div>"
 
@@ -341,29 +359,34 @@ function initMap() {
       }
       popupHTML += "</strong></p>";
 
-      popupHTML += "<div class='position-absolute bottom-0'>";
+
+      /* Start Bottom Section */
+      popupHTML += "<div class='position-absolute bottom-0 w-100 border-top border-white pt-2'>";
+      popupHTML += "<div class='row w-100 mx-0 px-0'>"
       // sq ft
+      popupHTML += "<div class='col-sm-auto'>";
       if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<div class=''>" + event.feature.getProperty("area-sqft") + " sq ft</div>";
+        popupHTML += "<i class='fa-solid fa-ruler-combined'></i> " + event.feature.getProperty("area-sqft") + " sf";
       } else {
         console.log(event.feature.getProperty("area-sqft"));
       }
+      popupHTML += "</div>";
 
       // price/sqft
-      popupHTML += "<div class='pb-1'>";
+      popupHTML += "<div class='col-sm-auto pb-1'>";
       if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty('price-sqft') + "/sq ft</div>";
-      } else {
-        popupHTML += "</div>";
+        popupHTML += event.feature.getProperty('price-sqft') + "/sf";
       }
+      popupHTML += "</div>"
 
       // bedrooms
-      popupHTML += "<div class='pb-1'>";
+      popupHTML += "<div class='col-sm-auto pb-1 text-end'>";
       if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms</div>";
-      } else {
-        popupHTML += "</div>";
+        popupHTML += " <i class='fa-solid fa-bed'></i> " + event.feature.getProperty('bedrooms');
       }
+      popupHTML += "</div>";
+
+      popupHTML += "</div>";
 
       // link
       // if (event.feature.getProperty('link') != "") {
