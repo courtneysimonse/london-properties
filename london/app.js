@@ -144,6 +144,7 @@ function initMap() {
         marker: d.marker,
         locationName: d.locationName,
         locationLink: d.locationLink,
+        address: d.address,
         price: d.price,
         "price-sqft": d["price-sqft"],
         "area-sqft": d["area-sqft"],
@@ -302,7 +303,7 @@ function initMap() {
       if (event.feature.getProperty('numImages')) {
         // popupHTML += "<div class='col-sm-8 col-12'>";
         let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-        carousel.classList.add('col-sm-8','col-12','ps-3','pe-0');
+        carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
         console.log(carousel);
         popupHTML += carousel.outerHTML;
         // popupHTML += "</div>"
@@ -339,30 +340,50 @@ function initMap() {
       /* End mobile-only section */
 
 
-      popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 mb-2 position-relative'>";
+      popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       // popupHTML += "<div>"
 
+      popupHTML += "<div class='row'>"
       // price
+      popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
       if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
-        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + event.feature.getProperty('price') + "</p>";
+        popupHTML += event.feature.getProperty('price');
       } else if (event.feature.getProperty('price') == "") {
-        popupHTML += "<p class='fs-5 my-1 pt-1 text-price'>" + "POA" + "</p>";
+        popupHTML += "POA";
       }
+      popupHTML += "</span></div>";
 
       // address
-      popupHTML += "<p class='my-1 pb-0 fs-6'><strong>";
+      popupHTML += "<div class='col-12'>"
+      popupHTML += "<p class='my-1 pb-0 h6'>";
       if (event.feature.getProperty("locationLink") != "") {
         popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
       } else {
         popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
       }
-      popupHTML += "</strong></p>";
+      popupHTML += "</p>";
+            popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
+      popupHTML += "</div>"
+
+      popupHTML += "</div>"
 
 
       /* Start Bottom Section */
-      popupHTML += "<div class='position-absolute bottom-0 w-100 border-top border-white pt-2'>";
-      popupHTML += "<div class='row w-100 mx-0 px-0'>"
+      popupHTML += "<div class='position-absolute bottom-0 w-100'>";
+
+      // documents
+      if (event.feature.getProperty('documents') != "") {
+        popupHTML += "<div class='col-12 pb-2 fs-6'>";
+        let documents = JSON.parse(event.feature.getProperty('documents'));
+        console.log(documents);
+        documents.forEach((item, i) => {
+          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+        });
+        popupHTML += "</div>";
+      }
+
+      popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
       // sq ft
       popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
       if (event.feature.getProperty("area-sqft") != "N/A") {
@@ -393,15 +414,7 @@ function initMap() {
       //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
       // }
 
-      if (event.feature.getProperty('documents') != "") {
-        popupHTML += "<div class='col-12 py-0'>Documents:";
-        let documents = JSON.parse(event.feature.getProperty('documents'));
-        console.log(documents);
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
-        });
-        popupHTML += "</div>";
-      }
+
 
       popupHTML += "</div></div>"
 
@@ -628,7 +641,7 @@ function processPoints(geometry, callback, thisArg) {
 function addCarousel(prop,imgW,imgH) {
   // console.log(Math.round(imgH));
   const carouselDiv = document.createElement('div');
-  carouselDiv.classList.add('carousel', 'slide', 'carousel-fade', 'carousel-dark');
+  carouselDiv.classList.add('carousel', 'slide', 'carousel-fade');
   carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
   carouselDiv.setAttribute('data-bs-ride','carousel');
   // propDiv.appendChild(carouselDiv);
@@ -641,7 +654,7 @@ function addCarousel(prop,imgW,imgH) {
 
   numImages = prop.getProperty('numImages');
   images = prop.getProperty('images');
-  for (var i = 1; i < numImages; i++) {
+  for (var i = 1; i <= numImages; i++) {
     const carouselBtn = document.createElement('button');
     carouselBtn.setAttribute('data-bs-target',carouselDiv.id);
     carouselBtn.setAttribute('data-bs-slide-to',i-1);
@@ -656,13 +669,20 @@ function addCarousel(prop,imgW,imgH) {
     img.setAttribute('height',imgH+'px');
     img.setAttribute('width',imgW+'px');
 
+    const caption = document.createElement('div');
+    caption.classList.add('carousel-caption','d-block');
+    caption.innerHTML = "<i class='fa-solid fa-images'></i><span class='ps-2'>"+i+" of "+numImages+"</span>";
+
+
     if (i==1) {
       carouselBtn.setAttribute('aria-current','true');
       carouselBtn.classList.add('active');
       carouselItem.classList.add('active');
+      // carouselItem.setAttribute('data-bs-interval','5000000');
     }
 
     carouselItem.appendChild(img);
+    carouselItem.appendChild(caption);
 
     carouselIndicators.appendChild(carouselBtn);
     carouselInner.appendChild(carouselItem);
