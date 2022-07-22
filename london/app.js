@@ -333,7 +333,7 @@ function initMap() {
         let documents = JSON.parse(event.feature.getProperty('documents'));
         console.log(documents);
         documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>View"+item[0]+"</a> ";
         });
       }
       popupHTML += "</div>"
@@ -374,7 +374,7 @@ function initMap() {
 
       // documents
       if (event.feature.getProperty('documents') != "") {
-        popupHTML += "<div class='col-12 pb-2 fs-6'>";
+        popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
         let documents = JSON.parse(event.feature.getProperty('documents'));
         console.log(documents);
         documents.forEach((item, i) => {
@@ -394,11 +394,11 @@ function initMap() {
       popupHTML += "</div>";
 
       // price/sqft
-      popupHTML += "<div class='col-sm-auto pb-1'>";
-      if (event.feature.getProperty("price-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty('price-sqft') + "/sf";
-      }
-      popupHTML += "</div>"
+      // popupHTML += "<div class='col-sm-auto pb-1'>";
+      // if (event.feature.getProperty("price-sqft") != "N/A") {
+      //   popupHTML += event.feature.getProperty('price-sqft') + "/sf";
+      // }
+      // popupHTML += "</div>"
 
       // bedrooms
       popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
