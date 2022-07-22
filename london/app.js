@@ -241,7 +241,7 @@ function initMap() {
 
     var infobox = new InfoBox({
       alignBottom: true,
-      pixelOffset: new google.maps.Size(xOffset,-31),
+      pixelOffset: new google.maps.Size(xOffset,-27),
       maxWidth: iwWidth,
       infoBoxClearance: new google.maps.Size(10,10),
       closeBoxURL: "icons/close.svg",
@@ -363,7 +363,7 @@ function initMap() {
         popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
       }
       popupHTML += "</p>";
-            popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
+      popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
       popupHTML += "</div>"
 
       popupHTML += "</div>"
@@ -416,7 +416,10 @@ function initMap() {
 
 
 
-      popupHTML += "</div></div>"
+      popupHTML += "</div></div></div></div>";
+
+      // add anchor tip
+      popupHTML += "<div class='infobox-tip'></div>"
 
       // infowindow.setContent(popupHTML);
       infobox.setContent(popupHTML);
