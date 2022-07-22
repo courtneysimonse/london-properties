@@ -307,9 +307,9 @@ function initMap() {
         popupHTML += carousel.outerHTML;
         // popupHTML += "</div>"
       } else if (event.feature.getProperty('mainImage') == "N/A") {
-        popupHTML += "<div class='col-sm-8 col-12 ps-3 pe-0'></div>";
+        popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
       } else {
-        popupHTML += "<div class='col-sm-8 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+        popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
       }
 
       /* Start mobile only section */
@@ -339,7 +339,7 @@ function initMap() {
       /* End mobile-only section */
 
 
-      popupHTML += "<div class='col-4 d-none d-sm-block ps-3 pe-0 mb-2 position-relative'>";
+      popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 mb-2 position-relative'>";
       // popupHTML += "<div class='col-md-6 col-xs-6'>";
       // popupHTML += "<div>"
 
@@ -364,9 +364,9 @@ function initMap() {
       popupHTML += "<div class='position-absolute bottom-0 w-100 border-top border-white pt-2'>";
       popupHTML += "<div class='row w-100 mx-0 px-0'>"
       // sq ft
-      popupHTML += "<div class='col-sm-auto'>";
+      popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
       if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<i class='fa-solid fa-ruler-combined'></i> " + event.feature.getProperty("area-sqft") + " sf";
+        popupHTML += "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf</span>";
       } else {
         console.log(event.feature.getProperty("area-sqft"));
       }
@@ -380,9 +380,9 @@ function initMap() {
       popupHTML += "</div>"
 
       // bedrooms
-      popupHTML += "<div class='col-sm-auto pb-1 text-end'>";
+      popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
       if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += " <i class='fa-solid fa-bed'></i> " + event.feature.getProperty('bedrooms');
+        popupHTML += "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms') + "</span>";
       }
       popupHTML += "</div>";
 
