@@ -183,7 +183,7 @@ function initMap() {
     };
     console.log(geojson);
     var propertyFeatures = map.data.addGeoJson(geojson,{idPropertyName:"id"});
-    // console.log(propertyFeatures);
+    console.log(propertyFeatures);
 
     // console.log(propertyFeatures);
     // propertyFeatures.forEach((feature) => {
@@ -255,7 +255,22 @@ function initMap() {
     // popup.setMap(map);
 
     map.data.addListener("click", (event) => {
+      console.log(event.feature);
       console.log(event.feature.getProperty("locationName"));
+
+      // change background color
+      event.feature.setProperty('selected',true);
+      map.data.overrideStyle(event.feature, {
+        icon: {
+          // anchor: anchorPoint,
+          size: new google.maps.Size(30,30),
+          scaledSize: new google.maps.Size(20,20),
+          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'navy').replace('{{bgColor}}','#ffcc00')),
+        }
+      });
+
+      // revert other markers
+      map.data.revertStyle();
 
       windowHeight = window.innerHeight;
       windowWidth = window.innerWidth;
@@ -324,12 +339,13 @@ function initMap() {
         document.getElementById('address').innerText = event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","");
 
         // documents
+        document.getElementById('documents').innerHTML = "";
         if (event.feature.getProperty('documents') != "") {
-          document.getElementById('documents').innerHTML += "View: ";
+          document.getElementById('documents').innerHTML += "<small>View: </small>";
           let documents = JSON.parse(event.feature.getProperty('documents'));
           console.log(documents);
           documents.forEach((item, i) => {
-            document.getElementById('documents').innerHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+            document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a></small> ";
           });
         }
 
@@ -784,7 +800,7 @@ function markerStyle (category, feature) {
       // anchor: anchorPoint,
       size: new google.maps.Size(30,30),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}','navy')),
     }};
   } else {
     tier = +tier.replace('£','').replace(/,/g,'');
@@ -796,19 +812,19 @@ function markerStyle (category, feature) {
           return {icon:{
             size: new google.maps.Size(30,30),
             scaledSize: new google.maps.Size(20,20),
-            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1]).replace('{{bgColor}}','navy')),
           }};
         }
         return {icon:{
           size: new google.maps.Size(30,30),
           scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1])),
+          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1]).replace('{{bgColor}}','navy')),
         }};
       } else if (i == breaks[category].length - 2) {
         return {icon:{
           size: new google.maps.Size(30,30),
           scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1])),
+          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1]).replace('{{bgColor}}','navy')),
         }};
       }
     }
