@@ -13,15 +13,15 @@ const breaks = {
     [50000000,"#4264fb"],
     ["Price on Application","#1a9e06"]
   ],
-  "price-sqft": [
-    [2500,"#ffcc00"],
-    [3500,"#ff0000"],
-    [4000,"#b2df8a"],
-    [4500,"#a6cee3"],
-    [5000,"#4264fb"],
-    [5500,"purple"],
-    ["N/A","#1a9e06"]
-  ],
+  // "price-sqft": [
+  //   [2500,"#ffcc00"],
+  //   [3500,"#ff0000"],
+  //   [4000,"#b2df8a"],
+  //   [4500,"#a6cee3"],
+  //   [5000,"#4264fb"],
+  //   [5500,"purple"],
+  //   ["N/A","#1a9e06"]
+  // ],
   "area-sqft": [
     [400,"#ffcc00"],
     [6000,"#ff0000"],
@@ -31,7 +31,7 @@ const breaks = {
 };
 const labels = {
   price: "Price (£)",
-  "price-sqft": "£/sq ft",
+  // "price-sqft": "£/sq ft",
   "area-sqft": "Sq ft"
 }
 
@@ -212,8 +212,8 @@ function initMap() {
 
     if (windowWidth < 576) {
       console.log('xs');
-      iwHeight = windowHeight * .3;
-      iwWidth = windowWidth * .8;
+      // iwHeight = windowHeight * .3;
+      // iwWidth = windowWidth * .8;
 
     } else {
       console.log('sm or greater');
@@ -262,8 +262,8 @@ function initMap() {
       console.log(windowWidth + " " + windowHeight);
       if (windowWidth < 576) {
         console.log('xs');
-        iwHeight = windowHeight * .3;
-        iwWidth = windowWidth * .8;
+        // iwHeight = windowHeight * .3;
+        // iwWidth = windowWidth * .8;
 
       } else {
         console.log('sm or greater');
@@ -290,152 +290,204 @@ function initMap() {
 
       if (windowWidth < 576) {
         console.log('xs');
-        imgWidth = iwWidth;
-        imgHeight = iwHeight - 70;
+        imgWidth = windowWidth * .5;
+        imgHeight = 200;
+
+        // images
+        if (event.feature.getProperty('numImages')) {
+          let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+          carousel.classList.add('col-6','ps-0','pe-0');
+          console.log(carousel);
+
+          document.getElementById('main-image').outerHTML = carousel.outerHTML;
+        } else if (event.feature.getProperty('mainImage') == "N/A") {
+
+        } else {
+          document.getElementById('main-image').innerHTML = "<img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'>";
+        }
+
+        // price
+        if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
+          document.getElementById('price').innerText = event.feature.getProperty('price');
+        } else if (event.feature.getProperty('price') == "") {
+          document.getElementById('price').innerText = "POA";
+        }
+
+        // location
+        if (event.feature.getProperty("locationLink") != "") {
+          document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        } else {
+          document.getElementById('location').innerHTML = "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+        }
+
+        // address
+        document.getElementById('address').innerText = event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","");
+
+        // documents
+        if (event.feature.getProperty('documents') != "") {
+          document.getElementById('documents').innerHTML += "View: ";
+          let documents = JSON.parse(event.feature.getProperty('documents'));
+          console.log(documents);
+          documents.forEach((item, i) => {
+            document.getElementById('documents').innerHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+          });
+        }
+
+        // sqft
+        if (event.feature.getProperty("area-sqft") != "N/A") {
+          document.getElementById('sqft').innerHTML = "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf";
+        }
+
+        // bedrooms
+        if (event.feature.getProperty("bedrooms") != "") {
+          document.getElementById('beds').innerHTML = "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms');
+        }
 
       } else {
         console.log('sm or greater');
         imgWidth = iwWidth * (8/12);
         imgHeight = iwHeight;
 
-      }
 
-      if (event.feature.getProperty('numImages')) {
-        // popupHTML += "<div class='col-sm-8 col-12'>";
-        let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-        carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
-        console.log(carousel);
-        popupHTML += carousel.outerHTML;
-        // popupHTML += "</div>"
-      } else if (event.feature.getProperty('mainImage') == "N/A") {
-        popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
-      } else {
-        popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
-      }
+        if (event.feature.getProperty('numImages')) {
+          // popupHTML += "<div class='col-sm-8 col-12'>";
+          let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+          carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
+          console.log(carousel);
+          popupHTML += carousel.outerHTML;
+          // popupHTML += "</div>"
+        } else if (event.feature.getProperty('mainImage') == "N/A") {
+          popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
+        } else {
+          popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+        }
 
-      /* Start mobile only section */
-      popupHTML += "<div class='col-12 d-sm-none ms-2'>";
-      // name on mobile
-      popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
+        /* Start mobile only section */
+        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+        // name on mobile
+        popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
 
-      // sq ft
-      if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
-      }
+        // sq ft
+        if (event.feature.getProperty("area-sqft") != "N/A") {
+          popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
+        }
 
-      if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
-      }
+        if (event.feature.getProperty("bedrooms") != "") {
+          popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
+        }
 
-      // documents on mobile
-      if (event.feature.getProperty('documents') != "") {
-        popupHTML += "Documents: ";
-        let documents = JSON.parse(event.feature.getProperty('documents'));
-        console.log(documents);
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>View"+item[0]+"</a> ";
-        });
-      }
-      popupHTML += "</div>"
-      /* End mobile-only section */
-
-
-      popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
-      // popupHTML += "<div class='col-md-6 col-xs-6'>";
-      // popupHTML += "<div>"
-
-      popupHTML += "<div class='row'>"
-      // price
-      popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
-      if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
-        popupHTML += event.feature.getProperty('price');
-      } else if (event.feature.getProperty('price') == "") {
-        popupHTML += "POA";
-      }
-      popupHTML += "</span></div>";
-
-      // address
-      popupHTML += "<div class='col-12'>"
-      popupHTML += "<p class='my-1 pb-0 h6'>";
-      if (event.feature.getProperty("locationLink") != "") {
-        popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
-      } else {
-        popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
-      }
-      popupHTML += "</p>";
-      popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
-      popupHTML += "</div>"
-
-      popupHTML += "</div>"
+        // documents on mobile
+        if (event.feature.getProperty('documents') != "") {
+          popupHTML += "Documents: ";
+          let documents = JSON.parse(event.feature.getProperty('documents'));
+          console.log(documents);
+          documents.forEach((item, i) => {
+            popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>View"+item[0]+"</a> ";
+          });
+        }
+        popupHTML += "</div>"
+        /* End mobile-only section */
 
 
-      /* Start Bottom Section */
-      popupHTML += "<div class='position-absolute bottom-0 w-100'>";
+        popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
+        // popupHTML += "<div class='col-md-6 col-xs-6'>";
+        // popupHTML += "<div>"
 
-      // documents
-      if (event.feature.getProperty('documents') != "") {
-        popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
-        let documents = JSON.parse(event.feature.getProperty('documents'));
-        console.log(documents);
-        documents.forEach((item, i) => {
-          popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
-        });
+        popupHTML += "<div class='row'>"
+        // price
+        popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
+        if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
+          popupHTML += event.feature.getProperty('price');
+        } else if (event.feature.getProperty('price') == "") {
+          popupHTML += "POA";
+        }
+        popupHTML += "</span></div>";
+
+        // address
+        popupHTML += "<div class='col-12'>"
+        popupHTML += "<p class='my-1 pb-0 h6'>";
+        if (event.feature.getProperty("locationLink") != "") {
+          popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+        } else {
+          popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+        }
+        popupHTML += "</p>";
+        popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
+        popupHTML += "</div>"
+
+        popupHTML += "</div>"
+
+
+        /* Start Bottom Section */
+        popupHTML += "<div class='position-absolute bottom-0 w-100'>";
+
+        // documents
+        if (event.feature.getProperty('documents') != "") {
+          popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
+          let documents = JSON.parse(event.feature.getProperty('documents'));
+          console.log(documents);
+          documents.forEach((item, i) => {
+            popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+          });
+          popupHTML += "</div>";
+        }
+
+        popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
+        // sq ft
+        popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
+        if (event.feature.getProperty("area-sqft") != "N/A") {
+          popupHTML += "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf</span>";
+        } else {
+          console.log(event.feature.getProperty("area-sqft"));
+        }
         popupHTML += "</div>";
+
+        // price/sqft
+        // popupHTML += "<div class='col-sm-auto pb-1'>";
+        // if (event.feature.getProperty("price-sqft") != "N/A") {
+        //   popupHTML += event.feature.getProperty('price-sqft') + "/sf";
+        // }
+        // popupHTML += "</div>"
+
+        // bedrooms
+        popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
+        if (event.feature.getProperty("bedrooms") != "") {
+          popupHTML += "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms') + "</span>";
+        }
+        popupHTML += "</div>";
+
+        popupHTML += "</div>";
+
+        // link
+        // if (event.feature.getProperty('link') != "") {
+        //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+        // }
+
+
+
+        popupHTML += "</div></div></div></div>";
+
+        // add anchor tip
+        popupHTML += "<div class='infobox-tip'></div>"
+
+        // infowindow.setContent(popupHTML);
+        infobox.setContent(popupHTML);
+        // popup.outerHTML = popupHTML;
+
+        // center map on marker
+        map.panTo(event.feature.getGeometry().get());
+
+        // infowindow.setPosition(event.feature.getGeometry().get());
+        // popup.position = event.feature.getGeometry().get();
+        // console.log(popup);
+        infobox.setPosition(event.feature.getGeometry().get());
+
+
+        // infowindow.open(map);
+        infobox.open(map);
+
       }
 
-      popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
-      // sq ft
-      popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
-      if (event.feature.getProperty("area-sqft") != "N/A") {
-        popupHTML += "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf</span>";
-      } else {
-        console.log(event.feature.getProperty("area-sqft"));
-      }
-      popupHTML += "</div>";
-
-      // price/sqft
-      // popupHTML += "<div class='col-sm-auto pb-1'>";
-      // if (event.feature.getProperty("price-sqft") != "N/A") {
-      //   popupHTML += event.feature.getProperty('price-sqft') + "/sf";
-      // }
-      // popupHTML += "</div>"
-
-      // bedrooms
-      popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
-      if (event.feature.getProperty("bedrooms") != "") {
-        popupHTML += "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms') + "</span>";
-      }
-      popupHTML += "</div>";
-
-      popupHTML += "</div>";
-
-      // link
-      // if (event.feature.getProperty('link') != "") {
-      //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-      // }
-
-
-
-      popupHTML += "</div></div></div></div>";
-
-      // add anchor tip
-      popupHTML += "<div class='infobox-tip'></div>"
-
-      // infowindow.setContent(popupHTML);
-      infobox.setContent(popupHTML);
-      // popup.outerHTML = popupHTML;
-
-      // center map on marker
-      map.panTo(event.feature.getGeometry().get());
-
-      // infowindow.setPosition(event.feature.getGeometry().get());
-      // popup.position = event.feature.getGeometry().get();
-      // console.log(popup);
-      infobox.setPosition(event.feature.getGeometry().get());
-
-
-      // infowindow.open(map);
-      infobox.open(map);
     });
 
 

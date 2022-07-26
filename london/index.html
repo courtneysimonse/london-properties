@@ -65,7 +65,7 @@
     .carousel-caption {
       bottom: -1rem;
       text-align: right;
-      margin-right: -2.25rem;
+      margin-right: -2rem;
     }
 
     .infobox-tip {
@@ -78,6 +78,10 @@
       border-style: solid;
       border-width: .5rem .5rem 0;
     }
+
+    #mobile-info {
+      z-index: 500;
+    }
     </style>
 
     <title>London Property Snapshot</title>
@@ -87,6 +91,27 @@
     <!-- <h1>Setubal Property Snapshot</h1> -->
     <div id="mapid"></div>
     <div id="content"></div>
+    <div id="mobile-info" class="clearfix d-block d-sm-none position-absolute bottom-0 start-0 m-0 p-0 bg-navy text-light w-100 row row-cols-auto">
+      <div id='main-image' class='col px-0 position-relative'></div>
+      <div class='col ps-3 pe-0 my-2 position-relative'>
+        <div class="row">
+          <div class='col-12 h3'>
+            <span id='price' class='my-1 pt-1 text-price'></span>
+          </div>
+          <div class='col-12'>
+            <p id="location" class='my-1 pb-0 h6'></p>
+            <p id="address" class='text-white'></p>
+          </div>
+        </div>
+        <div class='position-absolute bottom-0 w-100'>
+          <div id="documents" class='col-12 pb-2 fs-6'></div>
+          <div class='row w-100 mx-0 px-0 border-top border-white pt-2'>
+            <div id="sqft" class='col-sm-auto text-start ms-0 ps-0'></div>
+            <div id="beds" class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="markerImage">
       <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
