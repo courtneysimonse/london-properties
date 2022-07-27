@@ -247,7 +247,7 @@ function initMap() {
 
     var infobox = new InfoBox({
       alignBottom: true,
-      pixelOffset: new google.maps.Size(xOffset,-27),
+      pixelOffset: new google.maps.Size(xOffset,-18),
       maxWidth: iwWidth,
       infoBoxClearance: new google.maps.Size(10,10),
       closeBoxURL: "icons/close.svg",
@@ -823,9 +823,13 @@ function markerStyle (category, feature) {
   }
 
   return {icon:{
-    size: new google.maps.Size(30,30),
+    // size: new google.maps.Size(20,20),
     scaledSize: new google.maps.Size(20,20),
     url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', catColor).replace('{{bgColor}}',bgColor)),
+  },
+  shape: {
+    type: 'rect',
+    coords: [0,0,20,20]
   }};
 
   // return {icon:myIcons[feature.getProperty('marker')]};
