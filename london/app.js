@@ -119,15 +119,21 @@ function initMap() {
     mapId: "4b8d32be0b6717d",
     center: { lat: 51.515, lng: -0.155 },
     zoom: 12,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.TOP_RIGHT
+    },
     fullscreenControlOptions: {
-      position: google.maps.ControlPosition.BOTTOM_LEFT
+      position: google.maps.ControlPosition.LEFT_TOP
     },
     mapTypeControl: true,
     mapTypeControlOptions: {
-      position: google.maps.ControlPosition.LEFT_TOP,
+      position: google.maps.ControlPosition.TOP_LEFT,
       style: google.maps.MapTypeControlStyle.DEFAULT,
       mapTypeIds: ["roadmap","satellite"],
-    }
+    },
+    streetViewControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_TOP
+    },
   });
 
   map.setTilt(45);
