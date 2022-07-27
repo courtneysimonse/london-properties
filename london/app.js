@@ -297,6 +297,11 @@ function initMap() {
         imgWidth = windowWidth * .5;
         imgHeight = 200;
 
+        // show info area
+        if (document.getElementById('mobile-info').classList.contains('invisible')) {
+          document.getElementById('mobile-info').classList.remove('invisible');
+        }
+
         // images
         if (event.feature.getProperty('numImages')) {
           let carousel = addCarousel(event.feature,imgWidth,imgHeight);
