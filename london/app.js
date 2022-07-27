@@ -259,18 +259,7 @@ function initMap() {
       console.log(event.feature.getProperty("locationName"));
 
       // change background color
-      event.feature.setProperty('selected',true);
-      map.data.overrideStyle(event.feature, {
-        icon: {
-          // anchor: anchorPoint,
-          size: new google.maps.Size(30,30),
-          scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'navy').replace('{{bgColor}}','#ffcc00')),
-        }
-      });
-
-      // revert other markers
-      map.data.revertStyle();
+      setSelected(event.feature, propertyFeatures);
 
       windowHeight = window.innerHeight;
       windowWidth = window.innerWidth;
@@ -794,14 +783,13 @@ function markerStyle (category, feature) {
   //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06')),
   // }};
   // let anchorPoint = new google.maps.Point(10,0);
+
+  let catColor;
+  let bgColor;
+
   if (tier == "N/A" || tier == "") {
     console.log(feature.getProperty("locationName") + " - " + tier);
-    return {icon:{
-      // anchor: anchorPoint,
-      size: new google.maps.Size(30,30),
-      scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}','navy')),
-    }};
+    catColor = '#1a9e06';
   } else {
     tier = +tier.replace('£','').replace(/,/g,'');
     console.log(feature.getProperty("locationName") + tier);
@@ -809,26 +797,35 @@ function markerStyle (category, feature) {
     for (var i = 0; i < breaks[category].length; i++) {
       if (tier < breaks[category][i][0]) {
         if (i==0) {
-          return {icon:{
-            size: new google.maps.Size(30,30),
-            scaledSize: new google.maps.Size(20,20),
-            url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1]).replace('{{bgColor}}','navy')),
-          }};
+          catColor = breaks[category][i][1];
         }
-        return {icon:{
-          size: new google.maps.Size(30,30),
-          scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i-1][1]).replace('{{bgColor}}','navy')),
-        }};
+        catColor = breaks[category][i-1][1]
       } else if (i == breaks[category].length - 2) {
-        return {icon:{
-          size: new google.maps.Size(30,30),
-          scaledSize: new google.maps.Size(20,20),
-          url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', breaks[category][i][1]).replace('{{bgColor}}','navy')),
-        }};
+        catColor = breaks[category][i][1];
       }
     }
   }
+  if (feature.getProperty("selected") == true) {
+    bgColor = '#ffcc00';
+  } else {
+    bgColor = 'navy';
+  }
+
+  return {icon:{
+    size: new google.maps.Size(30,30),
+    scaledSize: new google.maps.Size(20,20),
+    url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', catColor).replace('{{bgColor}}',bgColor)),
+  }};
 
   // return {icon:myIcons[feature.getProperty('marker')]};
+}
+
+function setSelected(feature, featureSet) {
+  featureSet.forEach((item, i) => {
+    item.setProperty('selected',false);
+  });
+
+
+  feature.setProperty('selected',true);
+
 }
