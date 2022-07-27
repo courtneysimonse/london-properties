@@ -318,7 +318,7 @@ function initMap() {
         } else if (event.feature.getProperty('mainImage') == "N/A") {
 
         } else {
-          document.getElementById('main-image').innerHTML = "<img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'>";
+          document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
         }
 
         // price
@@ -345,7 +345,7 @@ function initMap() {
           let documents = JSON.parse(event.feature.getProperty('documents'));
           console.log(documents);
           documents.forEach((item, i) => {
-            document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a></small> ";
+            document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-yellow' href='./documents/"+item[1]+"'>"+item[0]+"</a></small> ";
           });
         }
 
@@ -443,7 +443,7 @@ function initMap() {
           let documents = JSON.parse(event.feature.getProperty('documents'));
           console.log(documents);
           documents.forEach((item, i) => {
-            popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
+            popupHTML += "<a target='_blank' class='link-yellow' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
           });
           popupHTML += "</div>";
         }
@@ -713,7 +713,7 @@ function addCarousel(prop,imgW,imgH) {
   // console.log(Math.round(imgH));
   const carouselDiv = document.createElement('div');
   carouselDiv.classList.add('carousel', 'slide', 'carousel-fade');
-  carouselDiv.id = 'carouselProp-'+prop.getProperty('id');
+  carouselDiv.id = 'main-image';
   carouselDiv.setAttribute('data-bs-ride','carousel');
   // propDiv.appendChild(carouselDiv);
 
