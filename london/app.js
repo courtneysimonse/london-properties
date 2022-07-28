@@ -258,6 +258,8 @@ function initMap() {
       closeBoxMargin: "5px"
     });
 
+    var infowindow;
+
     // popup = new Popup(
     //   new google.maps.LatLng(-33.866, 151.196),
     //   document.getElementById("content")
@@ -525,7 +527,11 @@ function initMap() {
 
 
       } else {
-        const infowindow = new google.maps.InfoWindow({
+        if (infowindow) {
+            infowindow.close();
+        }
+        
+        infowindow = new google.maps.InfoWindow({
           content: event.feature.getProperty("locationName"),
           pixelOffset: new google.maps.Size(0,-15)
         });
@@ -546,6 +552,10 @@ function initMap() {
     map.addListener('click', () => {
       if (infobox) {
           infobox.close();
+      }
+
+      if (infowindow) {
+          infowindow.close();
       }
     });
 
