@@ -10,7 +10,7 @@ const breaks = {
   price: [
     [25000000,"#ffcc00"],
     [35000000,"#ff0000"],
-    [50000000,"#4264fb"],
+    [50000000,"#386cb0"],
     ["Price on Application","#1a9e06"]
   ],
   // "price-sqft": [
@@ -18,14 +18,14 @@ const breaks = {
   //   [3500,"#ff0000"],
   //   [4000,"#b2df8a"],
   //   [4500,"#a6cee3"],
-  //   [5000,"#4264fb"],
+  //   [5000,"#386cb0"],
   //   [5500,"purple"],
   //   ["N/A","#1a9e06"]
   // ],
   "area-sqft": [
     [400,"#ffcc00"],
     [6000,"#ff0000"],
-    [8000,"#4264fb"],
+    [8000,"#386cb0"],
     ["N/A","#1a9e06"]
   ]
 };
@@ -697,7 +697,7 @@ function legendControl(legend, map) {
   // legendHTML += '</ul>';
 
   let legendHTML = '<h3>Legend</h3><ul>';
-  legendHTML += '<li><span style="background: #4264fb"></span> For Sale</li>';
+  legendHTML += '<li><span style="background: #386cb0"></span> For Sale</li>';
   legendHTML += '<li><span style="background: #1a9e06"></span> For Rent</li>';
   legendHTML += '</ul>';
 
@@ -896,7 +896,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#386cb0').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
@@ -908,7 +908,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#4264fb').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
@@ -920,7 +920,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(twoColorMarkerSvg.replace('{{markerColor1}}', '#4264fb').replace('{{markerColor2}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(twoColorMarkerSvg.replace('{{markerColor1}}', '#386cb0').replace('{{markerColor2}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
