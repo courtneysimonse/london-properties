@@ -304,8 +304,6 @@ function initMap() {
           maxWidth: iwWidth
         });
 
-        let popupHTML = "";
-        popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
 
         if (windowWidth < 576) {
           console.log('xs');
@@ -376,6 +374,14 @@ function initMap() {
           }
 
         } else {
+          let popupHTML = "";
+          if (event.feature.getProperty('mainImage') != "N/A") {
+            popupHTML += "<div class='m-0 p-0 bg-navy text-light' id='infoboxContent' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
+          } else {
+            infobox.setOptions({pixelOffset: new google.maps.Size(xOffset*(5/12),-18),});
+
+            popupHTML += "<div class='m-0 p-0 bg-navy text-light' id='infoboxContent' style='height: "+iwHeight+"px; width: "+iwWidth*(5/12)+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
+          }
           console.log('sm or greater');
           imgWidth = iwWidth * (8/12);
           imgHeight = iwHeight;
@@ -389,7 +395,7 @@ function initMap() {
             popupHTML += carousel.outerHTML;
             // popupHTML += "</div>"
           } else if (event.feature.getProperty('mainImage') == "N/A") {
-            popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
+            // popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
           } else {
             popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
           }
@@ -420,8 +426,12 @@ function initMap() {
           // popupHTML += "</div>"
           // /* End mobile-only section */
 
+          if (event.feature.getProperty('mainImage') == "N/A") {
+            popupHTML += "<div class='col-12 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
+          } else {
+            popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
+          }
 
-          popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
           // popupHTML += "<div class='col-md-6 col-xs-6'>";
           // popupHTML += "<div>"
 
