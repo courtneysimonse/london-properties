@@ -126,7 +126,7 @@ function initMap() {
       position: google.maps.ControlPosition.TOP_RIGHT
     },
     fullscreenControlOptions: {
-      position: google.maps.ControlPosition.LEFT_TOP
+      position: google.maps.ControlPosition.RIGHT_TOP
     },
     mapTypeControl: true,
     mapTypeControlOptions: {
@@ -530,7 +530,7 @@ function initMap() {
         if (infowindow) {
             infowindow.close();
         }
-        
+
         infowindow = new google.maps.InfoWindow({
           content: event.feature.getProperty("locationName"),
           pixelOffset: new google.maps.Size(0,-15)
@@ -646,9 +646,9 @@ function initMap() {
   // }
 
 
-  // const legend = document.createElement('div');
-  // legendControl(legend, map);
-  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+  const legend = document.createElement('div');
+  legendControl(legend, map);
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(legend);
 
   // const categoryDiv = document.createElement('div');
   // categoryControl(categoryDiv, map);
@@ -662,38 +662,43 @@ function legendControl(legend, map) {
 
   legend.classList = "legend ms-2";
 
-  var categoryDiv = document.createElement('div');
-  categoryDiv.id = "categoryControl";
-  categoryDiv.classList = "btn-group dropup m-2"
-  let categoryHTML = '<select class="form-select form-select-sm">';
-
-  for (var cat in labels) {
-    console.log(cat);
-    // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
-    categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
-  }
-  // categoryHTML += '</ul></div>';
-  categoryHTML += '</select>'
-  categoryDiv.innerHTML = categoryHTML;
-
-  legend.appendChild(categoryDiv);
-
-  categoryDiv.addEventListener("change", () => {
-    console.log(event.target.value);
-    updateCategory(event.target.value);
-  });
+  // var categoryDiv = document.createElement('div');
+  // categoryDiv.id = "categoryControl";
+  // categoryDiv.classList = "btn-group dropup m-2"
+  // let categoryHTML = '<select class="form-select form-select-sm">';
+  //
+  // for (var cat in labels) {
+  //   console.log(cat);
+  //   // categoryHTML += '<li><button class="dropdown-item" type="button" id="' + cat + '">' + cat + '</button></li>';
+  //   categoryHTML += '<option value=' + cat + '>' + labels[cat] + '</option>';
+  // }
+  // // categoryHTML += '</ul></div>';
+  // categoryHTML += '</select>'
+  // categoryDiv.innerHTML = categoryHTML;
+  //
+  // legend.appendChild(categoryDiv);
+  //
+  // categoryDiv.addEventListener("change", () => {
+  //   console.log(event.target.value);
+  //   updateCategory(event.target.value);
+  // });
 
   var legendDiv = document.createElement('div');
   legendDiv.id = "legend";
 
-  let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+  // let legendHTML = '<h3>Price (&pound;)</h3><ul>';
+  //
+  // let catBreaks = breaks[category];
+  //
+  // legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0]/1000000 + ' &mdash; ' + catBreaks[1][0]/1000000 + ' million</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0]/1000000 + ' &mdash; ' + catBreaks[2][0]/1000000 + ' million</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0]/1000000 + ' million</li>';
+  // legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
+  // legendHTML += '</ul>';
 
-  let catBreaks = breaks[category];
-
-  legendHTML += '<li><span style="background:' + catBreaks[0][1] + '"></span> ' + catBreaks[0][0]/1000000 + ' &mdash; ' + catBreaks[1][0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[1][1] + '"></span> ' + catBreaks[1][0]/1000000 + ' &mdash; ' + catBreaks[2][0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[2][1] + '"></span> > ' + catBreaks[2][0]/1000000 + ' million</li>';
-  legendHTML += '<li><span style="background:' + catBreaks[3][1] + '"></span> ' + catBreaks[3][0] + '</li>';
+  let legendHTML = '<h3>Legend</h3><ul>';
+  legendHTML += '<li><span style="background: #4264fb"></span> For Sale</li>';
+  legendHTML += '<li><span style="background: #1a9e06"></span> For Rent</li>';
   legendHTML += '</ul>';
 
   legendDiv.innerHTML = legendHTML;
