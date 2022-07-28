@@ -270,10 +270,11 @@ function initMap() {
       console.log(event.feature);
       console.log(event.feature.getProperty("locationName"));
 
-      // change background color
-      setSelected(event.feature, propertyFeatures);
+
 
       if (event.feature.getProperty('marker') != 'school') {
+        // change background color
+        setSelected(event.feature, propertyFeatures);
 
         windowHeight = window.innerHeight;
         windowWidth = window.innerWidth;
@@ -552,6 +553,8 @@ function initMap() {
     map.addListener('click', () => {
       if (infobox) {
           infobox.close();
+          // change background color
+          setSelected(null, propertyFeatures);
       }
 
       if (infowindow) {
@@ -954,7 +957,9 @@ function setSelected(feature, featureSet) {
     item.setProperty('selected',false);
   });
 
+  if (feature != null) {
+    feature.setProperty('selected',true);
+  }
 
-  feature.setProperty('selected',true);
 
 }
