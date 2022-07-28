@@ -34,8 +34,8 @@
       padding: 0px;
     } */
 
-    .iw-link {
-
+    .gm-style-iw .gm-style-iw-c {
+      padding: 12px !important;
     }
 
     /* #content {
@@ -66,7 +66,7 @@
       color: #e5ca00;
     }
 
-    .markerImage {
+    #markerImage, #twoColorMarker {
       display: none;
     }
 
@@ -93,6 +93,10 @@
 
     #mobile-info {
       z-index: 500;
+    }
+
+    #main-image {
+      height: 200px;
     }
     </style>
 
@@ -127,7 +131,7 @@
       </div>
     </div>
 
-    <div class="markerImage">
+    <div id="markerImage">
       <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
         <g>
           <rect
@@ -143,6 +147,40 @@
              d="M0 15L17.634 24.27L14.265 4.635L28.533 -9.27L8.817 -12.135L0 -30L-8.817 -12.135L-28.533 -9.27L-14.265 4.635L-17.634 24.27L0 15"
              transform="scale(.4) translate(38,38)"
               />
+        </g>
+      </svg>
+    </div>
+
+    <div id="twoColorMarker">
+      <svg
+         width="30"
+         height="30"
+         viewBox="0 0 30 30"
+         version="1.1"
+         id="svg6"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:svg="http://www.w3.org/2000/svg">
+        <defs
+           id="defs10" />
+        <g
+           id="g4">
+          <rect
+             style="fill:{{bgColor}};fill-opacity:1;stroke-width:0"
+             id="outline"
+             width="30"
+             height="30"
+             x="0"
+             y="0" />
+          <path
+             id="star-2"
+             fill="{{markerColor2}}"
+             d="M 14.890625,-11.251953 -15.036133,9.1386719 -17.633789,24.270508 -0.00195313,14.998047 17.634766,24.270508 14.265625,4.6367188 28.533203,-9.2695312 Z"
+             transform="matrix(0.4,0,0,0.4,15.2,15.2)" />
+          <path
+             id="star-1"
+             fill="{{markerColor1}}"
+             d="m -0.00195313,-30.001953 -8.81347657,17.866211 -19.7167973,2.8662108 14.267579,13.90625 -0.771485,4.5019531 29.926758,-20.3906249 -6.0742188,-0.883789 z"
+             transform="matrix(0.4,0,0,0.4,15.2,15.2)" />
         </g>
       </svg>
     </div>

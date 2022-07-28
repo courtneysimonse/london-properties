@@ -70,8 +70,11 @@ var category = "price";
 // };
 // console.log(svgMarker);
 
-var markerImage = document.querySelector('.markerImage');
+var markerImage = document.querySelector('#markerImage');
 var markerImageSvg = markerImage.innerHTML;
+
+var twoColorMarker = document.querySelector('#twoColorMarker');
+var twoColorMarkerSvg = twoColorMarker.innerHTML;
 
 // var blueMarker = Object.assign({},svgMarker);
 // blueMarker = Object.assign(blueMarker,{fillColor: "#4264fb"});
@@ -117,7 +120,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
-    center: { lat: 51.515, lng: -0.155 },
+    center: { lat: 51.49, lng: -0.165 },
     zoom: 12,
     zoomControlOptions: {
       position: google.maps.ControlPosition.TOP_RIGHT
@@ -139,6 +142,7 @@ function initMap() {
   map.setTilt(45);
 
   //https://docs.google.com/spreadsheets/d/{key}/gviz/tq?tqx=out:csv&sheet={sheetname}
+  //https://docs.google.com/spreadsheets/d/1seMGNKFqOe05r_h-ZWaAUV0gGchdsQHMM3s0FpyaEPM/edit?usp=sharing
 
   d3.csv("https://docs.google.com/spreadsheets/d/1seMGNKFqOe05r_h-ZWaAUV0gGchdsQHMM3s0FpyaEPM/gviz/tq?tqx=out:csv&sheet=Sheet1", (d) => {
     console.log(d);
@@ -267,243 +271,275 @@ function initMap() {
       // change background color
       setSelected(event.feature, propertyFeatures);
 
-      windowHeight = window.innerHeight;
-      windowWidth = window.innerWidth;
-      console.log(windowWidth + " " + windowHeight);
-      if (windowWidth < 576) {
-        console.log('xs');
-        // iwHeight = windowHeight * .3;
-        // iwWidth = windowWidth * .8;
+      if (event.feature.getProperty('marker') != 'school') {
 
-      } else {
-        console.log('sm or greater');
-        iwHeight = windowHeight * .5;
-
-        if (iwHeight > 200) {
-          iwHeight = 200;
-        }
-        iwWidth = windowWidth * .6;
-
-        if (iwWidth > 600) {
-          iwWidth = 600;
-        }
-
-      }
-      var imgWidth, imgHeight;
-
-      infobox.setOptions({
-        maxWidth: iwWidth
-      });
-
-      let popupHTML = "";
-      popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
-
-      if (windowWidth < 576) {
-        console.log('xs');
-        imgWidth = windowWidth * .5;
-        imgHeight = 200;
-
-        // show info area
-        if (document.getElementById('mobile-info').classList.contains('invisible')) {
-          document.getElementById('mobile-info').classList.remove('invisible');
-        }
-
-        // images
-        if (event.feature.getProperty('numImages')) {
-          let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-          carousel.classList.add('col-6','ps-0','pe-0');
-          console.log(carousel);
-
-          document.getElementById('main-image').outerHTML = carousel.outerHTML;
-        } else if (event.feature.getProperty('mainImage') == "N/A") {
+        windowHeight = window.innerHeight;
+        windowWidth = window.innerWidth;
+        console.log(windowWidth + " " + windowHeight);
+        if (windowWidth < 576) {
+          console.log('xs');
+          // iwHeight = windowHeight * .3;
+          // iwWidth = windowWidth * .8;
 
         } else {
-          document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
-        }
+          console.log('sm or greater');
+          iwHeight = windowHeight * .5;
 
-        // price
-        if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
-          document.getElementById('price').innerText = event.feature.getProperty('price');
-        } else if (event.feature.getProperty('price') == "") {
-          document.getElementById('price').innerText = "POA";
-        }
+          if (iwHeight > 200) {
+            iwHeight = 200;
+          }
+          iwWidth = windowWidth * .6;
 
-        // location
-        if (event.feature.getProperty("locationLink") != "") {
-          document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+          if (iwWidth > 600) {
+            iwWidth = 600;
+          }
+
+        }
+        var imgWidth, imgHeight;
+
+        infobox.setOptions({
+          maxWidth: iwWidth
+        });
+
+        let popupHTML = "";
+        popupHTML += "<div class='m-0 p-0 bg-navy text-light' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
+
+        if (windowWidth < 576) {
+          console.log('xs');
+          imgWidth = windowWidth * .5;
+          imgHeight = 200;
+
+          // show info area
+          if (document.getElementById('mobile-info').classList.contains('invisible')) {
+            document.getElementById('mobile-info').classList.remove('invisible');
+          }
+
+          // images
+          if (event.feature.getProperty('numImages')) {
+            let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+            carousel.classList.add('col-6','ps-0','pe-0');
+            console.log(carousel);
+
+            document.getElementById('main-image').outerHTML = carousel.outerHTML;
+          } else if (event.feature.getProperty('mainImage') == "N/A") {
+            document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'></div>";
+          } else {
+            document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+          }
+
+          // price
+          if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
+            document.getElementById('price').innerText = event.feature.getProperty('price');
+          } else if (event.feature.getProperty('price') == "") {
+            document.getElementById('price').innerText = "POA";
+          }
+
+          // location
+          if (event.feature.getProperty("locationLink") != "") {
+            document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+          } else {
+            document.getElementById('location').innerHTML = "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+          }
+
+          // address
+          document.getElementById('address').innerText = event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","");
+
+          // documents
+          document.getElementById('documents').innerHTML = "";
+          if (event.feature.getProperty('documents') != "") {
+            document.getElementById('documents').innerHTML += "<small>View: </small>";
+            let documents = JSON.parse(event.feature.getProperty('documents'));
+            console.log(documents);
+            documents.forEach((item, i) => {
+              let url;
+              console.log(item[1]);
+              if (item[1].includes('http')) {
+                url = item[1];
+              } else {
+                url = './documents/'+item[1];
+              }
+              document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a></small> ";
+            });
+          }
+
+          // sqft
+          if (event.feature.getProperty("area-sqft") != "N/A") {
+            document.getElementById('sqft').innerHTML = "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf";
+          }
+
+          // bedrooms
+          if (event.feature.getProperty("bedrooms") != "") {
+            document.getElementById('beds').innerHTML = "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms');
+          }
+
         } else {
-          document.getElementById('location').innerHTML = "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
-        }
-
-        // address
-        document.getElementById('address').innerText = event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","");
-
-        // documents
-        document.getElementById('documents').innerHTML = "";
-        if (event.feature.getProperty('documents') != "") {
-          document.getElementById('documents').innerHTML += "<small>View: </small>";
-          let documents = JSON.parse(event.feature.getProperty('documents'));
-          console.log(documents);
-          documents.forEach((item, i) => {
-            document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-yellow' href='./documents/"+item[1]+"'>"+item[0]+"</a></small> ";
-          });
-        }
-
-        // sqft
-        if (event.feature.getProperty("area-sqft") != "N/A") {
-          document.getElementById('sqft').innerHTML = "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf";
-        }
-
-        // bedrooms
-        if (event.feature.getProperty("bedrooms") != "") {
-          document.getElementById('beds').innerHTML = "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms');
-        }
-
-      } else {
-        console.log('sm or greater');
-        imgWidth = iwWidth * (8/12);
-        imgHeight = iwHeight;
+          console.log('sm or greater');
+          imgWidth = iwWidth * (8/12);
+          imgHeight = iwHeight;
 
 
-        if (event.feature.getProperty('numImages')) {
-          // popupHTML += "<div class='col-sm-8 col-12'>";
-          let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-          carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
-          console.log(carousel);
-          popupHTML += carousel.outerHTML;
+          if (event.feature.getProperty('numImages')) {
+            // popupHTML += "<div class='col-sm-8 col-12'>";
+            let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+            carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
+            console.log(carousel);
+            popupHTML += carousel.outerHTML;
+            // popupHTML += "</div>"
+          } else if (event.feature.getProperty('mainImage') == "N/A") {
+            popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
+          } else {
+            popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
+          }
+
+          // /* Start mobile only section */
+          // popupHTML += "<div class='col-12 d-sm-none ms-2'>";
+          // // name on mobile
+          // popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
+          //
+          // // sq ft
+          // if (event.feature.getProperty("area-sqft") != "N/A") {
+          //   popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
+          // }
+          //
+          // if (event.feature.getProperty("bedrooms") != "") {
+          //   popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
+          // }
+          //
+          // // documents on mobile
+          // if (event.feature.getProperty('documents') != "") {
+          //   popupHTML += "Documents: ";
+          //   let documents = JSON.parse(event.feature.getProperty('documents'));
+          //   console.log(documents);
+          //   documents.forEach((item, i) => {
+          //     popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>View"+item[0]+"</a> ";
+          //   });
+          // }
           // popupHTML += "</div>"
-        } else if (event.feature.getProperty('mainImage') == "N/A") {
-          popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
-        } else {
-          popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
-        }
-
-        /* Start mobile only section */
-        popupHTML += "<div class='col-12 d-sm-none ms-2'>";
-        // name on mobile
-        popupHTML += "<h4 class='text-white mb-0 pb-0'>"+event.feature.getProperty("locationName")+" <span class='text-price'>"+event.feature.getProperty("price")+"</span></h4>";
-
-        // sq ft
-        if (event.feature.getProperty("area-sqft") != "N/A") {
-          popupHTML += event.feature.getProperty("area-sqft") + " sq ft | ";
-        }
-
-        if (event.feature.getProperty("bedrooms") != "") {
-          popupHTML += event.feature.getProperty('bedrooms') + " bedrooms | ";
-        }
-
-        // documents on mobile
-        if (event.feature.getProperty('documents') != "") {
-          popupHTML += "Documents: ";
-          let documents = JSON.parse(event.feature.getProperty('documents'));
-          console.log(documents);
-          documents.forEach((item, i) => {
-            popupHTML += "<a target='_blank' class='link-light' href='./documents/"+item[1]+"'>View"+item[0]+"</a> ";
-          });
-        }
-        popupHTML += "</div>"
-        /* End mobile-only section */
+          // /* End mobile-only section */
 
 
-        popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
-        // popupHTML += "<div class='col-md-6 col-xs-6'>";
-        // popupHTML += "<div>"
+          popupHTML += "<div class='col-5 d-none d-sm-block ps-3 pe-0 my-2 position-relative'>";
+          // popupHTML += "<div class='col-md-6 col-xs-6'>";
+          // popupHTML += "<div>"
 
-        popupHTML += "<div class='row'>"
-        // price
-        popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
-        if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
-          popupHTML += event.feature.getProperty('price');
-        } else if (event.feature.getProperty('price') == "") {
-          popupHTML += "POA";
-        }
-        popupHTML += "</span></div>";
+          popupHTML += "<div class='row'>"
+          // price
+          popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
+          if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
+            popupHTML += event.feature.getProperty('price');
+          } else if (event.feature.getProperty('price') == "") {
+            popupHTML += "POA";
+          }
+          popupHTML += "</span></div>";
 
-        // address
-        popupHTML += "<div class='col-12'>"
-        popupHTML += "<p class='my-1 pb-0 h6'>";
-        if (event.feature.getProperty("locationLink") != "") {
-          popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
-        } else {
-          popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
-        }
-        popupHTML += "</p>";
-        popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
-        popupHTML += "</div>"
+          // address
+          popupHTML += "<div class='col-12'>"
+          popupHTML += "<p class='my-1 pb-0 h6'>";
+          if (event.feature.getProperty("locationLink") != "") {
+            popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+          } else {
+            popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+          }
+          popupHTML += "</p>";
+          popupHTML += "<p class='text-white'>"+event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","")+"</p>"
+          popupHTML += "</div>"
 
-        popupHTML += "</div>"
+          popupHTML += "</div>"
 
 
-        /* Start Bottom Section */
-        popupHTML += "<div class='position-absolute bottom-0 w-100'>";
+          /* Start Bottom Section */
+          popupHTML += "<div class='position-absolute bottom-0 w-100'>";
 
-        // documents
-        if (event.feature.getProperty('documents') != "") {
-          popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
-          let documents = JSON.parse(event.feature.getProperty('documents'));
-          console.log(documents);
-          documents.forEach((item, i) => {
-            popupHTML += "<a target='_blank' class='link-yellow' href='./documents/"+item[1]+"'>"+item[0]+"</a> ";
-          });
+          // documents
+          if (event.feature.getProperty('documents') != "") {
+            popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
+            let documents = JSON.parse(event.feature.getProperty('documents'));
+            console.log(documents);
+            documents.forEach((item, i) => {
+              let url;
+              if (item[1].includes('http')) {
+                url = item[1];
+              } else {
+                url = './documents/'+item[1];
+              }
+              popupHTML += "<a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a> ";
+            });
+            popupHTML += "</div>";
+          }
+
+          popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
+          // sq ft
+          popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
+          if (event.feature.getProperty("area-sqft") != "N/A") {
+            popupHTML += "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf</span>";
+          } else {
+            console.log(event.feature.getProperty("area-sqft"));
+          }
           popupHTML += "</div>";
+
+          // price/sqft
+          // popupHTML += "<div class='col-sm-auto pb-1'>";
+          // if (event.feature.getProperty("price-sqft") != "N/A") {
+          //   popupHTML += event.feature.getProperty('price-sqft') + "/sf";
+          // }
+          // popupHTML += "</div>"
+
+          // bedrooms
+          popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
+          if (event.feature.getProperty("bedrooms") != "") {
+            popupHTML += "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms') + "</span>";
+          }
+          popupHTML += "</div>";
+
+          popupHTML += "</div>";
+
+          // link
+          // if (event.feature.getProperty('link') != "") {
+          //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
+          // }
+
+
+
+          popupHTML += "</div></div></div></div>";
+
+          // add anchor tip
+          popupHTML += "<div class='infobox-tip'></div>"
+
+          // infowindow.setContent(popupHTML);
+          infobox.setContent(popupHTML);
+          // popup.outerHTML = popupHTML;
+
+          // center map on marker
+          map.panTo(event.feature.getGeometry().get());
+
+          // infowindow.setPosition(event.feature.getGeometry().get());
+          // popup.position = event.feature.getGeometry().get();
+          // console.log(popup);
+          infobox.setPosition(event.feature.getGeometry().get());
+
+
+          // infowindow.open(map);
+          infobox.open(map);
+
         }
 
-        popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
-        // sq ft
-        popupHTML += "<div class='col-sm-auto text-start ms-0 ps-0'>";
-        if (event.feature.getProperty("area-sqft") != "N/A") {
-          popupHTML += "<i class='fa-solid fa-ruler-combined'></i><span class='ps-2'>" + event.feature.getProperty("area-sqft") + " sf</span>";
-        } else {
-          console.log(event.feature.getProperty("area-sqft"));
-        }
-        popupHTML += "</div>";
 
-        // price/sqft
-        // popupHTML += "<div class='col-sm-auto pb-1'>";
-        // if (event.feature.getProperty("price-sqft") != "N/A") {
-        //   popupHTML += event.feature.getProperty('price-sqft') + "/sf";
-        // }
-        // popupHTML += "</div>"
+      } else {
+        const infowindow = new google.maps.InfoWindow({
+          content: event.feature.getProperty("locationName"),
+          pixelOffset: new google.maps.Size(0,-15)
+        });
 
-        // bedrooms
-        popupHTML += "<div class='col-sm-auto pb-1 text-end align-self-end me-0 pe-0'>";
-        if (event.feature.getProperty("bedrooms") != "") {
-          popupHTML += "<i class='fa-solid fa-bed'></i><span class='ps-2'>" + event.feature.getProperty('bedrooms') + "</span>";
-        }
-        popupHTML += "</div>";
+        // console.log(event);
 
-        popupHTML += "</div>";
+        infowindow.setPosition(event.latLng)
 
-        // link
-        // if (event.feature.getProperty('link') != "") {
-        //   popupHTML += "<div class='py-2 my-1'><a class='link-light' target='_blank' href='"+event.feature.getProperty('link')+"'>Learn more...</a></div>";
-        // }
-
-
-
-        popupHTML += "</div></div></div></div>";
-
-        // add anchor tip
-        popupHTML += "<div class='infobox-tip'></div>"
-
-        // infowindow.setContent(popupHTML);
-        infobox.setContent(popupHTML);
-        // popup.outerHTML = popupHTML;
-
-        // center map on marker
-        map.panTo(event.feature.getGeometry().get());
-
-        // infowindow.setPosition(event.feature.getGeometry().get());
-        // popup.position = event.feature.getGeometry().get();
-        // console.log(popup);
-        infobox.setPosition(event.feature.getGeometry().get());
-
-
-        // infowindow.open(map);
-        infobox.open(map);
+        infowindow.open({
+          map: map,
+          shouldFocus: false,
+        });
 
       }
-
     });
 
 
@@ -600,9 +636,9 @@ function initMap() {
   // }
 
 
-  const legend = document.createElement('div');
-  legendControl(legend, map);
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+  // const legend = document.createElement('div');
+  // legendControl(legend, map);
+  // map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
   // const categoryDiv = document.createElement('div');
   // categoryControl(categoryDiv, map);
@@ -798,39 +834,102 @@ function markerStyle (category, feature) {
   let catColor;
   let bgColor;
 
-  if (tier == "N/A" || tier == "") {
-    console.log(feature.getProperty("locationName") + " - " + tier);
-    catColor = '#1a9e06';
-  } else {
-    tier = +tier.replace('£','').replace(/,/g,'');
-    console.log(feature.getProperty("locationName") + tier);
-    // console.log(tier);
-    for (var i = 0; i < breaks[category].length; i++) {
-      if (tier < breaks[category][i][0]) {
-        if (i==0) {
-          catColor = breaks[category][i][1];
-        }
-        catColor = breaks[category][i-1][1]
-      } else if (i == breaks[category].length - 2) {
-        catColor = breaks[category][i][1];
-      }
-    }
-  }
+
+  //
+  // if (tier == "N/A" || tier == "") {
+  //   console.log(feature.getProperty("locationName") + " - " + tier);
+  //   catColor = '#1a9e06';
+  // } else {
+  //   tier = +tier.replace('£','').replace(/,/g,'');
+  //   console.log(feature.getProperty("locationName") + tier);
+  //   // console.log(tier);
+  //   for (var i = 0; i < breaks[category].length; i++) {
+  //     if (tier < breaks[category][i][0]) {
+  //       if (i==0) {
+  //         catColor = breaks[category][i][1];
+  //       }
+  //       catColor = breaks[category][i-1][1]
+  //     } else if (i == breaks[category].length - 2) {
+  //       catColor = breaks[category][i][1];
+  //     }
+  //   }
+  // }
+  // if (feature.getProperty("selected") == true) {
+  //   bgColor = '#ffcc00';
+  // } else {
+  //   bgColor = 'navy';
+  // }
+  //
+  // return {icon:{
+  //   // size: new google.maps.Size(20,20),
+  //   scaledSize: new google.maps.Size(20,20),
+  //   url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', catColor).replace('{{bgColor}}',bgColor)),
+  // },
+  // shape: {
+  //   type: 'rect',
+  //   coords: [0,0,20,20]
+  // }};
+
   if (feature.getProperty("selected") == true) {
     bgColor = '#ffcc00';
   } else {
     bgColor = 'navy';
   }
 
-  return {icon:{
-    // size: new google.maps.Size(20,20),
-    scaledSize: new google.maps.Size(20,20),
-    url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', catColor).replace('{{bgColor}}',bgColor)),
-  },
-  shape: {
-    type: 'rect',
-    coords: [0,0,20,20]
-  }};
+  if (feature.getProperty("marker") == "for sale") {
+
+    return {icon:{
+      // size: new google.maps.Size(20,20),
+      scaledSize: new google.maps.Size(20,20),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
+    },
+    shape: {
+      type: 'rect',
+      coords: [0,0,20,20]
+    }};
+
+  } else if (feature.getProperty("marker") == "for rent") {
+
+    return {icon:{
+      // size: new google.maps.Size(20,20),
+      scaledSize: new google.maps.Size(20,20),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#4264fb').replace('{{bgColor}}',bgColor)),
+    },
+    shape: {
+      type: 'rect',
+      coords: [0,0,20,20]
+    }};
+
+  } else if (feature.getProperty("marker") == "for sale or rent") {
+
+    return {icon:{
+      // size: new google.maps.Size(20,20),
+      scaledSize: new google.maps.Size(20,20),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(twoColorMarkerSvg.replace('{{markerColor1}}', '#4264fb').replace('{{markerColor2}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
+    },
+    shape: {
+      type: 'rect',
+      coords: [0,0,20,20]
+    }};
+
+  } else if (feature.getProperty("marker") == "school") {
+
+    return {
+      icon:{
+      // anchor: new google.maps.Size(10,10),
+      size: new google.maps.Size(20,20),
+      scaledSize: new google.maps.Size(20,20),
+      url: "icons/graduation-cap-solid.svg",
+      },
+      shape: {
+        type: 'rect',
+        coords: [0,0,20,20]
+      }
+    };
+
+  } else {
+    console.log(feature.getProperty("marker"));
+  }
 
   // return {icon:myIcons[feature.getProperty('marker')]};
 }
