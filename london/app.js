@@ -120,7 +120,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
-    center: { lat: 51.49, lng: -0.165 },
+    center: { lat: 51.49, lng: -0.175 },
     zoom: 12,
     zoomControlOptions: {
       position: google.maps.ControlPosition.TOP_RIGHT
