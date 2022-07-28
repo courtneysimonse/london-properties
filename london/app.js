@@ -376,6 +376,8 @@ function initMap() {
         } else {
           let popupHTML = "";
           if (event.feature.getProperty('mainImage') != "N/A") {
+            infobox.setOptions({pixelOffset: new google.maps.Size(xOffset,-18),});
+
             popupHTML += "<div class='m-0 p-0 bg-navy text-light' id='infoboxContent' style='height: "+iwHeight+"px; width: "+iwWidth+"px;'><div class='row' style='max-width: 100%; height: "+iwHeight+"px; overflow: hidden'>";
           } else {
             infobox.setOptions({pixelOffset: new google.maps.Size(xOffset*(5/12),-18),});
