@@ -156,6 +156,7 @@ function initMap() {
         locationLink: d.locationLink,
         address: d.address,
         price: d.price,
+        "price-rental": d["price-rental"],
         "price-sqft": d["price-sqft"],
         "area-sqft": d["area-sqft"],
         acres: d.acres,
@@ -329,10 +330,14 @@ function initMap() {
           }
 
           // price
+          document.getElementById('price').innerText = '';
           if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
             document.getElementById('price').innerText = event.feature.getProperty('price');
-          } else if (event.feature.getProperty('price') == "") {
+          } else if (event.feature.getProperty('price') == "" && event.feature.getProperty('price-rental') == '') {
             document.getElementById('price').innerText = "POA";
+          }
+          if (event.feature.getProperty('price-rental') != '') {
+            document.getElementById('price').innerText += " " + event.feature.getProperty('price-rental');
           }
 
           // location
@@ -438,12 +443,16 @@ function initMap() {
           // popupHTML += "<div>"
 
           popupHTML += "<div class='row'>"
+
           // price
-          popupHTML += "<div class='col-12 display-6'><span class='my-1 pt-1 text-price'>"
+          popupHTML += "<div class='col-12 fs-3'><span class='my-1 pt-1 text-price'>"
           if (event.feature.getProperty('price') != "N/A" && event.feature.getProperty('price') != "" ) {
             popupHTML += event.feature.getProperty('price');
-          } else if (event.feature.getProperty('price') == "") {
+          } else if (event.feature.getProperty('price') == "" && event.feature.getProperty('price-rental') == '') {
             popupHTML += "POA";
+          }
+          if (event.feature.getProperty('price-rental') != '') {
+            popupHTML += " " + event.feature.getProperty('price-rental');
           }
           popupHTML += "</span></div>";
 
