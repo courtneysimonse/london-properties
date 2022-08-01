@@ -476,7 +476,7 @@ function initMap() {
 
           // documents
           if (event.feature.getProperty('documents') != "") {
-            popupHTML += "<div class='col-12 pb-2 fs-6'>View: ";
+            popupHTML += "<div class='col-12 pb-2 fs-6 lh-1'>View: ";
             let documents = JSON.parse(event.feature.getProperty('documents'));
             console.log(documents);
             documents.forEach((item, i) => {
