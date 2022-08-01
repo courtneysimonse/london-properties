@@ -723,7 +723,7 @@ function legendControl(legend, map) {
   let legendHTML = '<h3>Legend</h3><ul>';
   legendHTML += '<li><span style="background: #386cb0"></span> For Sale</li>';
   legendHTML += '<li><span style="background: #1a9e06"></span> For Rent</li>';
-  legendHTML += '<li><span style="background: purple"></span> For Sale or Rent</li>';
+  legendHTML += '<li><span style="background: red"></span> For Sale or Rent</li>';
   legendHTML += '</ul>';
 
   legendDiv.innerHTML = legendHTML;
@@ -945,7 +945,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'purple').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'red').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
