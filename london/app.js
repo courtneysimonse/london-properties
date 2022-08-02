@@ -948,7 +948,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'red').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
