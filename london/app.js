@@ -120,7 +120,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("mapid"), {
     mapId: "4b8d32be0b6717d",
-    center: { lat: 51.49, lng: -0.175 },
+    center: { lat: 51.51, lng: -0.175 },
     zoom: 12,
     zoomControlOptions: {
       position: google.maps.ControlPosition.TOP_RIGHT
@@ -146,32 +146,35 @@ function initMap() {
 
   d3.csv("https://docs.google.com/spreadsheets/d/1seMGNKFqOe05r_h-ZWaAUV0gGchdsQHMM3s0FpyaEPM/gviz/tq?tqx=out:csv&sheet=Sheet1", (d) => {
     console.log(d);
-    return {
-      type: "Feature",
-      properties: {
-        id: d.id,
-        mainImage: d.mainImage,
-        marker: d.marker,
-        locationName: d.locationName,
-        locationLink: d.locationLink,
-        address: d.address,
-        price: d.price,
-        "price-rental": d["price-rental"],
-        "price-sqft": d["price-sqft"],
-        "area-sqft": d["area-sqft"],
-        acres: d.acres,
-        link: d.link,
-        documents: d.documents,
-        locationType: d.locationType,
-        numImages: d.numImages,
-        image: d.image,
-        bedrooms: d.bedrooms
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [+d.longitude,+d.latitude]
+    // if (d.marker != "for sale") {
+      return {
+        type: "Feature",
+        properties: {
+          id: d.id,
+          mainImage: d.mainImage,
+          marker: d.marker,
+          locationName: d.locationName,
+          locationLink: d.locationLink,
+          address: d.address,
+          price: d.price,
+          "price-rental": d["price-rental"],
+          "price-sqft": d["price-sqft"],
+          "area-sqft": d["area-sqft"],
+          acres: d.acres,
+          link: d.link,
+          documents: d.documents,
+          locationType: d.locationType,
+          numImages: d.numImages,
+          image: d.image,
+          bedrooms: d.bedrooms
+        },
+        geometry: {
+          type: "Point",
+          coordinates: [+d.longitude,+d.latitude]
+        }
       }
-    }
+    // }
+
   }).then((data) => {
     console.log(data);
     drawMarkers(data);
@@ -945,7 +948,7 @@ function markerStyle (category, feature) {
     return {icon:{
       // size: new google.maps.Size(20,20),
       scaledSize: new google.maps.Size(20,20),
-      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', 'red').replace('{{bgColor}}',bgColor)),
+      url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(markerImageSvg.replace('{{markerColor}}', '#1a9e06').replace('{{bgColor}}',bgColor)),
     },
     shape: {
       type: 'rect',
