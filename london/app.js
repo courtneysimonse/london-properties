@@ -321,13 +321,14 @@ function initMap() {
           }
 
           // images
-          if (event.feature.getProperty('numImages')) {
-            let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-            carousel.classList.add('col-6','ps-0','pe-0');
-            console.log(carousel);
-
-            document.getElementById('main-image').outerHTML = carousel.outerHTML;
-          } else if (event.feature.getProperty('mainImage') == "N/A") {
+          // if (event.feature.getProperty('numImages')) {
+          //   let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+          //   carousel.classList.add('col-6','ps-0','pe-0');
+          //   console.log(carousel);
+          //
+          //   document.getElementById('main-image').outerHTML = carousel.outerHTML;
+          // } else
+          if (event.feature.getProperty('mainImage') == "N/A") {
             document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'></div>";
           } else {
             document.getElementById('main-image').outerHTML = "<div id='main-image' class='col-6 px-0 position-relative'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
@@ -397,15 +398,16 @@ function initMap() {
           imgWidth = iwWidth * (8/12);
           imgHeight = iwHeight;
 
-
-          if (event.feature.getProperty('numImages')) {
-            // popupHTML += "<div class='col-sm-8 col-12'>";
-            let carousel = addCarousel(event.feature,imgWidth,imgHeight);
-            carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
-            console.log(carousel);
-            popupHTML += carousel.outerHTML;
-            // popupHTML += "</div>"
-          } else if (event.feature.getProperty('mainImage') == "N/A") {
+          // images
+          // if (event.feature.getProperty('numImages')) {
+          //   // popupHTML += "<div class='col-sm-8 col-12'>";
+          //   let carousel = addCarousel(event.feature,imgWidth,imgHeight);
+          //   carousel.classList.add('col-sm-7','col-12','ps-0','pe-0');
+          //   console.log(carousel);
+          //   popupHTML += carousel.outerHTML;
+          //   // popupHTML += "</div>"
+          // } else 
+          if (event.feature.getProperty('mainImage') == "N/A") {
             // popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
           } else {
             popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'><img class='mainImage' style='width:"+imgWidth+"px;height:"+imgHeight+"px;' src='images/" + event.feature.getProperty('mainImage') + "?nf_resize=smartcrop&w="+Math.round(imgWidth)+"&h="+Math.round(imgHeight)+"'></div>";
