@@ -128,12 +128,12 @@ function initMap() {
     fullscreenControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_RIGHT
     },
-    mapTypeControl: true,
-    mapTypeControlOptions: {
-      position: google.maps.ControlPosition.BOTTOM_LEFT,
-      style: google.maps.MapTypeControlStyle.DEFAULT,
-      mapTypeIds: ["roadmap","satellite"],
-    },
+    mapTypeControl: false,
+    // mapTypeControlOptions: {
+    //   position: google.maps.ControlPosition.BOTTOM_LEFT,
+    //   style: google.maps.MapTypeControlStyle.DEFAULT,
+    //   mapTypeIds: ["roadmap","satellite"],
+    // },
     // streetViewControlOptions: {
     //   position: google.maps.ControlPosition.RIGHT_TOP
     // },
