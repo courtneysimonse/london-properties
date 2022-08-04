@@ -122,21 +122,21 @@ function initMap() {
     mapId: "4b8d32be0b6717d",
     center: { lat: 51.51, lng: -0.175 },
     zoom: 12,
-    zoomControlOptions: {
-      position: google.maps.ControlPosition.TOP_RIGHT
-    },
+    // zoomControlOptions: {
+    //   position: google.maps.ControlPosition.TOP_RIGHT
+    // },
     fullscreenControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_TOP
+      position: google.maps.ControlPosition.BOTTOM_RIGHT
     },
     mapTypeControl: true,
     mapTypeControlOptions: {
-      position: google.maps.ControlPosition.TOP_LEFT,
+      position: google.maps.ControlPosition.BOTTOM_LEFT,
       style: google.maps.MapTypeControlStyle.DEFAULT,
       mapTypeIds: ["roadmap","satellite"],
     },
-    streetViewControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_TOP
-    },
+    // streetViewControlOptions: {
+    //   position: google.maps.ControlPosition.RIGHT_TOP
+    // },
   });
 
   map.setTilt(45);
@@ -287,6 +287,7 @@ function initMap() {
           console.log('xs');
           // iwHeight = windowHeight * .3;
           // iwWidth = windowWidth * .8;
+          document.getElementById('mapid').style.height = windowHeight - 200 + "px";
 
         } else {
           console.log('sm or greater');
