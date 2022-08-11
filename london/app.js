@@ -154,7 +154,7 @@ function initMap() {
           mainImage: d.mainImage,
           marker: d.marker,
           locationName: d.locationName,
-          locationLink: d.locationLink,
+          link: d.link,
           address: d.address,
           price: d.price,
           "price-rental": d["price-rental"],
@@ -345,33 +345,36 @@ function initMap() {
             document.getElementById('price').innerText += " " + event.feature.getProperty('price-rental');
           }
 
-          // location
-          if (event.feature.getProperty("locationLink") != "") {
-            document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+          // location / photos link
+          if (event.feature.getProperty("link") != "N/A") {
+            document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("link") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+            document.getElementById('photos-link').setAttribute('href', event.feature.getProperty('link'));
+            document.getElementById('documents').setStyle('visibility','visible');
           } else {
             document.getElementById('location').innerHTML = "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
+            document.getElementById('documents').setStyle('visibility','hidden');
           }
 
           // address
           document.getElementById('address').innerText = event.feature.getProperty("address").replace(event.feature.getProperty("locationName")+",","");
 
           // documents
-          document.getElementById('documents').innerHTML = "";
-          if (event.feature.getProperty('documents') != "") {
-            document.getElementById('documents').innerHTML += "<small>View: </small>";
-            let documents = JSON.parse(event.feature.getProperty('documents'));
-            console.log(documents);
-            documents.forEach((item, i) => {
-              let url;
-              console.log(item[1]);
-              if (item[1].includes('http')) {
-                url = item[1];
-              } else {
-                url = './documents/'+item[1];
-              }
-              document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a></small> ";
-            });
-          }
+          // document.getElementById('documents').innerHTML = "";
+          // if (event.feature.getProperty('documents') != "") {
+          //   document.getElementById('documents').innerHTML += "<small>View: </small>";
+          //   let documents = JSON.parse(event.feature.getProperty('documents'));
+          //   console.log(documents);
+          //   documents.forEach((item, i) => {
+          //     let url;
+          //     console.log(item[1]);
+          //     if (item[1].includes('http')) {
+          //       url = item[1];
+          //     } else {
+          //       url = './documents/'+item[1];
+          //     }
+          //     document.getElementById('documents').innerHTML += "<small><a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a></small> ";
+          //   });
+          // }
 
           // sqft
           if (event.feature.getProperty("area-sqft") != "N/A") {
@@ -406,7 +409,7 @@ function initMap() {
           //   console.log(carousel);
           //   popupHTML += carousel.outerHTML;
           //   // popupHTML += "</div>"
-          // } else 
+          // } else
           if (event.feature.getProperty('mainImage') == "N/A") {
             // popupHTML += "<div class='col-sm-7 col-12 ps-0 pe-0'></div>";
           } else {
@@ -465,8 +468,8 @@ function initMap() {
           // address
           popupHTML += "<div class='col-12'>"
           popupHTML += "<p class='my-1 pb-0 h6'>";
-          if (event.feature.getProperty("locationLink") != "") {
-            popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("locationLink") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
+          if (event.feature.getProperty("link") != "") {
+            popupHTML += "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("link") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
           } else {
             popupHTML += "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
           }
@@ -480,21 +483,27 @@ function initMap() {
           /* Start Bottom Section */
           popupHTML += "<div class='position-absolute bottom-0 w-100'>";
 
-          // documents
-          if (event.feature.getProperty('documents') != "") {
-            popupHTML += "<div class='col-12 pb-2 fs-6 lh-1'>View: ";
-            let documents = JSON.parse(event.feature.getProperty('documents'));
-            console.log(documents);
-            documents.forEach((item, i) => {
-              let url;
-              if (item[1].includes('http')) {
-                url = item[1];
-              } else {
-                url = './documents/'+item[1];
-              }
-              popupHTML += "<a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a> ";
-            });
-            popupHTML += "</div>";
+          // // documents
+          // if (event.feature.getProperty('documents') != "") {
+          //   popupHTML += "<div class='col-12 pb-2 fs-6 lh-1'>View: ";
+          //   let documents = JSON.parse(event.feature.getProperty('documents'));
+          //   console.log(documents);
+          //   documents.forEach((item, i) => {
+          //     let url;
+          //     if (item[1].includes('http')) {
+          //       url = item[1];
+          //     } else {
+          //       url = './documents/'+item[1];
+          //     }
+          //     popupHTML += "<a target='_blank' class='link-yellow' href='"+url+"'>"+item[0]+"</a> ";
+          //   });
+          //   popupHTML += "</div>";
+          // }
+
+          // photos link
+          if (event.feature.getProperty('link') != "N/A") {
+            popupHTML += '<div class="col-12 pb-2 fs-6 lh-1"><a class="link-yellow" href="' + event.feature.getProperty('link') +
+                  '" target="_blank">View Photos</a></div>'
           }
 
           popupHTML += "<div class='row w-100 mx-0 px-0 border-top border-white pt-2'>"
