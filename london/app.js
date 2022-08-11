@@ -349,10 +349,10 @@ function initMap() {
           if (event.feature.getProperty("link") != "N/A") {
             document.getElementById('location').innerHTML = "<a class='iw-link link-light text-decoration-none' href='" + event.feature.getProperty("link") + "' target='_blank'>" + event.feature.getProperty("locationName") + "</a>";
             document.getElementById('photos-link').setAttribute('href', event.feature.getProperty('link'));
-            document.getElementById('documents').setStyle('visibility','visible');
+            document.getElementById('documents').style.visibility = 'visible';
           } else {
             document.getElementById('location').innerHTML = "<span class='text-white'>"+event.feature.getProperty("locationName")+"</span>";
-            document.getElementById('documents').setStyle('visibility','hidden');
+            document.getElementById('documents').style.visibility = 'hidden';
           }
 
           // address
