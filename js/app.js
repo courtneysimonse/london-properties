@@ -13,10 +13,15 @@
   var map = L.map('mapid', options);
 
   // request tiles and add to map
-  var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-  	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  	subdomains: 'abcd',
-  	maxZoom: 20
+  // var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+  // 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  // 	subdomains: 'abcd',
+  // 	maxZoom: 20
+  // }).addTo(map);
+
+  var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+  	maxZoom: 20,
+  	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
   }).addTo(map);
 
   // change zoom control position
@@ -99,8 +104,10 @@
 
     L.geoJSON(properties, {
       pointToLayer: function (geoJsonPoint, latlng) {
-        if (geoJsonPoint.properties.category == 'Available' || geoJsonPoint.properties.category == 'Comparables') {
+        if (geoJsonPoint.properties.category == 'Available') {
             return L.marker(latlng, {icon: myIcons['Available']});
+          } else if (geoJsonPoint.properties.category == 'Comparables') {
+            return L.marker(latlng, {icon: myIcons['Comparables']});
           } else {
             return L.marker(latlng, {icon: myIcons['Recent Sales']});
           }
@@ -108,33 +115,38 @@
         },
       onEachFeature: function (feature, layer) {
         popupText = "<h6>" + feature.properties.display_address + "</h6>";
-        if (feature.properties.category == 'Available') {
-          const popupDiv = document.createElement('div');
-          addCarousel(feature,popupDiv,'popup');
-          // console.log(popupDiv.innerHTML);
-          popupText += popupDiv.innerHTML;
-          popupText += "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
-        } else if (feature.properties.category == 'Recent Sales' || feature.properties.category == 'Comparables') {
-          popupText += "<p>" + feature.properties.description + "</p>"
-          popupText += "<p>Price: " + feature.properties.price + "</p>";
-        } else {
-
+        // if (feature.properties.category == 'Available') {
+        //   // const popupDiv = document.createElement('div');
+        //   // addCarousel(feature,popupDiv,'popup');
+        //   // console.log(popupDiv.innerHTML);
+        //   popupText += popupDiv.innerHTML;
+        //   popupText += "<p><a href='#prop-" + feature.properties.id + "'>More information...</a></p>";
+        // } else if (feature.properties.category == 'Recent Sales' || feature.properties.category == 'Comparables') {
+        if (feature.properties.description) {
+          popupText += "<p>" + feature.properties.description + "</p>";
         }
+        if (feature.properties.price) {
+          popupText += "<p>Price: " + feature.properties.price + "</p>";
+        }
+
+        // } else {
+        //
+        // }
 
         layer.bindPopup(popupText, {maxWidth: 700});
       }
     }).addTo(map);
 
-    L.geoJSON(neighborhoods, {
-      pointToLayer: function (geoJsonPoint, latlng) {
-        let label = L.divIcon({
-          className: "neighborhoods",
-          html: geoJsonPoint.properties.name,
-          iconSize: [90,20]
-        })
-        return new L.marker(latlng, {icon: label});
-      }
-    }).addTo(map);
+    // L.geoJSON(neighborhoods, {
+    //   pointToLayer: function (geoJsonPoint, latlng) {
+    //     let label = L.divIcon({
+    //       className: "neighborhoods",
+    //       html: geoJsonPoint.properties.name,
+    //       iconSize: [90,20]
+    //     })
+    //     return new L.marker(latlng, {icon: label});
+    //   }
+    // }).addTo(map);
 
   }   //end drawMap()
 
@@ -157,7 +169,7 @@
     var legend = document.querySelector('.legend');
     legend.innerHTML = '<h3>Legend</h3><ul>' +
     '<li><span style="background:' + colors[0] + '"></span> ' + breaks[0] + '</li>' +
-    // '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
+    '<li><span style="background:' + colors[1] + '"></span> ' + breaks[1] + '</li>' +
     '<li><span style="background:' + colors[2] + '"></span> ' + breaks[2] + '</li>' +
     '</ul>';
     // legend.innerHTML += '</ul><p>(Data from SOURCE)</p>';
